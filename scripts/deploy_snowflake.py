@@ -40,7 +40,7 @@ def execute_scripts(config: SnowflakeConfig, scripts: list[Path]) -> None:
         for path in scripts:
             print(f"Executing {path}")
             sql = path.read_text(encoding="utf-8")
-            for cursor in connection.execute_stream(sql):
+            for cursor in connection.execute_string(sql):
                 cursor.close()
         print("Snowflake foundation deployment completed.")
     finally:
