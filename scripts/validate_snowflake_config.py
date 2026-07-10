@@ -9,34 +9,52 @@ from dataclasses import dataclass
 REQUIRED_VARIABLES = (
     "SNOWFLAKE_ACCOUNT",
     "SNOWFLAKE_USER",
-    "SNOWFLAKE_PASSWORD",
     "SNOWFLAKE_ROLE",
     "SNOWFLAKE_WAREHOUSE",
     "SNOWFLAKE_DATABASE",
 )
+
+# Exactly one of these authentication paths must be provided. Key-pair auth is
+# used by the SVC_PHARMARETAIL_CICD service identity for BAU deployments;
+# password auth remains for the human-gated ACCOUNTADMIN bootstrap path.
+AUTH_VARIABLES = ("SNOWFLAKE_PASSWORD", "SNOWFLAKE_PRIVATE_KEY")
 
 
 @dataclass(frozen=True)
 class SnowflakeConfig:
     account: str
     user: str
-    password: str
     role: str
     warehouse: str
     database: str
+    password: str | None = None
+    private_key_pem: str | None = None
+    private_key_passphrase: str | None = None
+
+    @property
+    def auth_method(self) -> str:
+        return "key_pair" if self.private_key_pem else "password"
 
     @classmethod
     def from_environment(cls) -> "SnowflakeConfig":
         missing = [name for name in REQUIRED_VARIABLES if not os.getenv(name, "").strip()]
         if missing:
             raise ValueError(f"Missing required environment variables: {', '.join(missing)}")
+        password = os.getenv("SNOWFLAKE_PASSWORD") or None
+        private_key_pem = os.getenv("SNOWFLAKE_PRIVATE_KEY") or None
+        if not password and not private_key_pem:
+            raise ValueError(
+                f"Missing required environment variables: one of {', '.join(AUTH_VARIABLES)}"
+            )
         return cls(
             account=os.environ["SNOWFLAKE_ACCOUNT"].strip(),
             user=os.environ["SNOWFLAKE_USER"].strip(),
-            password=os.environ["SNOWFLAKE_PASSWORD"],
             role=os.environ["SNOWFLAKE_ROLE"].strip(),
             warehouse=os.environ["SNOWFLAKE_WAREHOUSE"].strip(),
             database=os.environ["SNOWFLAKE_DATABASE"].strip(),
+            password=password,
+            private_key_pem=private_key_pem,
+            private_key_passphrase=os.getenv("SNOWFLAKE_PRIVATE_KEY_PASSPHRASE") or None,
         )
 
     def validate(self) -> None:
