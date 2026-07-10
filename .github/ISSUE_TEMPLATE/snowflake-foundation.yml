@@ -1,0 +1,33 @@
+name: Snowflake foundation change
+description: Track a scoped Snowflake foundation or delivery-control change.
+title: "[Snowflake Foundation] "
+labels: ["snowflake", "infrastructure"]
+body:
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: Describe the outcome and why it is needed.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: List files, Snowflake objects, and environments in scope.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Provide objective validation criteria.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and cost considerations
+      description: State privilege, secret, logging, warehouse, and credit implications.
+    validations:
+      required: true

@@ -6,6 +6,12 @@
 *.p8
 *.key
 snowflake_credentials.json
+.snowsql/
+*.log
+.coverage
+.pytest_cache/
+.ruff_cache/
+.sqlfluff/
 
 # Python local artifacts
 __pycache__/
