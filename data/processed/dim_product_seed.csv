@@ -1,0 +1,301 @@
+product_id,product_name,brand,category,pack_size,cold_chain_flag,regulated_product_flag
+PRD0001,Vitamin D3,Harbour Health,vitamins,30 tablets,0,0
+PRD0002,Vitamin C,Southern Cross Wellness,vitamins,60 tablets,0,0
+PRD0003,Magnesium,Everyday Vitality,vitamins,90 capsules,0,0
+PRD0004,Iron Plus,Greenleaf Labs,vitamins,100 capsules,0,0
+PRD0005,Calcium Support,Wellness Works,vitamins,200 mL,0,0
+PRD0006,B-Complex,Harbour Health,vitamins,30 sachets,0,0
+PRD0007,Zinc Support,Southern Cross Wellness,vitamins,30 tablets,0,0
+PRD0008,Multivitamin,Everyday Vitality,vitamins,60 tablets,0,0
+PRD0009,Omega 3,Greenleaf Labs,vitamins,90 capsules,0,0
+PRD0010,Refrigerated Probiotic,Wellness Works,vitamins,100 capsules,1,0
+PRD0011,Vitamin D3 2,Harbour Health,vitamins,30 sachets,0,0
+PRD0012,Vitamin C 2,Southern Cross Wellness,vitamins,30 tablets,0,0
+PRD0013,Magnesium 2,Everyday Vitality,vitamins,60 tablets,0,0
+PRD0014,Iron Plus 2,Greenleaf Labs,vitamins,90 capsules,0,0
+PRD0015,Calcium Support 2,Wellness Works,vitamins,100 capsules,0,0
+PRD0016,B-Complex 2,Harbour Health,vitamins,200 mL,0,0
+PRD0017,Zinc Support 2,Southern Cross Wellness,vitamins,30 sachets,0,0
+PRD0018,Multivitamin 2,Everyday Vitality,vitamins,30 tablets,0,0
+PRD0019,Omega 3 2,Greenleaf Labs,vitamins,60 tablets,0,0
+PRD0020,Refrigerated Probiotic 2,Wellness Works,vitamins,90 capsules,1,0
+PRD0021,Vitamin D3 3,Harbour Health,vitamins,200 mL,0,0
+PRD0022,Vitamin C 3,Southern Cross Wellness,vitamins,30 sachets,0,0
+PRD0023,Magnesium 3,Everyday Vitality,vitamins,30 tablets,0,0
+PRD0024,Iron Plus 3,Greenleaf Labs,vitamins,60 tablets,0,0
+PRD0025,Calcium Support 3,Wellness Works,vitamins,90 capsules,0,0
+PRD0026,B-Complex 3,Harbour Health,vitamins,100 capsules,0,0
+PRD0027,Zinc Support 3,Southern Cross Wellness,vitamins,200 mL,0,0
+PRD0028,Multivitamin 3,Everyday Vitality,vitamins,30 sachets,0,0
+PRD0029,Omega 3 3,Greenleaf Labs,vitamins,30 tablets,0,0
+PRD0030,Refrigerated Probiotic 3,Wellness Works,vitamins,60 tablets,1,0
+PRD0031,Vitamin D3 4,Harbour Health,vitamins,100 capsules,0,0
+PRD0032,Vitamin C 4,Southern Cross Wellness,vitamins,200 mL,0,0
+PRD0033,Magnesium 4,Everyday Vitality,vitamins,30 sachets,0,0
+PRD0034,Iron Plus 4,Greenleaf Labs,vitamins,30 tablets,0,0
+PRD0035,Calcium Support 4,Wellness Works,vitamins,60 tablets,0,0
+PRD0036,B-Complex 4,Harbour Health,vitamins,90 capsules,0,0
+PRD0037,Zinc Support 4,Southern Cross Wellness,vitamins,100 capsules,0,0
+PRD0038,Multivitamin 4,Everyday Vitality,vitamins,200 mL,0,0
+PRD0039,Omega 3 4,Greenleaf Labs,vitamins,30 sachets,0,0
+PRD0040,Refrigerated Probiotic 4,Wellness Works,vitamins,30 tablets,1,0
+PRD0041,Vitamin D3 5,Harbour Health,vitamins,90 capsules,0,0
+PRD0042,Vitamin C 5,Southern Cross Wellness,vitamins,100 capsules,0,0
+PRD0043,Magnesium 5,Everyday Vitality,vitamins,200 mL,0,0
+PRD0044,Daily Moisturiser,Clear Coast,skincare,30 g,0,0
+PRD0045,Sensitive Skin Lotion,DermaKind,skincare,50 g,0,0
+PRD0046,SPF 50 Face Cream,Pure Harbour,skincare,75 mL,0,0
+PRD0047,Hydrating Cleanser,Softgum,skincare,100 mL,0,0
+PRD0048,Barrier Repair Cream,Everyday Dermal,skincare,200 mL,0,0
+PRD0049,Acne Control Gel,Clear Coast,skincare,250 mL,0,1
+PRD0050,Eczema Relief Balm,DermaKind,skincare,30 g,0,1
+PRD0051,Lip Repair Balm,Pure Harbour,skincare,50 g,0,0
+PRD0052,Antiseptic Skin Cream,Softgum,skincare,75 mL,0,1
+PRD0053,Hand Repair Cream,Everyday Dermal,skincare,100 mL,0,0
+PRD0054,Daily Moisturiser 2,Clear Coast,skincare,250 mL,0,0
+PRD0055,Sensitive Skin Lotion 2,DermaKind,skincare,30 g,0,0
+PRD0056,SPF 50 Face Cream 2,Pure Harbour,skincare,50 g,0,0
+PRD0057,Hydrating Cleanser 2,Softgum,skincare,75 mL,0,0
+PRD0058,Barrier Repair Cream 2,Everyday Dermal,skincare,100 mL,0,0
+PRD0059,Acne Control Gel 2,Clear Coast,skincare,200 mL,0,1
+PRD0060,Eczema Relief Balm 2,DermaKind,skincare,250 mL,0,1
+PRD0061,Lip Repair Balm 2,Pure Harbour,skincare,30 g,0,0
+PRD0062,Antiseptic Skin Cream 2,Softgum,skincare,50 g,0,1
+PRD0063,Hand Repair Cream 2,Everyday Dermal,skincare,75 mL,0,0
+PRD0064,Daily Moisturiser 3,Clear Coast,skincare,200 mL,0,0
+PRD0065,Sensitive Skin Lotion 3,DermaKind,skincare,250 mL,0,0
+PRD0066,SPF 50 Face Cream 3,Pure Harbour,skincare,30 g,0,0
+PRD0067,Hydrating Cleanser 3,Softgum,skincare,50 g,0,0
+PRD0068,Barrier Repair Cream 3,Everyday Dermal,skincare,75 mL,0,0
+PRD0069,Acne Control Gel 3,Clear Coast,skincare,100 mL,0,1
+PRD0070,Eczema Relief Balm 3,DermaKind,skincare,200 mL,0,1
+PRD0071,Lip Repair Balm 3,Pure Harbour,skincare,250 mL,0,0
+PRD0072,Antiseptic Skin Cream 3,Softgum,skincare,30 g,0,1
+PRD0073,Hand Repair Cream 3,Everyday Dermal,skincare,50 g,0,0
+PRD0074,Daily Moisturiser 4,Clear Coast,skincare,100 mL,0,0
+PRD0075,Sensitive Skin Lotion 4,DermaKind,skincare,200 mL,0,0
+PRD0076,SPF 50 Face Cream 4,Pure Harbour,skincare,250 mL,0,0
+PRD0077,Hydrating Cleanser 4,Softgum,skincare,30 g,0,0
+PRD0078,Barrier Repair Cream 4,Everyday Dermal,skincare,50 g,0,0
+PRD0079,Acne Control Gel 4,Clear Coast,skincare,75 mL,0,1
+PRD0080,Eczema Relief Balm 4,DermaKind,skincare,100 mL,0,1
+PRD0081,Lip Repair Balm 4,Pure Harbour,skincare,200 mL,0,0
+PRD0082,Antiseptic Skin Cream 4,Softgum,skincare,250 mL,0,1
+PRD0083,Hand Repair Cream 4,Everyday Dermal,skincare,30 g,0,0
+PRD0084,Daily Moisturiser 5,Clear Coast,skincare,75 mL,0,0
+PRD0085,Sensitive Skin Lotion 5,DermaKind,skincare,100 mL,0,0
+PRD0086,SPF 50 Face Cream 5,Pure Harbour,skincare,200 mL,0,0
+PRD0087,Fluoride Toothpaste,BrightSmile,oral care,75 g,0,0
+PRD0088,Sensitive Toothpaste,Freshgum,oral care,100 g,0,0
+PRD0089,Whitening Toothpaste,Dental Daily,oral care,250 mL,0,0
+PRD0090,Alcohol-Free Mouthwash,PearlCare,oral care,500 mL,0,0
+PRD0091,Dental Floss,Oralwise,oral care,30 pack,0,0
+PRD0092,Interdental Brush,BrightSmile,oral care,50 m,0,0
+PRD0093,Kids Toothpaste,Freshgum,oral care,6 pack,0,0
+PRD0094,Gum Care Gel,Dental Daily,oral care,75 g,0,0
+PRD0095,Dry Mouth Spray,PearlCare,oral care,100 g,0,0
+PRD0096,Denture Cleanser,Oralwise,oral care,250 mL,0,0
+PRD0097,Fluoride Toothpaste 2,BrightSmile,oral care,30 pack,0,0
+PRD0098,Sensitive Toothpaste 2,Freshgum,oral care,50 m,0,0
+PRD0099,Whitening Toothpaste 2,Dental Daily,oral care,6 pack,0,0
+PRD0100,Alcohol-Free Mouthwash 2,PearlCare,oral care,75 g,0,0
+PRD0101,Dental Floss 2,Oralwise,oral care,100 g,0,0
+PRD0102,Interdental Brush 2,BrightSmile,oral care,250 mL,0,0
+PRD0103,Kids Toothpaste 2,Freshgum,oral care,500 mL,0,0
+PRD0104,Gum Care Gel 2,Dental Daily,oral care,30 pack,0,0
+PRD0105,Dry Mouth Spray 2,PearlCare,oral care,50 m,0,0
+PRD0106,Denture Cleanser 2,Oralwise,oral care,6 pack,0,0
+PRD0107,Fluoride Toothpaste 3,BrightSmile,oral care,100 g,0,0
+PRD0108,Sensitive Toothpaste 3,Freshgum,oral care,250 mL,0,0
+PRD0109,Whitening Toothpaste 3,Dental Daily,oral care,500 mL,0,0
+PRD0110,Alcohol-Free Mouthwash 3,PearlCare,oral care,30 pack,0,0
+PRD0111,Dental Floss 3,Oralwise,oral care,50 m,0,0
+PRD0112,Interdental Brush 3,BrightSmile,oral care,6 pack,0,0
+PRD0113,Kids Toothpaste 3,Freshgum,oral care,75 g,0,0
+PRD0114,Gum Care Gel 3,Dental Daily,oral care,100 g,0,0
+PRD0115,Dry Mouth Spray 3,PearlCare,oral care,250 mL,0,0
+PRD0116,Denture Cleanser 3,Oralwise,oral care,500 mL,0,0
+PRD0117,Fluoride Toothpaste 4,BrightSmile,oral care,50 m,0,0
+PRD0118,Sensitive Toothpaste 4,Freshgum,oral care,6 pack,0,0
+PRD0119,Whitening Toothpaste 4,Dental Daily,oral care,75 g,0,0
+PRD0120,Alcohol-Free Mouthwash 4,PearlCare,oral care,100 g,0,0
+PRD0121,Dental Floss 4,Oralwise,oral care,250 mL,0,0
+PRD0122,Interdental Brush 4,BrightSmile,oral care,500 mL,0,0
+PRD0123,Kids Toothpaste 4,Freshgum,oral care,30 pack,0,0
+PRD0124,Gum Care Gel 4,Dental Daily,oral care,50 m,0,0
+PRD0125,Dry Mouth Spray 4,PearlCare,oral care,6 pack,0,0
+PRD0126,Denture Cleanser 4,Oralwise,oral care,75 g,0,0
+PRD0127,Fluoride Toothpaste 5,BrightSmile,oral care,250 mL,0,0
+PRD0128,Sensitive Toothpaste 5,Freshgum,oral care,500 mL,0,0
+PRD0129,Whitening Toothpaste 5,Dental Daily,oral care,30 pack,0,0
+PRD0130,Baby Rice Cereal,Little Harbour,baby care,15 g,0,0
+PRD0131,Organic Fruit Puree,Tiny Steps,baby care,90 g,0,0
+PRD0132,Vegetable Snack,BabyKind,baby care,120 g,0,0
+PRD0133,Infant Bath Wash,Nurture Nest,baby care,100 mL,0,0
+PRD0134,Nappy Rash Cream,Gentle Sprout,baby care,200 mL,0,0
+PRD0135,Baby Moisturiser,Little Harbour,baby care,250 mL,0,0
+PRD0136,Baby Wipes,Tiny Steps,baby care,80 pack,0,0
+PRD0137,Infant Teething Gel,BabyKind,baby care,15 g,0,1
+PRD0138,Refrigerated Probiotic Drops,Nurture Nest,baby care,90 g,1,0
+PRD0139,Baby Sunscreen SPF 50,Gentle Sprout,baby care,120 g,0,0
+PRD0140,Baby Rice Cereal 2,Little Harbour,baby care,200 mL,0,0
+PRD0141,Organic Fruit Puree 2,Tiny Steps,baby care,250 mL,0,0
+PRD0142,Vegetable Snack 2,BabyKind,baby care,80 pack,0,0
+PRD0143,Infant Bath Wash 2,Nurture Nest,baby care,15 g,0,0
+PRD0144,Nappy Rash Cream 2,Gentle Sprout,baby care,90 g,0,0
+PRD0145,Baby Moisturiser 2,Little Harbour,baby care,120 g,0,0
+PRD0146,Baby Wipes 2,Tiny Steps,baby care,100 mL,0,0
+PRD0147,Infant Teething Gel 2,BabyKind,baby care,200 mL,0,1
+PRD0148,Refrigerated Probiotic Drops 2,Nurture Nest,baby care,250 mL,1,0
+PRD0149,Baby Sunscreen SPF 50 2,Gentle Sprout,baby care,80 pack,0,0
+PRD0150,Baby Rice Cereal 3,Little Harbour,baby care,90 g,0,0
+PRD0151,Organic Fruit Puree 3,Tiny Steps,baby care,120 g,0,0
+PRD0152,Vegetable Snack 3,BabyKind,baby care,100 mL,0,0
+PRD0153,Infant Bath Wash 3,Nurture Nest,baby care,200 mL,0,0
+PRD0154,Nappy Rash Cream 3,Gentle Sprout,baby care,250 mL,0,0
+PRD0155,Baby Moisturiser 3,Little Harbour,baby care,80 pack,0,0
+PRD0156,Baby Wipes 3,Tiny Steps,baby care,15 g,0,0
+PRD0157,Infant Teething Gel 3,BabyKind,baby care,90 g,0,1
+PRD0158,Refrigerated Probiotic Drops 3,Nurture Nest,baby care,120 g,1,0
+PRD0159,Baby Sunscreen SPF 50 3,Gentle Sprout,baby care,100 mL,0,0
+PRD0160,Baby Rice Cereal 4,Little Harbour,baby care,250 mL,0,0
+PRD0161,Organic Fruit Puree 4,Tiny Steps,baby care,80 pack,0,0
+PRD0162,Vegetable Snack 4,BabyKind,baby care,15 g,0,0
+PRD0163,Infant Bath Wash 4,Nurture Nest,baby care,90 g,0,0
+PRD0164,Nappy Rash Cream 4,Gentle Sprout,baby care,120 g,0,0
+PRD0165,Baby Moisturiser 4,Little Harbour,baby care,100 mL,0,0
+PRD0166,Baby Wipes 4,Tiny Steps,baby care,200 mL,0,0
+PRD0167,Infant Teething Gel 4,BabyKind,baby care,250 mL,0,1
+PRD0168,Refrigerated Probiotic Drops 4,Nurture Nest,baby care,80 pack,1,0
+PRD0169,Baby Sunscreen SPF 50 4,Gentle Sprout,baby care,15 g,0,0
+PRD0170,Baby Rice Cereal 5,Little Harbour,baby care,120 g,0,0
+PRD0171,Organic Fruit Puree 5,Tiny Steps,baby care,100 mL,0,0
+PRD0172,Vegetable Snack 5,BabyKind,baby care,200 mL,0,0
+PRD0173,Paracetamol Tablets,ReliefPoint,pain relief,16 tablets,0,1
+PRD0174,Ibuprofen Tablets,PharmaEase,pain relief,20 tablets,0,1
+PRD0175,Rapid Pain Relief Caplets,Daily Relief,pain relief,24 caplets,0,1
+PRD0176,Muscle Relief Gel,MediHarbour,pain relief,50 tablets,0,1
+PRD0177,Heat Patch,CareFirst,pain relief,75 g,0,1
+PRD0178,Cold Pack,ReliefPoint,pain relief,100 mL,0,1
+PRD0179,Period Pain Relief Tablets,PharmaEase,pain relief,5 pack,0,1
+PRD0180,Back Pain Relief Tablets,Daily Relief,pain relief,16 tablets,0,1
+PRD0181,Children’s Pain Relief Liquid,MediHarbour,pain relief,20 tablets,0,1
+PRD0182,Topical Pain Relief Cream,CareFirst,pain relief,24 caplets,0,1
+PRD0183,Paracetamol Tablets 2,ReliefPoint,pain relief,75 g,0,1
+PRD0184,Ibuprofen Tablets 2,PharmaEase,pain relief,100 mL,0,1
+PRD0185,Rapid Pain Relief Caplets 2,Daily Relief,pain relief,5 pack,0,1
+PRD0186,Muscle Relief Gel 2,MediHarbour,pain relief,16 tablets,0,1
+PRD0187,Heat Patch 2,CareFirst,pain relief,20 tablets,0,1
+PRD0188,Cold Pack 2,ReliefPoint,pain relief,24 caplets,0,1
+PRD0189,Period Pain Relief Tablets 2,PharmaEase,pain relief,50 tablets,0,1
+PRD0190,Back Pain Relief Tablets 2,Daily Relief,pain relief,75 g,0,1
+PRD0191,Children’s Pain Relief Liquid 2,MediHarbour,pain relief,100 mL,0,1
+PRD0192,Topical Pain Relief Cream 2,CareFirst,pain relief,5 pack,0,1
+PRD0193,Paracetamol Tablets 3,ReliefPoint,pain relief,20 tablets,0,1
+PRD0194,Ibuprofen Tablets 3,PharmaEase,pain relief,24 caplets,0,1
+PRD0195,Rapid Pain Relief Caplets 3,Daily Relief,pain relief,50 tablets,0,1
+PRD0196,Muscle Relief Gel 3,MediHarbour,pain relief,75 g,0,1
+PRD0197,Heat Patch 3,CareFirst,pain relief,100 mL,0,1
+PRD0198,Cold Pack 3,ReliefPoint,pain relief,5 pack,0,1
+PRD0199,Period Pain Relief Tablets 3,PharmaEase,pain relief,16 tablets,0,1
+PRD0200,Back Pain Relief Tablets 3,Daily Relief,pain relief,20 tablets,0,1
+PRD0201,Children’s Pain Relief Liquid 3,MediHarbour,pain relief,24 caplets,0,1
+PRD0202,Topical Pain Relief Cream 3,CareFirst,pain relief,50 tablets,0,1
+PRD0203,Paracetamol Tablets 4,ReliefPoint,pain relief,100 mL,0,1
+PRD0204,Ibuprofen Tablets 4,PharmaEase,pain relief,5 pack,0,1
+PRD0205,Rapid Pain Relief Caplets 4,Daily Relief,pain relief,16 tablets,0,1
+PRD0206,Muscle Relief Gel 4,MediHarbour,pain relief,20 tablets,0,1
+PRD0207,Heat Patch 4,CareFirst,pain relief,24 caplets,0,1
+PRD0208,Cold Pack 4,ReliefPoint,pain relief,50 tablets,0,1
+PRD0209,Period Pain Relief Tablets 4,PharmaEase,pain relief,75 g,0,1
+PRD0210,Back Pain Relief Tablets 4,Daily Relief,pain relief,100 mL,0,1
+PRD0211,Children’s Pain Relief Liquid 4,MediHarbour,pain relief,5 pack,0,1
+PRD0212,Topical Pain Relief Cream 4,CareFirst,pain relief,16 tablets,0,1
+PRD0213,Paracetamol Tablets 5,ReliefPoint,pain relief,24 caplets,0,1
+PRD0214,Ibuprofen Tablets 5,PharmaEase,pain relief,50 tablets,0,1
+PRD0215,Rapid Pain Relief Caplets 5,Daily Relief,pain relief,75 g,0,1
+PRD0216,Day Cold Relief Tablets,BreatheWell,cold & flu,10 tablets,0,1
+PRD0217,Night Cold Relief Tablets,WinterCare,cold & flu,20 tablets,0,1
+PRD0218,Cough Relief Syrup,ClearAir,cold & flu,24 lozenges,0,1
+PRD0219,Dry Cough Lozenges,PharmaEase,cold & flu,100 mL,0,1
+PRD0220,Nasal Saline Spray,CareFirst,cold & flu,200 mL,0,1
+PRD0221,Chest Rub,BreatheWell,cold & flu,10 sachets,0,1
+PRD0222,Sore Throat Spray,WinterCare,cold & flu,10 tablets,0,1
+PRD0223,Cold & Flu Sachets,ClearAir,cold & flu,20 tablets,0,1
+PRD0224,Children’s Cough Liquid,PharmaEase,cold & flu,24 lozenges,0,1
+PRD0225,Decongestant Tablets,CareFirst,cold & flu,100 mL,0,1
+PRD0226,Day Cold Relief Tablets 2,BreatheWell,cold & flu,10 sachets,0,1
+PRD0227,Night Cold Relief Tablets 2,WinterCare,cold & flu,10 tablets,0,1
+PRD0228,Cough Relief Syrup 2,ClearAir,cold & flu,20 tablets,0,1
+PRD0229,Dry Cough Lozenges 2,PharmaEase,cold & flu,24 lozenges,0,1
+PRD0230,Nasal Saline Spray 2,CareFirst,cold & flu,100 mL,0,1
+PRD0231,Chest Rub 2,BreatheWell,cold & flu,200 mL,0,1
+PRD0232,Sore Throat Spray 2,WinterCare,cold & flu,10 sachets,0,1
+PRD0233,Cold & Flu Sachets 2,ClearAir,cold & flu,10 tablets,0,1
+PRD0234,Children’s Cough Liquid 2,PharmaEase,cold & flu,20 tablets,0,1
+PRD0235,Decongestant Tablets 2,CareFirst,cold & flu,24 lozenges,0,1
+PRD0236,Day Cold Relief Tablets 3,BreatheWell,cold & flu,200 mL,0,1
+PRD0237,Night Cold Relief Tablets 3,WinterCare,cold & flu,10 sachets,0,1
+PRD0238,Cough Relief Syrup 3,ClearAir,cold & flu,10 tablets,0,1
+PRD0239,Dry Cough Lozenges 3,PharmaEase,cold & flu,20 tablets,0,1
+PRD0240,Nasal Saline Spray 3,CareFirst,cold & flu,24 lozenges,0,1
+PRD0241,Chest Rub 3,BreatheWell,cold & flu,100 mL,0,1
+PRD0242,Sore Throat Spray 3,WinterCare,cold & flu,200 mL,0,1
+PRD0243,Cold & Flu Sachets 3,ClearAir,cold & flu,10 sachets,0,1
+PRD0244,Children’s Cough Liquid 3,PharmaEase,cold & flu,10 tablets,0,1
+PRD0245,Decongestant Tablets 3,CareFirst,cold & flu,20 tablets,0,1
+PRD0246,Day Cold Relief Tablets 4,BreatheWell,cold & flu,100 mL,0,1
+PRD0247,Night Cold Relief Tablets 4,WinterCare,cold & flu,200 mL,0,1
+PRD0248,Cough Relief Syrup 4,ClearAir,cold & flu,10 sachets,0,1
+PRD0249,Dry Cough Lozenges 4,PharmaEase,cold & flu,10 tablets,0,1
+PRD0250,Nasal Saline Spray 4,CareFirst,cold & flu,20 tablets,0,1
+PRD0251,Chest Rub 4,BreatheWell,cold & flu,24 lozenges,0,1
+PRD0252,Sore Throat Spray 4,WinterCare,cold & flu,100 mL,0,1
+PRD0253,Cold & Flu Sachets 4,ClearAir,cold & flu,200 mL,0,1
+PRD0254,Children’s Cough Liquid 4,PharmaEase,cold & flu,10 sachets,0,1
+PRD0255,Decongestant Tablets 4,CareFirst,cold & flu,10 tablets,0,1
+PRD0256,Day Cold Relief Tablets 5,BreatheWell,cold & flu,24 lozenges,0,1
+PRD0257,Night Cold Relief Tablets 5,WinterCare,cold & flu,100 mL,0,1
+PRD0258,Cough Relief Syrup 5,ClearAir,cold & flu,200 mL,0,1
+PRD0259,Hand Sanitiser,Everyday Care,personal care,50 mL,0,0
+PRD0260,Body Wash,Fresh Coast,personal care,100 mL,0,0
+PRD0261,Shampoo,Pure Routine,personal care,250 mL,0,0
+PRD0262,Conditioner,Wellbeing Co,personal care,500 mL,0,0
+PRD0263,Deodorant Roll-On,Gentle Daily,personal care,100 pack,0,0
+PRD0264,Cotton Tips,Everyday Care,personal care,200 pack,0,0
+PRD0265,Facial Tissues,Fresh Coast,personal care,12 pack,0,0
+PRD0266,Feminine Hygiene Pads,Pure Routine,personal care,24 pack,0,0
+PRD0267,Shaving Gel,Wellbeing Co,personal care,50 mL,0,0
+PRD0268,Foot Care Spray,Gentle Daily,personal care,100 mL,0,0
+PRD0269,Hand Sanitiser 2,Everyday Care,personal care,500 mL,0,0
+PRD0270,Body Wash 2,Fresh Coast,personal care,100 pack,0,0
+PRD0271,Shampoo 2,Pure Routine,personal care,200 pack,0,0
+PRD0272,Conditioner 2,Wellbeing Co,personal care,12 pack,0,0
+PRD0273,Deodorant Roll-On 2,Gentle Daily,personal care,24 pack,0,0
+PRD0274,Cotton Tips 2,Everyday Care,personal care,50 mL,0,0
+PRD0275,Facial Tissues 2,Fresh Coast,personal care,100 mL,0,0
+PRD0276,Feminine Hygiene Pads 2,Pure Routine,personal care,250 mL,0,0
+PRD0277,Shaving Gel 2,Wellbeing Co,personal care,500 mL,0,0
+PRD0278,Foot Care Spray 2,Gentle Daily,personal care,100 pack,0,0
+PRD0279,Hand Sanitiser 3,Everyday Care,personal care,12 pack,0,0
+PRD0280,Body Wash 3,Fresh Coast,personal care,24 pack,0,0
+PRD0281,Shampoo 3,Pure Routine,personal care,50 mL,0,0
+PRD0282,Conditioner 3,Wellbeing Co,personal care,100 mL,0,0
+PRD0283,Deodorant Roll-On 3,Gentle Daily,personal care,250 mL,0,0
+PRD0284,Cotton Tips 3,Everyday Care,personal care,500 mL,0,0
+PRD0285,Facial Tissues 3,Fresh Coast,personal care,100 pack,0,0
+PRD0286,Feminine Hygiene Pads 3,Pure Routine,personal care,200 pack,0,0
+PRD0287,Shaving Gel 3,Wellbeing Co,personal care,12 pack,0,0
+PRD0288,Foot Care Spray 3,Gentle Daily,personal care,24 pack,0,0
+PRD0289,Hand Sanitiser 4,Everyday Care,personal care,100 mL,0,0
+PRD0290,Body Wash 4,Fresh Coast,personal care,250 mL,0,0
+PRD0291,Shampoo 4,Pure Routine,personal care,500 mL,0,0
+PRD0292,Conditioner 4,Wellbeing Co,personal care,100 pack,0,0
+PRD0293,Deodorant Roll-On 4,Gentle Daily,personal care,200 pack,0,0
+PRD0294,Cotton Tips 4,Everyday Care,personal care,12 pack,0,0
+PRD0295,Facial Tissues 4,Fresh Coast,personal care,24 pack,0,0
+PRD0296,Feminine Hygiene Pads 4,Pure Routine,personal care,50 mL,0,0
+PRD0297,Shaving Gel 4,Wellbeing Co,personal care,100 mL,0,0
+PRD0298,Foot Care Spray 4,Gentle Daily,personal care,250 mL,0,0
+PRD0299,Hand Sanitiser 5,Everyday Care,personal care,100 pack,0,0
+PRD0300,Body Wash 5,Fresh Coast,personal care,200 pack,0,0

@@ -1,0 +1,37 @@
+version: 1
+dataset: dim_product_seed
+path: data/processed/dim_product_seed.csv
+format: csv
+grain: One controlled synthetic pharmacy-retail product per product_id.
+columns:
+  - name: product_id
+    type: string
+    nullable: false
+    tests: [not_null, unique]
+  - name: product_name
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: brand
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: category
+    type: string
+    nullable: false
+    accepted_values: [vitamins, skincare, oral care, baby care, pain relief, cold & flu, personal care]
+  - name: pack_size
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: cold_chain_flag
+    type: integer
+    nullable: false
+    accepted_values: [0, 1]
+  - name: regulated_product_flag
+    type: integer
+    nullable: false
+    accepted_values: [0, 1]
+notes:
+  - All rows are synthetic development seed data.
+  - cold_chain_flag and regulated_product_flag are illustrative scenario flags, not regulatory or clinical classifications.

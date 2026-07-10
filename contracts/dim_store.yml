@@ -1,0 +1,36 @@
+version: 1
+dataset: dim_store_seed
+path: data/processed/dim_store_seed.csv
+format: csv
+grain: One selected OSM Chemist Warehouse store per store_id.
+columns:
+  - name: store_id
+    type: string
+    nullable: false
+    tests: [not_null, unique]
+  - name: store_name
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: state
+    type: string
+    nullable: false
+    accepted_values: [ACT, NSW, NT, QLD, SA, TAS, VIC, WA]
+  - name: postcode
+    type: string
+    nullable: false
+    pattern: '^\\d{4}$'
+  - name: latitude
+    type: number
+    nullable: false
+    minimum: -90
+    maximum: 90
+  - name: longitude
+    type: number
+    nullable: false
+    minimum: -180
+    maximum: 180
+  - name: region
+    type: string
+    nullable: false
+    accepted_values: [NSW & ACT, VIC & TAS, QLD, SA & NT, WA]

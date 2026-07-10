@@ -1,0 +1,14 @@
+# Local credentials and private keys
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.key
+snowflake_credentials.json
+
+# Python local artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/

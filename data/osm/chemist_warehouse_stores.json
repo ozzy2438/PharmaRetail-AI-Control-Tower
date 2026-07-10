@@ -1,0 +1,7678 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-07-10T06:57:35Z",
+    "timestamp_areas_base": "2026-05-12T07:36:16Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 322726142,
+  "lat": -27.3938508,
+  "lon": 153.0305657,
+  "tags": {
+    "addr:country": "AU",
+    "addr:housenumber": "546",
+    "addr:postcode": "4031",
+    "addr:state": "QLD",
+    "addr:street": "Gympie Road",
+    "addr:suburb": "Kedron",
+    "amenity": "pharmacy",
+    "branch": "Clontarf",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2024-08-13",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa-Su 08:30-18:00",
+    "payment:coins": "yes",
+    "payment:mastercard": "yes",
+    "payment:notes": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+61 7 3861 5225",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 364874053,
+  "lat": -37.8012423,
+  "lon": 144.9781729,
+  "tags": {
+    "addr:housenumber": "206-210",
+    "addr:street": "Brunswick Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-21:00; Sa 09:00-17:00; Su 10:00-17:00",
+    "phone": "+61 3 9417 2917",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 445923817,
+  "lat": -27.5121874,
+  "lon": 153.0312214,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Annerley",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date:opening_hours": "2026-05-20",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa,Su 08:00-17:00; PH 09:00-17:00",
+    "phone": "+61 7 3848 1046",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 476031236,
+  "lat": -42.8559968,
+  "lon": 147.3049859,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-19:00; PH,Su 09:00-19:00",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 476087949,
+  "lat": -37.7877084,
+  "lon": 145.1321308,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "full_name": "Chemist Warehouse, Doncaster",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 492085532,
+  "lat": -37.7377998,
+  "lon": 145.0038865,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2024-12-05",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00, Sa 08:30-18:00, Su 09:00-18:00",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 493891595,
+  "lat": -37.7906764,
+  "lon": 145.1721554,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 570482524,
+  "lat": -37.8480122,
+  "lon": 145.0038968,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 594339250,
+  "lat": -37.8151674,
+  "lon": 144.9661791,
+  "tags": {
+    "addr:housenumber": "99",
+    "addr:street": "Swanston Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 598404517,
+  "lat": -37.8143003,
+  "lon": 144.9635839,
+  "tags": {
+    "addr:housenumber": "345",
+    "addr:state": "VIC",
+    "addr:street": "Bourke Street",
+    "addr:suburb": "Melbourne",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "1",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 605177328,
+  "lat": -38.1847079,
+  "lon": 145.1413294,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 638111506,
+  "lat": -36.3834380,
+  "lon": 145.3992602,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 736465332,
+  "lat": -31.7437778,
+  "lon": 115.7630231,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 767172011,
+  "lat": -37.7556203,
+  "lon": 144.7407725,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 776675224,
+  "lat": -35.3454534,
+  "lon": 149.0838373,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-04-12",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "name:en": "Chemist Warehouse",
+    "opening_hours": "Mo-Th 07:30-20:30; Fr 07:30-21:00; Sa 08:30-19:00; Su 09:00-18:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 797244167,
+  "lat": -42.8876368,
+  "lon": 147.3316050,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2024-04-10",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 830155138,
+  "lat": -34.7613130,
+  "lon": 138.6469157,
+  "tags": {
+    "addr:housename": "Parabanks Shopping Centre",
+    "addr:housenumber": "68",
+    "addr:street": "John Street",
+    "addr:unit": "7-9",
+    "amenity": "pharmacy",
+    "branch": "Parabanks",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-05-13",
+    "dispensing": "yes",
+    "email": "parabanksscsalisbury@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:30-19:00; Th 08:30-21:00; Fr 08:30-19:00; Sa 08:30-17:00; Su 10:30-17:00",
+    "phone": "+61 8 8258 6747",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 835998633,
+  "lat": -37.8093895,
+  "lon": 144.9958039,
+  "tags": {
+    "addr:housenumber": "313",
+    "addr:street": "Victoria Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 09:00-19:00; Th-Fr 09:00-21:00; Sa 09:00-18:00; Su 10:00-18:00",
+    "phone": "+61 3 9421 0372"
+  }
+},
+{
+  "type": "node",
+  "id": 1068759813,
+  "lat": -37.7694399,
+  "lon": 144.9988314,
+  "tags": {
+    "addr:housenumber": "381-385",
+    "addr:street": "High Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "contact:phone": "+61 3 9482 3099",
+    "contact:website": "http://www.chemistwarehouse.com.au/",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "toilets:wheelchair": "no",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1114658978,
+  "lat": -27.7848894,
+  "lon": 153.2511117,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 1141353788,
+  "lat": -37.8131892,
+  "lon": 144.9657318,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-02-09",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 1170757346,
+  "lat": -33.7715426,
+  "lon": 151.0830060,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Oxford Street",
+    "addr:unit": "1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 1224826348,
+  "lat": -37.7654262,
+  "lon": 145.0923876,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 1240464956,
+  "lat": -37.8462510,
+  "lon": 144.9944093,
+  "tags": {
+    "addr:housenumber": "370-372",
+    "addr:street": "Chapel Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1240683010,
+  "lat": -37.9335682,
+  "lon": 145.0344660,
+  "tags": {
+    "addr:housenumber": "854-860",
+    "addr:street": "Nepean Highway",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 08:30-18:00; Su 09:00-18:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1240734798,
+  "lat": -37.8846093,
+  "lon": 145.0024423,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1247865789,
+  "lat": -38.0251064,
+  "lon": 145.3061318,
+  "tags": {
+    "addr:housenumber": "420",
+    "addr:postcode": "3805",
+    "addr:state": "VIC",
+    "addr:street": "Princes Highway",
+    "addr:suburb": "Narre Warren",
+    "addr:unit": "6",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:30-21:00; Su 09:00-21:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1280189383,
+  "lat": -34.0426816,
+  "lon": 151.1208472,
+  "tags": {
+    "addr:housenumber": "29-35",
+    "addr:street": "President Avenue",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-06-20",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-22:30; Sa,Su 07:30-20:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1284241629,
+  "lat": -27.5606428,
+  "lon": 151.9521247,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 1347449383,
+  "lat": -27.7156261,
+  "lon": 153.2027709,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Beenleigh",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3807 1892",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1432376911,
+  "lat": -37.7488684,
+  "lon": 145.0410054,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "fixme": "check opening hours",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-21:00; Sa 09:00-18:00; Su 10:00-18:00",
+    "phone": "+61 3 9457 5455",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 1495378466,
+  "lat": -33.7300761,
+  "lon": 151.0167033,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1530420310,
+  "lat": -37.9678399,
+  "lon": 145.1758374,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 1611289093,
+  "lat": -33.8149108,
+  "lon": 151.0031479,
+  "tags": {
+    "addr:housenumber": "202-214",
+    "addr:postcode": "2150",
+    "addr:state": "NSW",
+    "addr:street": "Church Street",
+    "addr:suburb": "Parramatta",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date:opening_hours": "2025-05-08",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-13:00, Sa-Su 08:00-22:00",
+    "opening_hours:signed": "no",
+    "operator:ref:abn": "74 314 219 213",
+    "phone": "+61 2 9635 0488",
+    "source": "knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 1633478242,
+  "lat": -37.8278887,
+  "lon": 144.9664664,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 09:00-17:00; Su 10:00-17:00",
+    "phone": "+61 3 9682 2278",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1686541189,
+  "lat": -12.3957878,
+  "lon": 130.8957358,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 1791659668,
+  "lat": -36.4086546,
+  "lon": 145.3922418,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "voice",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1793136311,
+  "lat": -37.7586734,
+  "lon": 144.7536003,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1940682792,
+  "lat": -41.4389610,
+  "lon": 147.1380907,
+  "tags": {
+    "addr:housenumber": "112A-116",
+    "addr:postcode": "7250",
+    "addr:state": "TAS",
+    "addr:street": "Charles Street",
+    "addr:suburb": "Launceston",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa 08:00-18:00; Su 09:00-17:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 1940769866,
+  "lat": -41.3893127,
+  "lon": 147.1264215,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 1958574666,
+  "lat": -37.7491040,
+  "lon": 144.8618701,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "full_name": "Chemist Warehouse - Keilor East",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa-Su 09:00-20:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2029493607,
+  "lat": -27.6628487,
+  "lon": 153.1789828,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Shailer Park",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3801 3542",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2047923131,
+  "lat": -37.4867530,
+  "lon": 144.5885093,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2059121982,
+  "lat": -38.1960611,
+  "lon": 146.5381875,
+  "tags": {
+    "addr:housenumber": "92-102",
+    "addr:street": "Franklin Street",
+    "amenity": "pharmacy",
+    "branch": "Traralgon",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2023-11-13",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "24/7",
+    "operator:ref:abn": "16335964510",
+    "phone": "+61 3 5174 2003",
+    "source": "survey",
+    "toilets:wheelchair": "no",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "limited",
+    "wheelchair:description": "The shop has a flat entry but aisles are so congested it is not very accessible, especially for larger electric wheelchairs. At the checkout the aisle is not wide enough for wheelchair to pass others at next checkout."
+  }
+},
+{
+  "type": "node",
+  "id": 2082800960,
+  "lat": -37.8294541,
+  "lon": 147.6124093,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 2160869500,
+  "lat": -36.7042251,
+  "lon": 144.3186271,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2179164266,
+  "lat": -34.0724042,
+  "lon": 150.8042873,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 2191594612,
+  "lat": -37.9874322,
+  "lon": 145.2137881,
+  "tags": {
+    "addr:housenumber": "265",
+    "addr:street": "Lonsdale Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2285138754,
+  "lat": -37.6967580,
+  "lon": 144.7760872,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 2297709407,
+  "lat": -34.8693962,
+  "lon": 138.5482625,
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:street": "Hanson Road",
+    "amenity": "pharmacy",
+    "branch": "Woodville Gardens",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-02-11",
+    "contact:facebook": "https://www.facebook.com/ChemistWarehouse/",
+    "email": "woodvillegardens@chemistwarehouse.com.au",
+    "fax": "+61 8 8243 0139",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:00; Sa 08:30-17:00; Su 10:30-17:00",
+    "phone": "+61 8 8244 6002",
+    "source:shop": "survey",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2332697018,
+  "lat": -37.8765556,
+  "lon": 145.1275004,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 2365231907,
+  "lat": -33.8957880,
+  "lon": 151.1813510,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 2442395263,
+  "lat": -38.2379000,
+  "lon": 145.0642025,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2531693168,
+  "lat": -37.8338107,
+  "lon": 144.9607597,
+  "tags": {
+    "addr:housenumber": "310-314",
+    "addr:street": "Clarendon Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "phone": "+61 3 9699 2042",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 2535972375,
+  "lat": -37.8615939,
+  "lon": 144.9746950,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "survey",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2564320236,
+  "lat": -37.8791355,
+  "lon": 145.1655086,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 2577720995,
+  "lat": -25.5422949,
+  "lon": 152.7006467,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source:name": "survey"
+  }
+},
+{
+  "type": "node",
+  "id": 2609018136,
+  "lat": -27.5859022,
+  "lon": 153.2782899,
+  "tags": {
+    "addr:postcode": "4165",
+    "amenity": "pharmacy",
+    "branch": "Victoria Point",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2025-05-08",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We,Fr 07:30-20:00; Th 08:00-19:00; Sa-Su 08:00-18:00",
+    "payment:american_express": "yes",
+    "payment:coins": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "payment:diners_club": "yes",
+    "payment:mastercard": "yes",
+    "payment:notes": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+61 7 3207 0711",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2610663250,
+  "lat": -33.7324316,
+  "lon": 151.1267717,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 2615979192,
+  "lat": -33.8695324,
+  "lon": 151.1292633,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-19:00; PH,Su 09:00-19:00"
+  }
+},
+{
+  "type": "node",
+  "id": 2632039770,
+  "lat": -37.7553276,
+  "lon": 144.9187283,
+  "tags": {
+    "addr:housenumber": "77",
+    "addr:postcode": "3040",
+    "addr:street": "Fletcher Street",
+    "addr:suburb": "Essendon",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:30"
+  }
+},
+{
+  "type": "node",
+  "id": 2724329173,
+  "lat": -37.8505260,
+  "lon": 145.0950750,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa-Su 09:00-15:00"
+  }
+},
+{
+  "type": "node",
+  "id": 2771575192,
+  "lat": -27.0846839,
+  "lon": 152.9792666,
+  "tags": {
+    "addr:housenumber": "101-115",
+    "addr:street": "Lear Jet Drive",
+    "addr:suburb": "Caboolture",
+    "addr:unit": "8-10",
+    "amenity": "pharmacy",
+    "branch": "Caboolture",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "caboolture@chemistwarehouse.com.au",
+    "fax": "+61 7 5428 0215",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-18:00; Sa 08:00-17:00; Su 09:00-17:00",
+    "phone": "+61 7 5498 9600",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 2928752108,
+  "lat": -37.8930168,
+  "lon": 145.0917810,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au"
+  }
+},
+{
+  "type": "node",
+  "id": 2982440646,
+  "lat": -37.8324739,
+  "lon": 144.8471934,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3027149801,
+  "lat": -37.7875095,
+  "lon": 144.9279796,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3076312675,
+  "lat": -38.3112513,
+  "lon": 144.9933632,
+  "tags": {
+    "addr:city": "safety beach",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su,PH 08:30-21:00",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 3096941708,
+  "lat": -27.2893230,
+  "lon": 152.9843735,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Lawnton",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 08:00-18:00",
+    "payment:cards": "yes",
+    "payment:cash": "yes",
+    "payment:qr_code": "no",
+    "phone": "+61 7 3881 0265",
+    "website": "https://www.chemistwarehouse.com.au",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3159172027,
+  "lat": -33.7034776,
+  "lon": 151.1005440,
+  "tags": {
+    "addr:housenumber": "21",
+    "addr:postcode": "2077",
+    "addr:street": "Hunter Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-09-16",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-18:00; Su 09:00-18:00",
+    "phone": "+61 2 9487 1394",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3239431948,
+  "lat": -37.7437736,
+  "lon": 144.9659911,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2026-02-05",
+    "check_date:opening_hours": "2025-01-11",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 07:00-24:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3270433151,
+  "lat": -37.9055828,
+  "lon": 145.0042629,
+  "tags": {
+    "addr:housenumber": "363",
+    "addr:postcode": "3186",
+    "addr:street": "Bay Street",
+    "addr:suburb": "Brighton",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3320039123,
+  "lat": -33.7915593,
+  "lon": 151.0808010,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "survey",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3401293008,
+  "lat": -33.6984375,
+  "lon": 150.9415314,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 3412142755,
+  "lat": -37.8392187,
+  "lon": 144.9946717,
+  "tags": {
+    "addr:postcode": "3141",
+    "addr:state": "VIC",
+    "addr:street": "Toorak Road",
+    "addr:suburb": "South Yarra",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "email": "southyarra@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 07:30-21:00; Fr-Su 08:30-18:30"
+  }
+},
+{
+  "type": "node",
+  "id": 3437078565,
+  "lat": -37.7123640,
+  "lon": 145.0484434,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 3442643885,
+  "lat": -37.6868795,
+  "lon": 144.9567188,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3450558021,
+  "lat": -33.7512167,
+  "lon": 150.6954313,
+  "tags": {
+    "addr:housenumber": "139",
+    "addr:state": "NSW",
+    "addr:street": "Penrith Plaza",
+    "addr:suburb": "Penrith",
+    "addr:unit": "L01",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator:ref:abn": "67 410 056 464",
+    "phone": "+61 2 4721 2200",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3508131893,
+  "lat": -35.3360361,
+  "lon": 149.1799946,
+  "tags": {
+    "addr:housenumber": "17",
+    "addr:street": "Iron Knob Street",
+    "addr:unit": "1-2",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:30; Sa-Su 09:00-18:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3610119491,
+  "lat": -28.1001241,
+  "lon": 153.4248781,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-05-31",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-21:00; Sa-Su 09:00-17:00",
+    "phone": "+61 7 5593 7100",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3610547957,
+  "lat": -38.2410774,
+  "lon": 146.4204094,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 08:30-18:00; Su 09:30-18:00; PH 09:00-17:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3617634593,
+  "lat": -33.8826098,
+  "lon": 151.1570768,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date:opening_hours": "2025-11-03",
+    "dispensing": "yes",
+    "full_name": "Chemist Warehouse Leichhardt",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:30-19:00; Su 09:00-19:00",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 3733987398,
+  "lat": -25.2894688,
+  "lon": 152.8375124,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-09-01",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 3750554296,
+  "lat": -31.8389245,
+  "lon": 115.8396379,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 3796152686,
+  "lat": -12.4639508,
+  "lon": 130.8404194,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Mitchell Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:30-17:00",
+    "phone": "+61 2 8981 4442",
+    "source": "http://mitchellcentre.com.au/centre-directory.html"
+  }
+},
+{
+  "type": "node",
+  "id": 3833688974,
+  "lat": -27.9936870,
+  "lon": 153.3392175,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Nerang",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 3919628198,
+  "lat": -42.8951491,
+  "lon": 147.3270627,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 3983239407,
+  "lat": -42.7819382,
+  "lon": 147.5628174,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 3996822660,
+  "lat": -33.8727032,
+  "lon": 151.2070758,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 4030606384,
+  "lat": -37.5938844,
+  "lon": 145.0903568,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 4041199622,
+  "lat": -37.9530000,
+  "lon": 145.1518876,
+  "tags": {
+    "addr:housenumber": "300",
+    "addr:street": "Springvale Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 4047441797,
+  "lat": -33.9169469,
+  "lon": 151.2409953,
+  "tags": {
+    "addr:housenumber": "166-168",
+    "addr:street": "Belmore Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-11",
+    "email": "randwick@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-22:00; Sa-Su 08:00-20:00",
+    "phone": "+61 2 9398 4849",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 4066348895,
+  "lat": -37.8874484,
+  "lon": 145.0851672,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 4077652563,
+  "lat": -37.9660945,
+  "lon": 145.0557239,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "toilets:wheelchair": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4189379266,
+  "lat": -37.7672928,
+  "lon": 144.9619446,
+  "tags": {
+    "addr:housenumber": "429-433",
+    "addr:postcode": "3056",
+    "addr:street": "Sydney Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2024-11-04",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00, Sa 08:00-19:00, Su 09:00-18:00",
+    "payment:cash": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4221665898,
+  "lat": -28.0854883,
+  "lon": 153.4242912,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Varsity Lakes",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa,Su 09:00-17:00",
+    "operator": "Varsity Lakes",
+    "phone": "+61 7 5520 2800",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 4353574191,
+  "lat": -33.8394763,
+  "lon": 151.2086187,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa,Su 09:00-17:00",
+    "operator": "Discount Drug Stores"
+  }
+},
+{
+  "type": "node",
+  "id": 4388493889,
+  "lat": -26.6515007,
+  "lon": 153.0815353,
+  "tags": {
+    "addr:housenumber": "100",
+    "addr:postcode": "4558",
+    "addr:street": "Maroochydore Road",
+    "addr:suburb": "Maroochydore",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "drive_through": "no",
+    "full_name": "Chemist Warehouse Maroochydore",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa 08:00-18:00; Su 09:00-17:00",
+    "operator": "Chemist Warehouse",
+    "toilets:wheelchair": "no",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4417478123,
+  "lat": -33.9593133,
+  "lon": 150.8830785,
+  "tags": {
+    "addr:state": "NSW",
+    "addr:suburb": "Casula",
+    "addr:unit": "15",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 08:30-20:00",
+    "phone": "+61 2 9734 0820",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 4418299285,
+  "lat": -34.9225995,
+  "lon": 138.6053823,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-21:00; Sa 08:30-17:00; Su 09:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 4601440812,
+  "lat": -27.3850981,
+  "lon": 153.0302250,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Chermside",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We,Fr 08:00-22:00; Th 09:00-22:00; Sa-Su 08:30-18:00",
+    "phone": "+61 7 3359 9067",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4733654589,
+  "lat": -37.8045008,
+  "lon": 144.9491555,
+  "tags": {
+    "addr:country": "AU",
+    "addr:housenumber": "19",
+    "addr:postcode": "3051",
+    "addr:state": "VIC",
+    "addr:street": "Errol Place",
+    "addr:suburb": "North Melbourne",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 09:00-19:00; PH 10:00-17:00",
+    "payment:american_express": "yes",
+    "payment:coins": "yes",
+    "payment:maestro": "yes",
+    "payment:mastercard": "yes",
+    "payment:notes": "yes",
+    "payment:visa": "yes",
+    "payment:visa_debit": "yes",
+    "phone": "+61 3 9329 0849",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4737561821,
+  "lat": -37.8179035,
+  "lon": 144.9652766,
+  "tags": {
+    "addr:housenumber": "276",
+    "addr:postcode": "3000",
+    "addr:street": "Flinders Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 4795036452,
+  "lat": -37.7038123,
+  "lon": 145.1041059,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 4845384325,
+  "lat": -27.2424482,
+  "lon": 153.0180935,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Westfield North Lakes East",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-18:00; Th 08:00-20:00; Sa-Su 09:00-17:00",
+    "phone": "+61 7 3204 4111",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4857721821,
+  "lat": -37.5555450,
+  "lon": 143.8176840,
+  "tags": {
+    "addr:housenumber": "1609",
+    "addr:street": "Sturt Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date:opening_hours": "2025-05-05",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 08:30-17:00; Su 10:00-17:00",
+    "phone": "+61 3 5342 9257",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 4928568027,
+  "lat": -33.8774667,
+  "lon": 151.2443466,
+  "tags": {
+    "addr:housenumber": "463",
+    "addr:postcode": "2028",
+    "addr:street": "New South Head Road",
+    "addr:suburb": "Double Bay",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2023-06-04",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 4934130252,
+  "lat": -33.8922361,
+  "lon": 151.2501724,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-09-13",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5009316626,
+  "lat": -37.8397477,
+  "lon": 144.6747387,
+  "tags": {
+    "addr:housenumber": "17 & 18",
+    "addr:postcode": "3029",
+    "addr:street": "Tarniet Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-21:00, Sa 09:00-18:00, Su 10:00-18:00",
+    "phone": "+61 3 8742 1239",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 5035371028,
+  "lat": -27.9685119,
+  "lon": 153.4146881,
+  "tags": {
+    "addr:housenumber": "87",
+    "addr:postcode": "4215",
+    "addr:state": "QLD",
+    "addr:street": "Scarborough Street",
+    "addr:suburb": "Southport",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5045884261,
+  "lat": -27.4654189,
+  "lon": 153.0139689,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-20:00; Sa,Su,PH 09:00-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5120918825,
+  "lat": -38.0337914,
+  "lon": 145.2834686,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-24:00; Sa,Su 08:00-23:00; PH 08:00-22:00",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5151109719,
+  "lat": -27.4705704,
+  "lon": 153.0238230,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Upper Queen Street Brisbane",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2024-05-22",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 09:00-18:00",
+    "phone": "+61 7 3210 1100",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5153140747,
+  "lat": -38.0848364,
+  "lon": 145.2911830,
+  "tags": {
+    "addr:postcode": "3977",
+    "addr:street": "Springhill Drive",
+    "addr:suburb": "Cranbourne",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 09:00-18:00; Su,PH 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5199462366,
+  "lat": -27.6639075,
+  "lon": 152.8916463,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Brookwater",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-18:00; Su 09:00-18:00",
+    "phone": "+61 7 3135 6291",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5269671990,
+  "lat": -37.8724785,
+  "lon": 144.9893494,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5307577361,
+  "lat": -34.8321373,
+  "lon": 138.6869607,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5318460122,
+  "lat": -31.9540048,
+  "lon": 115.8618137,
+  "tags": {
+    "addr:housenumber": "109",
+    "addr:postcode": "6000",
+    "addr:street": "Murray Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-03-10",
+    "check_date:opening_hours": "2026-03-10",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Th 08:00-20:00; Fr 08:00-19:00; Sa 08:30-18:00; Su 10:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5321114736,
+  "lat": -34.8270546,
+  "lon": 138.6948299,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5338209231,
+  "lat": -33.8920988,
+  "lon": 151.2475508,
+  "tags": {
+    "addr:housenumber": "133-135",
+    "addr:postcode": "2022",
+    "addr:state": "NSW",
+    "addr:street": "Oxford Street",
+    "addr:suburb": "Bondi Junction",
+    "addr:unit": "1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-22:00; Sa-Su 08:00-19:00",
+    "phone": "+61 2 9387 3022"
+  }
+},
+{
+  "type": "node",
+  "id": 5388536319,
+  "lat": -37.9825150,
+  "lon": 145.0631546,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "toilets:wheelchair": "no",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5392238023,
+  "lat": -12.4324303,
+  "lon": 130.9225826,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Berrimah",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-19:00; Sa, Su 09:00-17:00",
+    "phone": "+61 2 8947 4044"
+  }
+},
+{
+  "type": "node",
+  "id": 5395680031,
+  "lat": -37.9195660,
+  "lon": 145.2352793,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5579882858,
+  "lat": -37.7764114,
+  "lon": 145.0183285,
+  "tags": {
+    "addr:housenumber": "138",
+    "addr:postcode": "3078",
+    "addr:state": "VIC",
+    "addr:street": "Station Street",
+    "addr:suburb": "Fairfield",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 08:30-17:00; Su 09:00-17:00; PH 08:30-21:00",
+    "phone": "+61 3 9489 8936"
+  }
+},
+{
+  "type": "node",
+  "id": 5580651654,
+  "lat": -32.0011782,
+  "lon": 115.9202942,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5584399021,
+  "lat": -34.9950985,
+  "lon": 138.5742086,
+  "tags": {
+    "addr:housenumber": "1156",
+    "addr:postcode": "5042",
+    "addr:street": "South Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-20:00; Sa 08:00-18:00; Su 10:00-18:00",
+    "phone": "+61 8 8276 7633"
+  }
+},
+{
+  "type": "node",
+  "id": 5608349154,
+  "lat": -33.8917085,
+  "lon": 151.2127857,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2026-05-02",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5703461280,
+  "lat": -23.8769196,
+  "lon": 151.2269182,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5717999724,
+  "lat": -37.5805221,
+  "lon": 144.7289992,
+  "tags": {
+    "addr:housenumber": "79",
+    "addr:street": "Evans Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5760181138,
+  "lat": -33.9185135,
+  "lon": 151.0334874,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Su-Fr 08:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5761336884,
+  "lat": -31.9524361,
+  "lon": 115.8539201,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5778687200,
+  "lat": -33.9670551,
+  "lon": 151.1033854,
+  "tags": {
+    "addr:housenumber": "272",
+    "addr:street": "Forest Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-12-17",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "hurstville-forestrd@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa,Su 08:00-21:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5791898638,
+  "lat": -31.9733353,
+  "lon": 115.8969650,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5872600639,
+  "lat": -33.9128153,
+  "lon": 151.2390551,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa,Su 09:00-19:00"
+  }
+},
+{
+  "type": "node",
+  "id": 5873345497,
+  "lat": -33.7923785,
+  "lon": 151.1952940,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 5891838796,
+  "lat": -33.8901828,
+  "lon": 151.2749542,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 5905412646,
+  "lat": -37.7445036,
+  "lon": 145.0293440,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 08:30-18:00; Su 09:00-18:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 5927842086,
+  "lat": -37.6552189,
+  "lon": 145.0167935,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6006789337,
+  "lat": -33.8766425,
+  "lon": 151.2092930,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa,Su 09:30-19:00; PH 10:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 6027088009,
+  "lat": -33.4264333,
+  "lon": 151.3421200,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6042790000,
+  "lat": -37.8381531,
+  "lon": 145.1331671,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 6089182114,
+  "lat": -37.7779519,
+  "lon": 144.8512146,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6115285077,
+  "lat": -33.9514891,
+  "lon": 151.2307321,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6157845257,
+  "lat": -36.8876451,
+  "lon": 149.9098521,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Discount Chemist"
+  }
+},
+{
+  "type": "node",
+  "id": 6172791612,
+  "lat": -34.9460667,
+  "lon": 138.5900097,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6215023983,
+  "lat": -27.2433265,
+  "lon": 153.0264967,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Mango Hill",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 09:00-17:00",
+    "phone": "+61 7 3491 8963",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6215183585,
+  "lat": -34.9212346,
+  "lon": 138.6372058,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date:opening_hours": "2023-08-15",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-18:00; Su 09:00-18:00; PH 10:00-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6265815185,
+  "lat": -37.8119900,
+  "lon": 144.9698715,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 09:00-19:00",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6313806654,
+  "lat": -27.5629963,
+  "lon": 153.0717747,
+  "tags": {
+    "addr:housenumber": "567",
+    "addr:street": "Kessels Road",
+    "amenity": "pharmacy",
+    "branch": "Macgregor",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "macgregor@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3349 7919",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 6355628501,
+  "lat": -34.2186331,
+  "lon": 142.1494394,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6402234836,
+  "lat": -33.3634000,
+  "lon": 151.4422536,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6434817710,
+  "lat": -38.2329032,
+  "lon": 145.0509100,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 6502799626,
+  "lat": -37.9920962,
+  "lon": 145.1461910,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 6517443277,
+  "lat": -33.4092024,
+  "lon": 151.3488074,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6520462085,
+  "lat": -33.8091384,
+  "lon": 151.1849014,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date:opening_hours": "2025-07-03",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-17:30; Su 09:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 6522686970,
+  "lat": -36.7964486,
+  "lon": 144.2438151,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6718063056,
+  "lat": -33.8703653,
+  "lon": 151.2703092,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-09-21",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6731730991,
+  "lat": -33.7526192,
+  "lon": 151.2887632,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6738140586,
+  "lat": -33.8759108,
+  "lon": 151.2065041,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa,Su 08:00-21:00",
+    "wheelchair": "no"
+  }
+},
+{
+  "type": "node",
+  "id": 6829200452,
+  "lat": -36.3738285,
+  "lon": 146.2883209,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 6926072577,
+  "lat": -33.9954753,
+  "lon": 150.7908894,
+  "tags": {
+    "addr:housenumber": "5",
+    "addr:street": "Emerald Hills Boulevard",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "contact:phone": "+61 2 8381 4578",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00, Sa 08:00-19:00, Su 09:00-19:00"
+  }
+},
+{
+  "type": "node",
+  "id": 7005769386,
+  "lat": -33.8696525,
+  "lon": 151.2080349,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-04-25",
+    "disused:amenity": "pharmacy",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7076558553,
+  "lat": -33.7307581,
+  "lon": 151.0070158,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7081690007,
+  "lat": -27.2260222,
+  "lon": 153.1145696,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Redcliffe",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3284 6454",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7120519791,
+  "lat": -37.9833207,
+  "lon": 145.2139956,
+  "tags": {
+    "addr:housenumber": "28 - 30",
+    "addr:street": "Princes Highway",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7142072984,
+  "lat": -33.9257413,
+  "lon": 151.0581783,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7178732255,
+  "lat": -33.7533419,
+  "lon": 150.6968816,
+  "tags": {
+    "addr:housenumber": "457-459",
+    "addr:postcode": "2750",
+    "addr:state": "NSW",
+    "addr:street": "High Street",
+    "addr:suburb": "Penrith",
+    "addr:unit": "1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "phone": "+61 2 4721 0680"
+  }
+},
+{
+  "type": "node",
+  "id": 7217830050,
+  "lat": -33.7695847,
+  "lon": 150.6704388,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7244464671,
+  "lat": -33.7387107,
+  "lon": 151.0712050,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7281064032,
+  "lat": -34.4239195,
+  "lon": 150.8926956,
+  "tags": {
+    "addr:postcode": "2500",
+    "addr:state": "NSW",
+    "addr:suburb": "Wollongong",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "-1",
+    "name": "Chemist Warehouse",
+    "payment:alipay": "yes",
+    "payment:cash": "yes",
+    "payment:coins": "yes",
+    "payment:contactless": "yes",
+    "payment:credit_cards": "yes",
+    "payment:debit_cards": "yes",
+    "source": "survey;local knowledge"
+  }
+},
+{
+  "type": "node",
+  "id": 7308266958,
+  "lat": -26.6029559,
+  "lon": 153.0958544,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7387820978,
+  "lat": -37.8044474,
+  "lon": 144.9590769,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7604238769,
+  "lat": -37.7666655,
+  "lon": 144.9217414,
+  "tags": {
+    "addr:street": "Puckle Street",
+    "addr:suburb": "Moonee Ponds",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2023-10-12",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 7687055639,
+  "lat": -37.6552921,
+  "lon": 145.0228794,
+  "tags": {
+    "addr:state": "VIC",
+    "addr:suburb": "Epping",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 7852009071,
+  "lat": -12.4096136,
+  "lon": 130.8557030,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Ludmilla",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:30; Sa-Su 08:00-17:30",
+    "phone": "+61 8 8985 1034"
+  }
+},
+{
+  "type": "node",
+  "id": 7866904047,
+  "lat": -27.3647226,
+  "lon": 153.0245130,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Robinson Road Marketplace Aspley",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3263 8349",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8067597350,
+  "lat": -36.7464014,
+  "lon": 144.2583710,
+  "tags": {
+    "addr:housenumber": "162-172",
+    "addr:postcode": "3550",
+    "addr:state": "VIC",
+    "addr:street": "Eaglehawk Road",
+    "addr:suburb": "Long Gully",
+    "addr:unit": "Shop 1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8104923894,
+  "lat": -31.0807084,
+  "lon": 150.9210857,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8105845040,
+  "lat": -37.8115594,
+  "lon": 144.9565407,
+  "tags": {
+    "addr:housenumber": "326",
+    "addr:street": "William Street",
+    "alt_name": "Chemist Warehouse William Street; William Street Chemist Warehouse; Chemist Warehouse Melbourne William Street; William Street Melbourne Chemist Warehouse",
+    "amenity": "pharmacy",
+    "branch": "Melbourne William Street",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2025-07-16",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-21:00; Sa,Su 09:00-18:00; PH 10:00-15:00",
+    "operator": "Shirley Tsui and Thi Lan Chi Anna Nguyen",
+    "operator:ref:abn": "92865425180",
+    "phone": "+61 3 9113 4446",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8114073231,
+  "lat": -37.6495499,
+  "lon": 145.0877984,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8140167945,
+  "lat": -27.4701937,
+  "lon": 153.0289373,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Brisbane",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-18:00; Sa,Su,PH off",
+    "phone": "+61 7 3220 2041",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8219338732,
+  "lat": -37.7219484,
+  "lon": 144.5711048,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-01-12",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8232560068,
+  "lat": -37.6889668,
+  "lon": 144.6036014,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8260753469,
+  "lat": -35.2466798,
+  "lon": 149.0656887,
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Ibbott Lane",
+    "addr:unit": "5",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "layer": "1",
+    "level": "0",
+    "lit": "yes",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-20:00; Sa,Su 09:00-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8280776005,
+  "lat": -27.6195350,
+  "lon": 152.7474538,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Ipswich HQ",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:00; Sa 08:30-17:00; Su 09:00-17:00",
+    "phone": "+61 7 3202 1303",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8516148288,
+  "lat": -38.1413845,
+  "lon": 145.1235980,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:30-18:00; Th,Fr 08:30-21:00; Sa,Su 08:30-17:30"
+  }
+},
+{
+  "type": "node",
+  "id": 8551801548,
+  "lat": -37.7751009,
+  "lon": 144.8879812,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8556754769,
+  "lat": -38.0179812,
+  "lon": 145.3038007,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8574719664,
+  "lat": -42.8655928,
+  "lon": 147.3688411,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8574889253,
+  "lat": -42.8322829,
+  "lon": 147.2732130,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:00; Sa 09:00-18:00; Su 09:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 8646118956,
+  "lat": -37.8757583,
+  "lon": 144.6794560,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8692500207,
+  "lat": -27.4448747,
+  "lon": 152.9936967,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:street": "Ashgrove Avenue",
+    "addr:unit": "4",
+    "amenity": "pharmacy",
+    "branch": "Ashgrove",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3858 4333",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8701217703,
+  "lat": -37.7138520,
+  "lon": 144.8856940,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8724425424,
+  "lat": -38.3805700,
+  "lon": 142.5204488,
+  "tags": {
+    "addr:housenumber": "154",
+    "addr:postcode": "3280",
+    "addr:state": "VIC",
+    "addr:street": "Raglan Parade",
+    "addr:suburb": "Warrnambool",
+    "addr:unit": "15",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 8733139846,
+  "lat": -12.5208854,
+  "lon": 131.0409829,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Coolalinga",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-20:00; Sa, Su 09:00-17:00",
+    "phone": "+61 8 8426 8406",
+    "website": "https://chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 8751614401,
+  "lat": -16.9234643,
+  "lon": 145.7720424,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8843510750,
+  "lat": -27.6425470,
+  "lon": 153.1161179,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Logan",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:30-17:00; Su 09:00-17:00",
+    "phone": "+61 7 3208 0626",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 8926800465,
+  "lat": -32.1543366,
+  "lon": 116.0148202,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8950242676,
+  "lat": -37.5779770,
+  "lon": 144.7134708,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 8968197331,
+  "lat": -37.8747384,
+  "lon": 145.1651192,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9017052647,
+  "lat": -27.3059805,
+  "lon": 152.9885299,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Clontarf",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3135 6231",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9109422781,
+  "lat": -37.8459633,
+  "lon": 145.0417374,
+  "tags": {
+    "addr:housenumber": "740-742",
+    "addr:postcode": "3123",
+    "addr:state": "VIC",
+    "addr:street": "Toorak Road",
+    "addr:suburb": "Hawthorn East",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9110868604,
+  "lat": -37.7689784,
+  "lon": 145.0419146,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 09:00-21:00; Su 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9115648971,
+  "lat": -37.7560074,
+  "lon": 145.0659820,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9197038117,
+  "lat": -33.9421809,
+  "lon": 151.2408942,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9225968459,
+  "lat": -27.2335058,
+  "lon": 153.0384784,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Capestone Village",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa 08:00-18:00; Su 09:00-17:00",
+    "phone": "+61 7 3135 6233",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9245269756,
+  "lat": -27.2398715,
+  "lon": 153.0123354,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "North Lakes - Home Co.",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-18:00; Su 09:00-17:00",
+    "phone": "+61 7 3135 6210",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9311646984,
+  "lat": -28.1683509,
+  "lon": 153.5362279,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-19:00; Sa-Su 09:00-17:00",
+    "phone": "+61 7 5536 1139",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 9313328317,
+  "lat": -33.7695243,
+  "lon": 150.9064783,
+  "tags": {
+    "addr:housenumber": "9",
+    "addr:postcode": "2148",
+    "addr:state": "NSW",
+    "addr:street": "Patrick Street",
+    "addr:suburb": "Blacktown",
+    "addr:unit": "1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator:ref:abn": "78 105 843 005"
+  }
+},
+{
+  "type": "node",
+  "id": 9363137774,
+  "lat": -42.8343608,
+  "lon": 147.2776897,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-19:00; PH,Su 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 9365266946,
+  "lat": -33.7651816,
+  "lon": 150.7744948,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9371203662,
+  "lat": -38.0757369,
+  "lon": 144.3559632,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2022-05-12",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9387639455,
+  "lat": -42.8744390,
+  "lon": 147.3162616,
+  "tags": {
+    "addr:housenumber": "346-352",
+    "addr:postcode": "7000",
+    "addr:state": "TAS",
+    "addr:street": "Elizabeth Street",
+    "addr:suburb": "North Hobart",
+    "addr:unit": "5",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9391453104,
+  "lat": -34.7659995,
+  "lon": 138.6676325,
+  "tags": {
+    "addr:housename": "Saints Shopping Centre",
+    "addr:housenumber": "83",
+    "addr:street": "Saints Road",
+    "addr:unit": "T03",
+    "amenity": "pharmacy",
+    "branch": "Saints Shopping Centre Salisbury Plains",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "email": "saintsscsalisbury@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "24/7",
+    "phone": "+61 8 8426 8424",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9421489651,
+  "lat": -31.4282307,
+  "lon": 152.8969903,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa,Su 08:00-17:30",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9432574666,
+  "lat": -37.6944216,
+  "lon": 145.0601219,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9433474232,
+  "lat": -38.1474174,
+  "lon": 144.3631491,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9538668544,
+  "lat": -33.6362707,
+  "lon": 151.3296833,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Avalon",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-20:00",
+    "phone": "+61 2 9918 3456",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 9610209443,
+  "lat": -33.8556052,
+  "lon": 151.1623711,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date": "2026-04-18",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "level:ref": "1",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9710708218,
+  "lat": -31.9481270,
+  "lon": 115.8238704,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9776791361,
+  "lat": -37.7597928,
+  "lon": 145.3484769,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Lilydale Marketplace",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9787115114,
+  "lat": -27.8139108,
+  "lon": 153.2932534,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-20:00; Sa 07:30-18:00; Su 08:00-18:00; PH 08:00-17:30",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9795965668,
+  "lat": -38.2183113,
+  "lon": 145.0394398,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 09:00-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9869338241,
+  "lat": -21.1404177,
+  "lon": 149.1787760,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Mackay",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:00-20:00; Th 08:00-21:00; Fr 08:00-20:00; Sa 08:00-18:00; Su 08:00-17:00",
+    "phone": "+61 7 4944 0454",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 9892859641,
+  "lat": -33.8714127,
+  "lon": 151.2080593,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2025-01-25",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 9916996777,
+  "lat": -27.5419158,
+  "lon": 153.2503913,
+  "tags": {
+    "addr:housenumber": "16",
+    "addr:postcode": "4163",
+    "addr:state": "QLD",
+    "addr:street": "Weippin Street",
+    "addr:suburb": "Cleveland",
+    "amenity": "pharmacy",
+    "branch": "Redland",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa-Su 09:00-15:00",
+    "phone": "+61 7 3135 6293",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9921086906,
+  "lat": -27.6389040,
+  "lon": 153.2488688,
+  "tags": {
+    "addr:housenumber": "101",
+    "addr:postcode": "4165",
+    "addr:state": "QLD",
+    "addr:street": "Valley Way",
+    "addr:suburb": "Mount Cotton",
+    "addr:unit": "17",
+    "amenity": "pharmacy",
+    "branch": "Mount Cotton",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "mtcotton@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3135 6247",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9981135489,
+  "lat": -27.6732534,
+  "lon": 153.2126800,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Cornubia",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-18:00",
+    "phone": "+61 7 3287 6666",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 9982849321,
+  "lat": -38.0852995,
+  "lon": 145.4709057,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "kids_area": "no",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 09:00-19:00; Su 09:00-18:00; PH 09:00-19:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10019710488,
+  "lat": -37.9706279,
+  "lon": 145.0936995,
+  "tags": {
+    "addr:housename": "Kingston Central Plaza",
+    "addr:housenumber": "288",
+    "addr:street": "Centre Dandenong Road",
+    "addr:unit": "Shop 17",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 09:00-19:00",
+    "operator:ref:abn": "61495123621",
+    "phone": "+61 3 8527 1769",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 10032726990,
+  "lat": -28.8125966,
+  "lon": 153.3479318,
+  "tags": {
+    "addr:housenumber": "799",
+    "addr:street": "Ballina Road",
+    "addr:unit": "Shop 1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "lismore@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "phone": "+61 2 6624 1429",
+    "website": "https://www.chemistwarehouse.com.au"
+  }
+},
+{
+  "type": "node",
+  "id": 10105410617,
+  "lat": -27.5233257,
+  "lon": 153.1909232,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Capalaba Park Shopping Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "level": "1",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We,Fr 08:00-19:00; Th 08:00-20:00; Sa 08:00-17:30; Su 09:00-17:00",
+    "phone": "+61 7 3245 6347",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10160675828,
+  "lat": -38.0787138,
+  "lon": 145.4831111,
+  "tags": {
+    "addr:housenumber": "152-154",
+    "addr:street": "Main Street",
+    "addr:suburb": "Pakenham",
+    "amenity": "pharmacy",
+    "branch": "Pakenham",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2022-11-06",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "internet_access": "no",
+    "kids_area": "no",
+    "name": "Chemist Warehouse",
+    "official_name": "Chemist Warehouse Pakenham Main Street",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa-Su,PH 09:00-18:00",
+    "operator:ref:abn": "26876716203",
+    "payment:american_express": "yes",
+    "payment:fupay": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+61 3 5941 1888",
+    "website": "https://www.chemistwarehouse.com.au",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10164703812,
+  "lat": -37.6512366,
+  "lon": 145.0733031,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10221035027,
+  "lat": -27.0422480,
+  "lon": 152.9746233,
+  "tags": {
+    "addr:housenumber": "459",
+    "addr:postcode": "4510",
+    "addr:state": "QLD",
+    "addr:street": "Pumicestone Road",
+    "addr:suburb": "Caboolture",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-18:00; Sa-Su 09:00-17:00",
+    "phone": "+61 7 3135 6257"
+  }
+},
+{
+  "type": "node",
+  "id": 10250310685,
+  "lat": -37.8416194,
+  "lon": 145.1718389,
+  "tags": {
+    "addr:housenumber": "415",
+    "addr:postcode": "3131",
+    "addr:state": "VIC",
+    "addr:street": "Springvale Road",
+    "addr:suburb": "Forest Hill",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10307752353,
+  "lat": -34.2070900,
+  "lon": 142.1392693,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2023-01-05",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10313858720,
+  "lat": -37.7751208,
+  "lon": 144.9609141,
+  "tags": {
+    "addr:housenumber": "120-124",
+    "addr:postcode": "3056",
+    "addr:street": "Sydney Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa 08:00-21:00; Su 09:00-21:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10567543079,
+  "lat": -31.9565440,
+  "lon": 115.9299096,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2023-01-19",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "name:en": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10591084462,
+  "lat": -33.8148168,
+  "lon": 151.1671523,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 10656549685,
+  "lat": -37.7966535,
+  "lon": 144.9844874,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Sa 08:00-19:00, Sa 09:00-18:00, Su 10:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10657609010,
+  "lat": -32.1531721,
+  "lon": 116.0078794,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10661056778,
+  "lat": -32.0178814,
+  "lon": 115.9340243,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10673454784,
+  "lat": -32.0246492,
+  "lon": 115.9399473,
+  "tags": {
+    "addr:housenumber": "1425-1427",
+    "addr:street": "Albany Highway",
+    "addr:unit": "2",
+    "amenity": "pharmacy",
+    "branch": "Cannington South",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2026-06-25",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "phone": "+61 8 9358 5888",
+    "wikimedia_commons": "File:Chemist Warehouse, Cannington South.jpg"
+  }
+},
+{
+  "type": "node",
+  "id": 10727088787,
+  "lat": -33.7705655,
+  "lon": 150.8435145,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10736056330,
+  "lat": -37.9219243,
+  "lon": 145.0832769,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 10763239140,
+  "lat": -19.2592943,
+  "lon": 146.8153946,
+  "tags": {
+    "addr:housenumber": "121",
+    "addr:postcode": "4810",
+    "addr:state": "QLD",
+    "addr:street": "Sturt Street",
+    "addr:suburb": "Townsville City",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2023-03-26",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa-Su 08:00-17:00",
+    "phone": "+61 7 4724 4170"
+  }
+},
+{
+  "type": "node",
+  "id": 10769891593,
+  "lat": -33.8831547,
+  "lon": 151.2033301,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2025-10-24",
+    "check_date:opening_hours": "2025-10-24",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:00-22:30; Th-Sa 08:00-23:00; Su 08:00-22:00"
+  }
+},
+{
+  "type": "node",
+  "id": 10815646183,
+  "lat": -37.7146461,
+  "lon": 145.1488468,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "email": "elthamvillage@chemistwarehouse.com.au",
+    "fax": "+61 3 9439 0811",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 08:00-18:00",
+    "phone": "+61 3 9439 6085"
+  }
+},
+{
+  "type": "node",
+  "id": 10888687545,
+  "lat": -37.7938085,
+  "lon": 145.2793335,
+  "tags": {
+    "addr:housenumber": "5-15",
+    "addr:postcode": "3136",
+    "addr:state": "VIC",
+    "addr:street": "Kent Avenue",
+    "addr:suburb": "Croydon",
+    "addr:unit": "20",
+    "amenity": "pharmacy",
+    "branch": "Croydon Central",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "croydoncentral@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-20:00; Sa,Su 09:00-18:00",
+    "phone": "+61 3 9113 4426",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 10989402194,
+  "lat": -27.8215783,
+  "lon": 153.2973918,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11031787380,
+  "lat": -37.8151142,
+  "lon": 144.9515154,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "layer": "1",
+    "level": "1",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11061420290,
+  "lat": -33.8882400,
+  "lon": 151.1236778,
+  "tags": {
+    "addr:housenumber": "268-270",
+    "addr:postcode": "2131",
+    "addr:street": "Liverpool Road",
+    "addr:unit": "1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2025-12-24",
+    "email": "ashfield@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa 08:00-21:00; Su 09:00-21:00",
+    "phone": "+61 2 9798 6323",
+    "website": "https://rsvp.chemistwarehouse.com.au/contact?state=NSW"
+  }
+},
+{
+  "type": "node",
+  "id": 11074271930,
+  "lat": -33.8753998,
+  "lon": 151.1038645,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-21:00; Sa,Su 08:30-20:00; PH 09:00-17:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11074271932,
+  "lat": -33.8707766,
+  "lon": 151.1048549,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11133502134,
+  "lat": -37.8164823,
+  "lon": 144.9561097,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11158509837,
+  "lat": -37.5594269,
+  "lon": 143.8851843,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "description": "Local Pharmacy in Ballarat East",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Su 09:00-17:00; PH 09:00-17:00; Sa 08:30-17:00; Mo-Fr 08:30-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11185872530,
+  "lat": -37.8119887,
+  "lon": 144.9388280,
+  "tags": {
+    "addr:postcode": "3008",
+    "addr:state": "VIC",
+    "addr:street": "Waterfront Way",
+    "addr:suburb": "Docklands",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11219252772,
+  "lat": -27.5208772,
+  "lon": 153.1930909,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Capalaba",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-22:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3245 3939",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11237572658,
+  "lat": -37.5749472,
+  "lon": 144.9201768,
+  "tags": {
+    "addr:unit": "T09",
+    "amenity": "pharmacy",
+    "branch": "Craigieburn - Highlands SC",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-19:00; Sa-Su 09:00-17:00",
+    "phone": "+61 3 9113 4424",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 11296645670,
+  "lat": -42.8816837,
+  "lon": 147.3235303,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11383291815,
+  "lat": -33.8460581,
+  "lon": 151.0693858,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2025-12-01",
+    "check_date:opening_hours": "2025-12-01",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-21:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11442493511,
+  "lat": -36.5514345,
+  "lon": 145.9838560,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2024-10-24",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11493079174,
+  "lat": -33.8745225,
+  "lon": 151.0940626,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11520937844,
+  "lat": -37.6000999,
+  "lon": 145.0956161,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "layer": "-1",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11548130112,
+  "lat": -37.7841818,
+  "lon": 144.7712563,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11563814416,
+  "lat": -37.7727777,
+  "lon": 144.9273414,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11667671804,
+  "lat": -27.4672227,
+  "lon": 153.0269308,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Adelaide Street Brisbane",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-19:00; Sa 09:00-17:00; Su off",
+    "phone": "+61 7 3221 3905",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11730990533,
+  "lat": -33.8666743,
+  "lon": 151.2086949,
+  "tags": {
+    "addr:housenumber": "80",
+    "addr:street": "Pitt Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 07:30-20:30; Th 07:30-21:00; Fr 07:30-20:30; Sa 08:00-19:30; Su 09:00-18:00; PH 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 11738162177,
+  "lat": -27.7043921,
+  "lon": 153.1584858,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Bethania",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-21:00; Sa 08:00-18:00; Su 09:00-17:00",
+    "phone": "+61 7 3135 6262",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11794920000,
+  "lat": -27.5297977,
+  "lon": 152.9095881,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Pullenvale",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 09:00-18:00",
+    "phone": "+61 7 3135 6260",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11817775918,
+  "lat": -32.2896901,
+  "lon": 115.7462173,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We,Fr 08:00-17:30; Th 08:00-21:00; Sa 08:00-17:00; Su 11:00-16:00",
+    "phone": "+61 8 6147 5440"
+  }
+},
+{
+  "type": "node",
+  "id": 11818183162,
+  "lat": -37.8795285,
+  "lon": 145.1646624,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11823519055,
+  "lat": -27.4693369,
+  "lon": 153.0254103,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Brisbane Queen St",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 09:00-18:00",
+    "phone": "+61 7 3221 3338",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 11861594857,
+  "lat": -32.4476164,
+  "lon": 115.7650026,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11861796047,
+  "lat": -31.8624011,
+  "lon": 115.8287414,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11886359067,
+  "lat": -37.6398614,
+  "lon": 144.9321062,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 11895994369,
+  "lat": -12.4608319,
+  "lon": 130.8416269,
+  "tags": {
+    "addr:housenumber": "48",
+    "addr:postcode": "0800",
+    "addr:street": "Cavenagh Street",
+    "amenity": "pharmacy",
+    "branch": "GPO",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "name:en": "Chemist Warehouse Darwin GPO",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:30-17:00",
+    "phone": "+61 8 8981 9202",
+    "shop": "chemist",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 11934024463,
+  "lat": -12.3758125,
+  "lon": 130.8796817,
+  "tags": {
+    "addr:housenumber": "4",
+    "addr:street": "Rowling Street",
+    "addr:unit": "4",
+    "amenity": "pharmacy",
+    "branch": "Casuarina",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa, Su 09:00-20:00",
+    "phone": "+61 8 8927 0299",
+    "shop": "chemist",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 12062488016,
+  "lat": -37.7031231,
+  "lon": 145.1029865,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "level": "1",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12121721356,
+  "lat": -37.8195564,
+  "lon": 145.1206613,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Th 08:30-19:00; Fr 08:30-17:30; PH closed; Sa 08:30-17:30; Su 10:00-17:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12128671549,
+  "lat": -12.4802046,
+  "lon": 130.9707031,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Durack",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-20:00; Sa, Su 09:00-17:00",
+    "phone": "+61 2 8931 4452",
+    "shop": "chemist",
+    "website": "https://chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 12128698497,
+  "lat": -12.4693257,
+  "lon": 130.9801405,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Gateway",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Th 08:30-18:30; Fr 08:30-19:30; Sa, Su 09:00-17:00",
+    "phone": "+61 2 7969 5710",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "node",
+  "id": 12144109077,
+  "lat": -33.9447673,
+  "lon": 151.1963548,
+  "tags": {
+    "addr:housenumber": "1124",
+    "addr:postcode": "2019",
+    "addr:state": "NSW",
+    "addr:street": "Botany Road",
+    "addr:suburb": "Botany",
+    "amenity": "pharmacy",
+    "branch": "Botany",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator": "Chemist Warehouse",
+    "phone": "+61 2 9316 8625"
+  }
+},
+{
+  "type": "node",
+  "id": 12169959824,
+  "lat": -31.9454607,
+  "lon": 115.8614025,
+  "tags": {
+    "addr:floor": "G",
+    "addr:housenumber": "347",
+    "addr:street": "William Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2026-05-20",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "internet_access": "no",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "wheelchair": "limited"
+  }
+},
+{
+  "type": "node",
+  "id": 12175749082,
+  "lat": -37.8116174,
+  "lon": 144.9635041,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "level": "-1",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:00-20:00; Th,Fr 08:00-21:00; Sa 09:00-19:00; Su 10:00-19:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12181553329,
+  "lat": -33.8707001,
+  "lon": 150.9536325,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Fairfield",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa 08:00-20:00; Su 09:00-19:00",
+    "phone": "+61 2 9724 1212"
+  }
+},
+{
+  "type": "node",
+  "id": 12206214187,
+  "lat": -27.6587660,
+  "lon": 153.1696192,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Hyperdome Shopping Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 09:00-18:00",
+    "phone": "+61 7 3135 6259",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12248100818,
+  "lat": -12.3957687,
+  "lon": 130.8954209,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Northlakes Mararra",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse Norhlakes Marrara",
+    "opening_hours": "Mo-Fr 08:30-18:00; Sa, Su 09:00-17:00",
+    "phone": "+61 8 7969 5706",
+    "website": "https://chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 12323351295,
+  "lat": -27.7133348,
+  "lon": 153.1888239,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Beenleigh - River Road",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 09:00-18:00; Su 09:00-17:00",
+    "phone": "+61 7 3135 6281",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12327744483,
+  "lat": -33.8791093,
+  "lon": 151.2365242,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12347211055,
+  "lat": -33.9211492,
+  "lon": 151.0780169,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12415807676,
+  "lat": -38.2258047,
+  "lon": 144.3257119,
+  "tags": {
+    "addr:housenumber": "135",
+    "addr:street": "Unity Drive",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 12434894262,
+  "lat": -33.9266386,
+  "lon": 151.1262589,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12455691213,
+  "lat": -32.1167792,
+  "lon": 115.9159033,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12589769766,
+  "lat": -37.5914435,
+  "lon": 143.8406927,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse Sebastopol"
+  }
+},
+{
+  "type": "node",
+  "id": 12600446016,
+  "lat": -33.9155938,
+  "lon": 151.0874578,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12615059787,
+  "lat": -35.1728287,
+  "lon": 138.4830191,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Seaford Meadows",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "check_date": "2025-02-24",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We,Fr 08:30-19:00; Th 08:30-21:00; Sa 08:30-17:00; Su,PH 10:30-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12653325846,
+  "lat": -35.3480607,
+  "lon": 149.2468361,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "fixme": "location in complex? sign only seen",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12688788311,
+  "lat": -27.3755476,
+  "lon": 153.0620622,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Virginia",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 07:00-20:00",
+    "phone": "+61 7 3865 4711",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12706389114,
+  "lat": -33.8171648,
+  "lon": 151.0030161,
+  "tags": {
+    "addr:housenumber": "159-175",
+    "addr:state": "NSW",
+    "addr:street": "Church Street",
+    "addr:suburb": "Parramatta",
+    "addr:unit": "M11B",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "level": "1",
+    "name": "Chemist Warehouse",
+    "phone": "+61 2 9673 8056"
+  }
+},
+{
+  "type": "node",
+  "id": 12785563713,
+  "lat": -33.7981454,
+  "lon": 151.2866235,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 08:00-20:00; PH 09:00-18:00"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845910,
+  "lat": -27.2597491,
+  "lon": 153.0809738,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Clontarf",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3135 6231",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845911,
+  "lat": -27.3190980,
+  "lon": 153.0689492,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Sandgate",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3269 1232",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845912,
+  "lat": -27.3550545,
+  "lon": 153.0186922,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Aspley Homemaker City",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Th 08:00-21:00; Sa-Su 09:00-18:00",
+    "phone": "+61 7 3135 6261",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845913,
+  "lat": -27.4368474,
+  "lon": 153.0305921,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Windsor",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa-Su 08:30-18:00",
+    "phone": "+61 7 3857 6080",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845914,
+  "lat": -27.4372412,
+  "lon": 153.0232176,
+  "tags": {
+    "addr:housenumber": "142",
+    "addr:postcode": "4030",
+    "addr:state": "QLD",
+    "addr:street": "Newmarket Road",
+    "addr:suburb": "Windsor",
+    "addr:unit": "414",
+    "amenity": "pharmacy",
+    "branch": "Windsor Home Zone Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "contact:facebook": "https://www.facebook.com/ChemistWarehouse/",
+    "contact:instagram": "https://instagram.com/chemistwarehouseaus",
+    "contact:tiktok": "https://www.tiktok.com/@chemistwarehouseaus",
+    "contact:youtube": "https://www.youtube.com/@ChemistWarehouseTV",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "windsorhomezone@chemistwarehouse.com.au",
+    "fax": "+61 7 3357 4857",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:30-18:00",
+    "phone": "+61 7 3857 5666",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845915,
+  "lat": -27.4538085,
+  "lon": 153.0393454,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Fortitude Valley",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3252 2645",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845916,
+  "lat": -27.5361465,
+  "lon": 153.0001025,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Rockela",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-17:00; Su 09:00-17:00",
+    "phone": "+61 7 3379 1022",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845917,
+  "lat": -27.5332133,
+  "lon": 152.9478110,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Jindalee Home Shopping Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3135 6230",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845918,
+  "lat": -27.5760985,
+  "lon": 152.9829331,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Oxley",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 08:00-20:00",
+    "phone": "+61 7 3879 6522",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845919,
+  "lat": -27.5979509,
+  "lon": 152.9738438,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Inala Plaza Shopping Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Sa 07:00-19:00; Su 09:00-18:00",
+    "phone": "+61 7 2114 9190",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845920,
+  "lat": -27.5755553,
+  "lon": 153.0262501,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Acacia Ridge",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 09:00-17:00",
+    "phone": "+61 7 3277 2460",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845921,
+  "lat": -27.5705167,
+  "lon": 153.0639317,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Clontarf",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+61 7 3135 6209",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845922,
+  "lat": -27.4681143,
+  "lon": 153.0892432,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Cannon Hill",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-17:00; Su 09:00-17:00",
+    "phone": "+61 7 3135 6228",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845923,
+  "lat": -27.4460952,
+  "lon": 153.1722473,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Wynnum",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3396 7710",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845924,
+  "lat": -27.6856867,
+  "lon": 153.0934869,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Crestmead",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 08:00-20:00",
+    "phone": "+61 7 3200 5850",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12825845925,
+  "lat": -27.6653154,
+  "lon": 153.0438285,
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Browns Plains Homemaker Centre",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3135 6235",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 12850414650,
+  "lat": -31.8970578,
+  "lon": 116.0165393,
+  "tags": {
+    "addr:housenumber": "7",
+    "addr:street": "Clayton Street",
+    "addr:unit": "12",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12857269814,
+  "lat": -37.8199971,
+  "lon": 144.7212518,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12894226286,
+  "lat": -36.1221607,
+  "lon": 146.8883287,
+  "tags": {
+    "addr:housenumber": "180",
+    "addr:postcode": "3690",
+    "addr:state": "VIC",
+    "addr:street": "High Street",
+    "addr:suburb": "Wodonga",
+    "addr:unit": "1",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "node",
+  "id": 12908670112,
+  "lat": -36.1278761,
+  "lon": 146.8641632,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12922544745,
+  "lat": -37.8349119,
+  "lon": 144.8471640,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 12995216601,
+  "lat": -34.4251284,
+  "lon": 150.8922329,
+  "tags": {
+    "addr:housenumber": "243-249",
+    "addr:street": "Crown Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "node",
+  "id": 13148609682,
+  "lat": -33.8058018,
+  "lon": 151.0060473,
+  "tags": {
+    "addr:housenumber": "458",
+    "addr:street": "Church Street",
+    "addr:suburb": "Parramatta",
+    "amenity": "pharmacy",
+    "branch": "North Parramatta",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-22:00",
+    "phone": "+61 2 8381 4566",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 13208221718,
+  "lat": -38.1067695,
+  "lon": 147.0656847,
+  "tags": {
+    "addr:housenumber": "276",
+    "addr:street": "Raymond Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:30-17:00; Su 09:00-17:00",
+    "phone": "+61 3 5144 2338",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "node",
+  "id": 13305580837,
+  "lat": -33.9116189,
+  "lon": 151.1551246,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-22:00; Sa 08:30-19:00; Su 09:00-19:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13362974104,
+  "lat": -35.0755348,
+  "lon": 147.3580892,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13399145646,
+  "lat": -31.9037946,
+  "lon": 115.7992398,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13420752458,
+  "lat": -33.7656371,
+  "lon": 151.2692822,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-20:00; Su 08:00-20:00; PH 09:00-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "node",
+  "id": 13439576361,
+  "lat": -37.7575776,
+  "lon": 145.1299776,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-18:00; Su 09:00-17:00; PH 09:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13452253644,
+  "lat": -17.0058824,
+  "lon": 145.7420531,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13542390287,
+  "lat": -26.6601911,
+  "lon": 153.0984586,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13588192446,
+  "lat": -33.9667789,
+  "lon": 151.1046426,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13604591064,
+  "lat": -26.6717087,
+  "lon": 153.0850629,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13636826558,
+  "lat": -23.3770018,
+  "lon": 150.5127500,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13688325078,
+  "lat": -34.9304471,
+  "lon": 138.5970708,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "node",
+  "id": 13751705249,
+  "lat": -26.6879977,
+  "lon": 153.0073249,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13789089060,
+  "lat": -17.5244894,
+  "lon": 146.0304509,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13810051118,
+  "lat": -37.9366228,
+  "lon": 145.0024635,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13829707740,
+  "lat": -37.5366192,
+  "lon": 144.9206939,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13829866007,
+  "lat": -37.6457147,
+  "lon": 144.9321873,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13839171784,
+  "lat": -37.8213279,
+  "lon": 145.1229511,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "node",
+  "id": 13865562102,
+  "lat": -42.9841194,
+  "lon": 147.2903103,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-20:00; Su 09:00-20:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13871548478,
+  "lat": -28.1463401,
+  "lon": 153.4759131,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00, Sa-Su 08:00-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13953152376,
+  "lat": -34.9451827,
+  "lon": 138.5197669,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 09:30-17:00"
+  }
+},
+{
+  "type": "node",
+  "id": 13971774397,
+  "lat": -33.7778369,
+  "lon": 151.0522084,
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 28867408,
+  "center": {
+    "lat": -37.8763371,
+    "lon": 145.2560656
+  },
+  "tags": {
+    "addr:housenumber": "622",
+    "addr:postcode": "3180",
+    "addr:state": "VIC",
+    "addr:street": "Burwood Highway",
+    "addr:suburb": "Knoxfield",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 29479565,
+  "center": {
+    "lat": -37.8797862,
+    "lon": 145.0923641
+  },
+  "tags": {
+    "addr:housenumber": "695-699",
+    "addr:street": "Warrigal Road",
+    "addr:unit": "3",
+    "alt_name": "Chemist Warehouse Chadstone Homemaker Centre",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "kids_area": "no",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-19:00; Sa-Su 09:00-18:00",
+    "operator:ref:abn": "59480826285",
+    "phone": "+61 3 6292 5221",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 45240600,
+  "center": {
+    "lat": -37.8705612,
+    "lon": 145.2423572
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "full_name": "Chemist Warehouse Westfield Knox",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Sa-Su 08:00-23:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 50532699,
+  "center": {
+    "lat": -31.9013788,
+    "lon": 115.7970866
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 62206031,
+  "center": {
+    "lat": -33.9022414,
+    "lon": 151.1964745
+  },
+  "tags": {
+    "addr:country": "AU",
+    "addr:housenumber": "135",
+    "addr:street": "McEvoy Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 69253609,
+  "center": {
+    "lat": -34.7621836,
+    "lon": 138.6471576
+  },
+  "tags": {
+    "addr:housenumber": "85A",
+    "addr:street": "John Street",
+    "amenity": "pharmacy",
+    "branch": "Salisbury",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "check_date": "2026-05-13",
+    "email": "salisbury@chemistwarehouse.com.au",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:00-19:00; Th 08:00-21:00; Fr 08:00-19:00; Sa 08:00-17:00; Su 10:30-17:00",
+    "phone": "+61 8 8426 8403",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 109347697,
+  "center": {
+    "lat": -37.7398632,
+    "lon": 145.0281056
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "shop": "chemist"
+  }
+},
+{
+  "type": "way",
+  "id": 138871458,
+  "center": {
+    "lat": -37.8070304,
+    "lon": 145.0294548
+  },
+  "tags": {
+    "addr:housenumber": "121",
+    "addr:postcode": "3101",
+    "addr:state": "VIC",
+    "addr:street": "High Street",
+    "addr:suburb": "Kew",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:30-18:00; Su 09:30-17:30",
+    "payment:american_express": "yes",
+    "payment:mastercard": "yes",
+    "payment:visa": "yes",
+    "phone": "+61 3 9855 1273"
+  }
+},
+{
+  "type": "way",
+  "id": 185917736,
+  "center": {
+    "lat": -31.9322115,
+    "lon": 115.8594940
+  },
+  "tags": {
+    "addr:housenumber": "412",
+    "addr:postcode": "6006",
+    "addr:street": "Fitzgerald Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "check_date": "2025-08-09",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 209945192,
+  "center": {
+    "lat": -34.5663083,
+    "lon": 150.8292928
+  },
+  "tags": {
+    "addr:postcode": "2529",
+    "addr:state": "NSW",
+    "addr:street": "New Lake Entrance Road",
+    "addr:suburb": "Shellharbour City Centre",
+    "addr:unit": "9A",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-21:00; Th 07:30-22:00; Sa-Su 08:00-20:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 212544367,
+  "center": {
+    "lat": -42.8474293,
+    "lon": 147.3530641
+  },
+  "tags": {
+    "addr:housenumber": "36",
+    "addr:postcode": "7015",
+    "addr:state": "TAS",
+    "addr:street": "Lincoln Street",
+    "addr:suburb": "Lindisfarne",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa 08:00-18:00; PH,Su 09:00-18:00"
+  }
+},
+{
+  "type": "way",
+  "id": 226450280,
+  "center": {
+    "lat": -38.1544758,
+    "lon": 145.1663320
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 228923214,
+  "center": {
+    "lat": -42.8473513,
+    "lon": 147.2949420
+  },
+  "tags": {
+    "addr:housenumber": "70",
+    "addr:postcode": "7009",
+    "addr:state": "TAS",
+    "addr:street": "Main Road",
+    "addr:suburb": "Moonah",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "check_date": "2024-01-05",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "http://maps.gcc.tas.gov.au/licensing.html"
+  }
+},
+{
+  "type": "way",
+  "id": 230526031,
+  "center": {
+    "lat": -37.7840928,
+    "lon": 144.8326041
+  },
+  "tags": {
+    "addr:housenumber": "292",
+    "addr:postcode": "3020",
+    "addr:state": "VIC",
+    "addr:street": "Hampshire Road",
+    "addr:suburb": "Sunshine",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "Vicmap Address"
+  }
+},
+{
+  "type": "way",
+  "id": 266728562,
+  "center": {
+    "lat": -38.1473359,
+    "lon": 144.3538377
+  },
+  "tags": {
+    "addr:housenumber": "19",
+    "addr:street": "Ryrie Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "height": "4.455",
+    "name": "Chemist Warehouse",
+    "website": "https://chemistwarehouse.com.au"
+  }
+},
+{
+  "type": "way",
+  "id": 266738933,
+  "center": {
+    "lat": -38.1416943,
+    "lon": 144.3474483
+  },
+  "tags": {
+    "addr:housenumber": "86-88",
+    "addr:street": "Hope Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "height": "5.818",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-20:00; Sa 09:00-17:00; Su 10:00-17:00",
+    "website": "https://chemistwarehouse.com.au"
+  }
+},
+{
+  "type": "way",
+  "id": 291407935,
+  "center": {
+    "lat": -37.8017330,
+    "lon": 144.9841530
+  },
+  "tags": {
+    "addr:housenumber": "244-246",
+    "addr:street": "Smith Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "commercial",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 09:00-18:00; Su 10:00-17:00",
+    "phone": "+61 3 9417 4377",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 300240961,
+  "center": {
+    "lat": -37.9945127,
+    "lon": 145.1724704
+  },
+  "tags": {
+    "addr:housenumber": "332",
+    "addr:street": "Cheltenham Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 300665571,
+  "center": {
+    "lat": -37.7798394,
+    "lon": 144.9145562
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:00; Sa,Su 09:00-18:00",
+    "phone": "+61 3 9370 8440"
+  }
+},
+{
+  "type": "way",
+  "id": 318055212,
+  "center": {
+    "lat": -33.7724605,
+    "lon": 151.0808833
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "check_date": "2025-09-23",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "bing + knowledge",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 328660799,
+  "center": {
+    "lat": -37.8177510,
+    "lon": 145.1244637
+  },
+  "tags": {
+    "addr:country": "AU",
+    "addr:housenumber": "969",
+    "addr:postcode": "3128",
+    "addr:state": "VIC",
+    "addr:street": "Whitehorse Road",
+    "addr:suburb": "Box Hill",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00; Sa 08:30-18:00; Su 10:00-17:30",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 328748063,
+  "center": {
+    "lat": -37.8158096,
+    "lon": 145.2267657
+  },
+  "tags": {
+    "addr:housenumber": "131-133",
+    "addr:postcode": "3134",
+    "addr:state": "VIC",
+    "addr:street": "Maroondah Highway",
+    "addr:suburb": "Ringwood",
+    "amenity": "pharmacy",
+    "branch": "Ringwood",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 06:00-00:00",
+    "phone": "+61 3 9870 5022",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 356410683,
+  "center": {
+    "lat": -24.8660652,
+    "lon": 152.3505038
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 369328514,
+  "center": {
+    "lat": -33.9085171,
+    "lon": 150.9196010
+  },
+  "tags": {
+    "addr:housenumber": "18",
+    "addr:street": "Orange Grove Road",
+    "addr:unit": "3-6",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 371549724,
+  "center": {
+    "lat": -31.4347996,
+    "lon": 152.9059754
+  },
+  "tags": {
+    "addr:housenumber": "102-104",
+    "addr:postcode": "2444",
+    "addr:state": "NSW",
+    "addr:street": "Gordon Street",
+    "addr:suburb": "Port Macquarie",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "phone": "+61 2 8381 4511",
+    "website": "https://chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 377400497,
+  "center": {
+    "lat": -32.9000351,
+    "lon": 151.7405179
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 409717351,
+  "center": {
+    "lat": -23.3565949,
+    "lon": 150.5188953
+  },
+  "tags": {
+    "addr:postcode": "4701",
+    "addr:street": "Aquatic Place",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "building:levels": "1",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 485494532,
+  "center": {
+    "lat": -33.7963730,
+    "lon": 151.1817677
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "building:levels": "2",
+    "check_date": "2025-05-17",
+    "check_date:opening_hours": "2023-03-29",
+    "defibrillator": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "nohousenumber": "yes",
+    "opening_hours": "Mo-We,Fr 07:30-20:00; Th 07:30-21:00; Sa 09:00-18:00; Su 09:00-17:00; PH 10:00-18:00",
+    "roof:shape": "flat",
+    "shop": "chemist",
+    "source:geometry": "LPI Imagery",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 485501942,
+  "center": {
+    "lat": -33.7954608,
+    "lon": 151.1848334
+  },
+  "tags": {
+    "addr:housenumber": "387",
+    "addr:street": "Victoria Avenue",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "building:levels": "3",
+    "check_date:opening_hours": "2024-04-23",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "name:en": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa 08:00-19:00; Su 09:00-18:00",
+    "roof:shape": "gabled",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 485672653,
+  "center": {
+    "lat": -34.9805410,
+    "lon": 138.5157032
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "check_date": "2025-11-07",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 512839354,
+  "center": {
+    "lat": -27.4856685,
+    "lon": 152.9910613
+  },
+  "tags": {
+    "addr:housenumber": "40",
+    "addr:postcode": "4066",
+    "addr:state": "QLD",
+    "addr:street": "Sherwood Road",
+    "addr:suburb": "Toowong",
+    "amenity": "pharmacy",
+    "branch": "Toowong",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "commercial",
+    "building:levels": "2",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:00-17:00; Su 09:00-17:00",
+    "phone": "+61 7 3870 2727",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 530776043,
+  "center": {
+    "lat": -38.0865070,
+    "lon": 145.3169038
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "24/7",
+    "operator": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 533275937,
+  "center": {
+    "lat": -27.4977412,
+    "lon": 152.9761307
+  },
+  "tags": {
+    "addr:housenumber": "34",
+    "addr:street": "Coonan Street",
+    "amenity": "pharmacy",
+    "branch": "Indooroopilly",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "building:levels": "3",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3720 0511",
+    "roof:levels": "0",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 538646695,
+  "center": {
+    "lat": -27.6135876,
+    "lon": 153.1213766
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Underwood",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "commercial",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-20:00; Sa 08:30-18:00; Su 09:00-17:00",
+    "phone": "+61 7 3135 6256",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 542182662,
+  "center": {
+    "lat": -37.9279260,
+    "lon": 145.1188282
+  },
+  "tags": {
+    "addr:street": "Clayton Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 611943947,
+  "center": {
+    "lat": -27.4664966,
+    "lon": 153.1410765
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Tingalpa",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "building:levels": "1",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 08:00-17:00",
+    "phone": "+61 7 3390 6058",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 631587089,
+  "center": {
+    "lat": -37.8848938,
+    "lon": 145.0581865
+  },
+  "tags": {
+    "addr:housenumber": "28-30",
+    "addr:postcode": "3163",
+    "addr:street": "Koornang Road",
+    "addr:suburb": "Carnegie",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 631587136,
+  "center": {
+    "lat": -37.8873187,
+    "lon": 145.0570985
+  },
+  "tags": {
+    "addr:housenumber": "83",
+    "addr:postcode": "3163",
+    "addr:street": "Koornang Road",
+    "alt_name": "Chemist Warehouse Koornang Road; Chemist Warehouse Koornang Rd; Koornang Road Chemist Warehouse; Koornang Rd Chemist Warehouse; Chemist Warehouse Carnegie; Carnegie Chemist Warehouse",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "check_date:opening_hours": "2026-06-27",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 09:00-21:00",
+    "operator:ref:abn": "52451064942",
+    "phone": "+61 3 9568 3485",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 634766990,
+  "center": {
+    "lat": -37.7446504,
+    "lon": 144.8008745
+  },
+  "tags": {
+    "addr:housenumber": "327",
+    "addr:postcode": "3021",
+    "addr:state": "VIC",
+    "addr:street": "Main Road East",
+    "addr:suburb": "St Albans",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "source": "Vicmap Address"
+  }
+},
+{
+  "type": "way",
+  "id": 640785494,
+  "center": {
+    "lat": -37.7992343,
+    "lon": 144.8978998
+  },
+  "tags": {
+    "addr:housenumber": "190-194",
+    "addr:street": "Barkly Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "building:levels": "2",
+    "check_date": "2024-06-20",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "height": "6",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 647894663,
+  "center": {
+    "lat": -37.8184775,
+    "lon": 145.0012658
+  },
+  "tags": {
+    "addr:flats": "1-2",
+    "addr:housenumber": "335-341",
+    "addr:street": "Bridge Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "commercial",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 670425472,
+  "center": {
+    "lat": -33.8786400,
+    "lon": 151.2138788
+  },
+  "tags": {
+    "addr:housenumber": "175",
+    "addr:street": "Riley Street",
+    "addr:unit": "17",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "check_date": "2026-03-15",
+    "check_date:opening_hours": "2026-03-15",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:30-23:00; Sa-Su 09:00-23:00"
+  }
+},
+{
+  "type": "way",
+  "id": 683625043,
+  "center": {
+    "lat": -27.4902264,
+    "lon": 153.0358975
+  },
+  "tags": {
+    "addr:housenumber": "68",
+    "addr:street": "Ipswich Road",
+    "amenity": "pharmacy",
+    "branch": "Woolloongabba",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "commercial",
+    "building:levels": "2",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 08:00-19:00",
+    "phone": "+61 7 3217 3288",
+    "roof:levels": "0",
+    "website": "https://www.chemistwarehouse.com.au/home.asp",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 687879223,
+  "center": {
+    "lat": -34.1869327,
+    "lon": 142.1586659
+  },
+  "tags": {
+    "addr:housenumber": "118",
+    "addr:postcode": "3500",
+    "addr:state": "VIC",
+    "addr:street": "Langtree Avenue",
+    "addr:suburb": "Mildura",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "contact:website": "www.chemistwarehouse.com.au",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "24/7",
+    "phone": "+61 3 5023 2383",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 709059265,
+  "center": {
+    "lat": -37.8313483,
+    "lon": 145.0588607
+  },
+  "tags": {
+    "addr:housenumber": "551-553",
+    "addr:postcode": "3124",
+    "addr:state": "VIC",
+    "addr:street": "Riversdale Road",
+    "addr:suburb": "Camberwell",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "building:levels": "1",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "operator": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 761749712,
+  "center": {
+    "lat": -34.9235700,
+    "lon": 138.6017251
+  },
+  "tags": {
+    "addr:housenumber": "41",
+    "addr:street": "Gawler Place",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au"
+  }
+},
+{
+  "type": "way",
+  "id": 823463809,
+  "center": {
+    "lat": -36.7630305,
+    "lon": 144.2827813
+  },
+  "tags": {
+    "addr:country": "AU",
+    "addr:housenumber": "138",
+    "addr:postcode": "3550",
+    "addr:state": "VIC",
+    "addr:street": "Mollison Street",
+    "addr:suburb": "Bendigo",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "building:levels": "1",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-20:00",
+    "phone": "+61 3 5443 4988",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 826855505,
+  "center": {
+    "lat": -37.8191305,
+    "lon": 145.0363167
+  },
+  "tags": {
+    "addr:housenumber": "744-746",
+    "addr:street": "Glenferrie Road",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 834134250,
+  "center": {
+    "lat": -38.1491665,
+    "lon": 144.3644520
+  },
+  "tags": {
+    "addr:housenumber": "179-181",
+    "addr:street": "Little Malop Street",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 857930002,
+  "center": {
+    "lat": -37.8681509,
+    "lon": 144.8301330
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-20:00; Sa 08:30-19:00; Su 09:00-17:00; PH 09:00-17:00"
+  }
+},
+{
+  "type": "way",
+  "id": 894413533,
+  "center": {
+    "lat": -26.7948630,
+    "lon": 153.1037525
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "building:levels": "1",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 902346637,
+  "center": {
+    "lat": -27.6164821,
+    "lon": 152.7611953
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Ipswich Central",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-19:00; Sa 09:00-17:00; Su 09:00-16:00",
+    "phone": "+61 7 3281 5484",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 940991903,
+  "center": {
+    "lat": -31.0917307,
+    "lon": 150.9301582
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 966234669,
+  "center": {
+    "lat": -34.9478291,
+    "lon": 138.5784635
+  },
+  "tags": {
+    "addr:housenumber": "62-64",
+    "addr:postcode": "5035",
+    "addr:state": "SA",
+    "addr:street": "Maple Avenue",
+    "addr:suburb": "Forestville",
+    "alt_name": "Chemist Warehouse Ashford",
+    "amenity": "pharmacy",
+    "branch": "Ashford",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "check_date": "2025-11-25",
+    "contact:facebook": "https://www.facebook.com/ChemistWarehouse/",
+    "dispensing": "yes",
+    "email": "ashford@chemistwarehouse.com.au",
+    "fax": "+61 8 8490 9783",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:30-19:00; Th-Fr 08:30-21:00; Sa 08:30-17:00; Su 10:00-17:00",
+    "phone": "+61 8 8426 8435",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 976238749,
+  "center": {
+    "lat": -37.8770966,
+    "lon": 144.6755730
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 980769148,
+  "center": {
+    "lat": -37.8119406,
+    "lon": 145.2353018
+  },
+  "tags": {
+    "addr:housenumber": "293",
+    "addr:postcode": "3134",
+    "addr:state": "VIC",
+    "addr:street": "Maroondah Highway",
+    "addr:suburb": "Ringwood",
+    "amenity": "pharmacy",
+    "branch": "Ringwood Lake",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa,Su 08:00-19:00",
+    "phone": "+61 3 9870 2630",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 988797082,
+  "center": {
+    "lat": -27.5304949,
+    "lon": 153.0734225
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Mt Gravatt",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 07:00-21:00; Sa-Su 08:00-20:00",
+    "phone": "+61 7 3349 3430",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1021343498,
+  "center": {
+    "lat": -31.4299048,
+    "lon": 152.9098178
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "check_date:opening_hours": "2022-08-02",
+    "healthcare": "pharmacy",
+    "indoor": "room",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We,Fr 08:00-18:00; Th 08:00-19:30; Sa,Su 08:00-17:30",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1036694735,
+  "center": {
+    "lat": -37.7278890,
+    "lon": 145.1113747
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "yes",
+    "dispensing": "yes",
+    "email": "lowerplenty@chemistwarehouse.com.au",
+    "fax": "+61 3 9432 8673",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-18:00; Sa 09:00-18:00; Su 10:00-17:00",
+    "phone": "+61 3 9435 2356"
+  }
+},
+{
+  "type": "way",
+  "id": 1042087034,
+  "center": {
+    "lat": -37.7548220,
+    "lon": 145.3614581
+  },
+  "tags": {
+    "addr:housenumber": "447-449",
+    "addr:postcode": "3140",
+    "addr:state": "VIC",
+    "addr:street": "Maroondah Highway",
+    "addr:suburb": "Lilydale",
+    "addr:unit": "6A",
+    "amenity": "pharmacy",
+    "branch": "Lilydale",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 1047520814,
+  "center": {
+    "lat": -27.6637338,
+    "lon": 153.0631617
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "branch": "Browns Plains",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 08:00-20:00",
+    "phone": "+61 7 3809 4151",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1066053297,
+  "center": {
+    "lat": -37.8365866,
+    "lon": 145.1848843
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "check_date": "2026-04-26",
+    "check_date:opening_hours": "2026-04-26",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Su 09:00-20:00; Mo-Sa 08:30-21:00",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 1112472728,
+  "center": {
+    "lat": -38.0656972,
+    "lon": 144.3828855
+  },
+  "tags": {
+    "addr:housenumber": "470-510",
+    "addr:street": "Princes Highway",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "building": "retail",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "email": "corio@chemistwarehouse.com.au",
+    "fax": "+61 3 5274 9046",
+    "healthcare": "pharmacy",
+    "height": "6.024",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-19:00; Sa 08:30-17:00; Su 09:00-17:00",
+    "phone": "+61 3 5274 9022"
+  }
+},
+{
+  "type": "way",
+  "id": 1126661136,
+  "center": {
+    "lat": -41.4296612,
+    "lon": 147.1466049
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "building:colour": "yellow",
+    "building:levels": "1",
+    "building:material": "brick",
+    "healthcare": "pharmacy",
+    "height": "3",
+    "name": "Chemist Warehouse",
+    "smoking": "outside",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1146544073,
+  "center": {
+    "lat": -42.8824693,
+    "lon": 147.3289712
+  },
+  "tags": {
+    "addr:housenumber": "34-36",
+    "addr:postcode": "7000",
+    "addr:state": "TAS",
+    "addr:street": "Elizabeth Street Bus Mall",
+    "addr:suburb": "Hobart",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "building:levels": "2;3",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 07:30-19:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1155155731,
+  "center": {
+    "lat": -27.3336882,
+    "lon": 153.0102822
+  },
+  "tags": {
+    "addr:housenumber": "1915",
+    "addr:postcode": "4036",
+    "addr:state": "QLD",
+    "addr:street": "Gympie Road",
+    "addr:suburb": "Bald Hills",
+    "addr:unit": "3.4",
+    "amenity": "pharmacy",
+    "branch": "Carseldine",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "indoor": "room",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 08:00-18:00",
+    "phone": "+61 7 3261 6322",
+    "room": "amenity",
+    "website": "https://www.chemistwarehouse.com.au/aboutus/store-locator/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1206505692,
+  "center": {
+    "lat": -31.0806789,
+    "lon": 150.9210612
+  },
+  "tags": {
+    "addr:housenumber": "130-138",
+    "addr:postcode": "2340",
+    "addr:state": "NSW",
+    "addr:street": "Peel Street",
+    "addr:suburb": "North Tamworth",
+    "addr:unit": "2-3",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-22:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1225763762,
+  "center": {
+    "lat": -32.0699964,
+    "lon": 115.9996036
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "check_date": "2026-02-28",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse"
+  }
+},
+{
+  "type": "way",
+  "id": 1253597634,
+  "center": {
+    "lat": -37.6505131,
+    "lon": 144.8959081
+  },
+  "tags": {
+    "addr:housenumber": "212-220",
+    "addr:postcode": "3059",
+    "addr:state": "VIC",
+    "addr:street": "Greenvale Drive",
+    "addr:suburb": "Greenvale",
+    "addr:unit": "4",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:30-21:00, Sa 09:00-18:00, Su 09:00-17:30"
+  }
+},
+{
+  "type": "way",
+  "id": 1292711412,
+  "center": {
+    "lat": -35.2467312,
+    "lon": 149.0656508
+  },
+  "tags": {
+    "addr:housenumber": "2",
+    "addr:street": "Ibbott Lane",
+    "addr:unit": "5",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "brand:wikipedia": "en:Chemist Warehouse",
+    "dispensing": "yes",
+    "healthcare": "pharmacy",
+    "layer": "1",
+    "level": "0",
+    "lit": "yes",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 09:00-20:00; Sa,Su 09:00-18:00",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1343272642,
+  "center": {
+    "lat": -37.7574037,
+    "lon": 145.3138741
+  },
+  "tags": {
+    "addr:housenumber": "239-241",
+    "addr:postcode": "3116",
+    "addr:state": "VIC",
+    "addr:street": "Maroondah Highway",
+    "addr:suburb": "Chirnside Park",
+    "amenity": "pharmacy",
+    "branch": "Chirnside Park",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "retail",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "full_name": "Chemist Warehouse Chirnside Park",
+    "healthcare": "pharmacy",
+    "indoor": "room",
+    "level": "0",
+    "name": "Chemist Warehouse",
+    "room": "shop"
+  }
+},
+{
+  "type": "way",
+  "id": 1354763631,
+  "center": {
+    "lat": -37.8880892,
+    "lon": 145.2900115
+  },
+  "tags": {
+    "addr:housenumber": "1015",
+    "addr:postcode": "3156",
+    "addr:state": "VIC",
+    "addr:street": "Burwood Highway",
+    "addr:suburb": "Ferntree Gully",
+    "addr:unit": "5",
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Su 08:00-21:00"
+  }
+},
+{
+  "type": "way",
+  "id": 1422442167,
+  "center": {
+    "lat": -34.8516545,
+    "lon": 138.6180113
+  },
+  "tags": {
+    "addr:housenumber": "329",
+    "addr:postcode": "5085",
+    "addr:state": "SA",
+    "addr:street": "Hampstead Road",
+    "addr:suburb": "Northfield",
+    "alt_name": "Chemist Warehouse Northfield",
+    "amenity": "pharmacy",
+    "branch": "Northfield",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "check_date": "2026-05-13",
+    "contact:facebook": "https://www.facebook.com/ChemistWarehouse/",
+    "email": "northfield@chemistwarehouse.com.au",
+    "fax": "+61 8 8262 3113",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-We 08:30-20:00; Th 08:30-21:00; Fr 08:30-20:00; Sa 08:30-18:00; Su 10:00-18:00",
+    "phone": "+61 8 8262 9733",
+    "website": "https://www.chemistwarehouse.com.au/",
+    "wheelchair": "yes"
+  }
+},
+{
+  "type": "way",
+  "id": 1499294860,
+  "center": {
+    "lat": -35.1283481,
+    "lon": 139.2522358
+  },
+  "tags": {
+    "amenity": "pharmacy",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+},
+{
+  "type": "way",
+  "id": 1503265526,
+  "center": {
+    "lat": -37.7991449,
+    "lon": 145.2835966
+  },
+  "tags": {
+    "addr:postcode": "3136",
+    "addr:state": "VIC",
+    "addr:street": "Mount Dandenong Road",
+    "addr:suburb": "Croydon",
+    "amenity": "pharmacy",
+    "branch": "Croydon",
+    "brand": "Chemist Warehouse",
+    "brand:wikidata": "Q48782120",
+    "building": "yes",
+    "dispensing": "yes",
+    "drive_through": "no",
+    "healthcare": "pharmacy",
+    "name": "Chemist Warehouse",
+    "opening_hours": "Mo-Fr 08:00-21:00; Sa-Su 09:00-19:00",
+    "phone": "+61 3 8527 1779",
+    "website": "https://www.chemistwarehouse.com.au/"
+  }
+}
+
+  ]
+}
