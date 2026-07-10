@@ -7,6 +7,7 @@ select = ["E", "F", "I", "S"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/**/*.py" = ["S101", "S105", "S106"]
+"scripts/validate_snowflake_foundation.py" = ["S608"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
