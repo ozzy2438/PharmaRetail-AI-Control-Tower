@@ -2,6 +2,15 @@
 
 The matrix reflects direct role privileges. Validation sessions explicitly run `USE SECONDARY ROLES NONE` so broader roles assigned to an administrator do not mask privilege leakage.
 
+## Identities
+
+| Identity | Type | Authentication | Roles granted | Permitted deployment mode |
+|---|---|---|---|---|
+| `OMRUM` | Human | Password | `ACCOUNTADMIN`, `PHARMARETAIL_ADMIN` | `bootstrap` only (manual, approved change window) |
+| `SVC_PHARMARETAIL_CICD` | `TYPE = SERVICE` | RSA key-pair | `PHARMARETAIL_ADMIN` | `bau` only (automated) |
+
+`TYPE = SERVICE` users cannot authenticate with a password, complete MFA, or log in through the Snowflake UI; the key-pair is the only credential. `SVC_PHARMARETAIL_CICD` holds no `ACCOUNTADMIN` privilege and cannot run `01_roles.sql`, `02_warehouse.sql`, `03_database_schemas.sql`, `05_resource_monitor.sql` or `07_service_identity.sql`, all of which require `ACCOUNTADMIN` and stay on the human bootstrap path. The residual risk of `OMRUM`'s password-based bootstrap credential is accepted and documented in [ADR-002](adr/ADR-002-service-identity.md); it is not eliminated by this change.
+
 | Role | Warehouse | Database and schemas | Create | Read | Write | Explicitly denied/not granted |
 |---|---|---|---|---|---|---|
 | `PHARMARETAIL_ADMIN` | Owns and manages `WH_PHARMARETAIL` | Owns the database and all six managed-access schemas | All project objects | All project objects | All project objects | No privileges outside the dedicated project boundary are introduced |

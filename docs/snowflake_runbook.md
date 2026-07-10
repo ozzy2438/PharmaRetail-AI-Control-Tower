@@ -20,10 +20,10 @@ The Snowflake Deploy workflow never runs on `pull_request`. A merge that changes
 
 Deployment modes:
 
-- `bau`: connects with `PHARMARETAIL_ADMIN` and executes only `04_grants.sql` and `06_validation.sql`.
-- `bootstrap`: manually executes all numeric foundation scripts. It requires an approved change window and `ACCOUNTADMIN`; it is not a daily operating mode.
+- `bau`: connects as the `SVC_PHARMARETAIL_CICD` service identity (key-pair auth, `PHARMARETAIL_ADMIN` role) and executes only `04_grants.sql` and `06_validation.sql`.
+- `bootstrap`: connects as the human `OMRUM` identity (password auth) and manually executes all numeric foundation scripts, including `07_service_identity.sql`. It requires an approved change window and `ACCOUNTADMIN`; it is not a daily operating mode.
 
-GitHub Environment variables provide account, user, role, warehouse and database identifiers. `SNOWFLAKE_PASSWORD` exists only as an Environment secret. Logs mask the password before validation or deployment begins.
+GitHub Environment variables provide account, role, warehouse and database identifiers, plus a per-mode user (`SNOWFLAKE_SERVICE_USER` for `bau`, `SNOWFLAKE_USER` for `bootstrap`). `SNOWFLAKE_SERVICE_PRIVATE_KEY`/`SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE` and `SNOWFLAKE_PASSWORD` exist only as Environment secrets. Logs mask the private key, passphrase and password before validation or deployment begins. See [Identities](snowflake_setup.md#identities) for which credential backs each mode.
 
 ## Validation
 
@@ -63,11 +63,24 @@ On notification:
 
 ## Credential rotation
 
+### Service identity (`SVC_PHARMARETAIL_CICD`, key-pair, routine)
+
+1. Generate a new RSA key pair locally; never generate it inside a shared or logged shell session.
+2. Set the new public key with `ALTER USER SVC_PHARMARETAIL_CICD SET RSA_PUBLIC_KEY = '...'` (or `RSA_PUBLIC_KEY_2` for a zero-downtime rollover, then remove the old key after cutover) during an approved `bootstrap` change window.
+3. Replace `SNOWFLAKE_SERVICE_PRIVATE_KEY` and `SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE` independently in development, staging and production GitHub Environments.
+4. Do not place the new private key or passphrase in an issue, PR, Actions input, shell command argument or screenshot.
+5. Run connection configuration validation, then a tagged `bau` connection test.
+6. Unset the retired public key and attach value-free evidence to the issue.
+
+### Human bootstrap identity (`OMRUM`, password, exceptional)
+
 1. Rotate the Snowflake credential through the approved identity channel.
 2. Replace `SNOWFLAKE_PASSWORD` independently in development, staging and production GitHub Environments.
 3. Do not place the new value in an issue, PR, Actions input, shell command argument or screenshot.
-4. Run connection configuration validation, then a tagged connection test.
+4. Run connection configuration validation, then a tagged `bootstrap` connection test.
 5. Revoke or expire the old credential and attach value-free evidence to the issue.
+
+This path is reserved for the manual, ACCOUNTADMIN-gated `bootstrap` mode; routine BAU deployments no longer depend on it (see [ADR-002](adr/ADR-002-service-identity.md)).
 
 ## Rollback
 
