@@ -1,0 +1,63 @@
+name: Snowflake Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "infra/snowflake/**"
+      - "scripts/deploy_snowflake.py"
+      - "scripts/validate_snowflake_config.py"
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: GitHub Environment to deploy
+        required: true
+        type: choice
+        options: [development, staging, production]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: snowflake-deploy-${{ github.event_name == 'push' && 'development' || inputs.target_environment }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy foundation
+    runs-on: ubuntu-latest
+    environment: ${{ github.event_name == 'push' && 'development' || inputs.target_environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install "snowflake-connector-python>=3.12,<5"
+      - name: Validate protected environment configuration
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PASSWORD"
+          python -m scripts.validate_snowflake_config --no-connect
+      - name: Deploy ordered SQL scripts
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PASSWORD"
+          python -m scripts.deploy_snowflake
+      - name: Failure guidance
+        if: failure()
+        run: |
+          echo "Deployment failed. Do not run destructive rollback automatically."
+          echo "Follow docs/snowflake_runbook.md and infra/snowflake/rollback.sql after impact review."
