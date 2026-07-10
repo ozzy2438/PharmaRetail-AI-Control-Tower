@@ -14,6 +14,12 @@ on:
         required: true
         type: choice
         options: [development, staging, production]
+      deployment_mode:
+        description: Bootstrap is manual and ACCOUNTADMIN-only; BAU is least-privilege
+        required: true
+        default: bau
+        type: choice
+        options: [bau, bootstrap]
 
 permissions:
   contents: read
@@ -47,6 +53,7 @@ jobs:
           python -m scripts.validate_snowflake_config --no-connect
       - name: Deploy ordered SQL scripts
         env:
+          DEPLOYMENT_MODE: ${{ github.event_name == 'push' && 'bau' || inputs.deployment_mode }}
           SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
@@ -55,7 +62,13 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
         run: |
           echo "::add-mask::$SNOWFLAKE_PASSWORD"
-          python -m scripts.deploy_snowflake
+          if [ "$DEPLOYMENT_MODE" = "bootstrap" ]; then
+            python -m scripts.deploy_snowflake
+          else
+            python -m scripts.deploy_snowflake \
+              --script infra/snowflake/04_grants.sql \
+              --script infra/snowflake/06_validation.sql
+          fi
       - name: Failure guidance
         if: failure()
         run: |
