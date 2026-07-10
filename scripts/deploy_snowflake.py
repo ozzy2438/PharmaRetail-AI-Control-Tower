@@ -26,16 +26,41 @@ def validate_scripts(scripts: list[Path]) -> None:
             raise ValueError(f"SQL script is empty: {path}")
 
 
+def load_private_key_der(pem_text: str, passphrase: str | None) -> bytes:
+    """Convert a PEM private key (optionally encrypted) to unencrypted PKCS8 DER bytes."""
+    from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric import rsa
+
+    private_key = serialization.load_pem_private_key(
+        pem_text.encode("utf-8"),
+        password=passphrase.encode("utf-8") if passphrase else None,
+    )
+    if not isinstance(private_key, rsa.RSAPrivateKey):
+        raise ValueError("SNOWFLAKE_PRIVATE_KEY must be an RSA private key")
+    return private_key.private_bytes(
+        encoding=serialization.Encoding.DER,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption(),
+    )
+
+
 def execute_scripts(config: SnowflakeConfig, scripts: list[Path]) -> None:
     import snowflake.connector
 
-    connection = snowflake.connector.connect(
-        account=config.account,
-        user=config.user,
-        password=config.password,
-        role=config.role,
-        session_parameters={"QUERY_TAG": "PHARMARETAIL_FOUNDATION_DEPLOY"},
-    )
+    connect_kwargs: dict[str, object] = {
+        "account": config.account,
+        "user": config.user,
+        "role": config.role,
+        "session_parameters": {"QUERY_TAG": "PHARMARETAIL_FOUNDATION_DEPLOY"},
+    }
+    if config.auth_method == "key_pair":
+        connect_kwargs["private_key"] = load_private_key_der(
+            config.private_key_pem, config.private_key_passphrase
+        )
+    else:
+        connect_kwargs["password"] = config.password
+
+    connection = snowflake.connector.connect(**connect_kwargs)
     try:
         for path in scripts:
             print(f"Executing {path}")

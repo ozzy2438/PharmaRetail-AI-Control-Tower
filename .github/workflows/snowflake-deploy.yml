@@ -39,8 +39,29 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - run: pip install "snowflake-connector-python>=3.12,<5"
-      - name: Validate protected environment configuration
+      - run: pip install "snowflake-connector-python>=3.12,<5" "cryptography>=42,<47"
+      - name: Validate protected environment configuration (BAU service identity)
+        if: github.event_name == 'push' || inputs.deployment_mode == 'bau'
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_SERVICE_USER }}
+          # Stored base64-encoded because GitHub Actions log masking is not
+          # reliable for multi-line secrets; only this single-line form is
+          # ever safe to pass through `::add-mask::`. The decoded PEM is
+          # never echoed.
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          python -m scripts.validate_snowflake_config --no-connect
+      - name: Validate protected environment configuration (bootstrap human identity)
+        if: github.event_name == 'workflow_dispatch' && inputs.deployment_mode == 'bootstrap'
         env:
           SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
@@ -51,9 +72,28 @@ jobs:
         run: |
           echo "::add-mask::$SNOWFLAKE_PASSWORD"
           python -m scripts.validate_snowflake_config --no-connect
-      - name: Deploy ordered SQL scripts
+      - name: Deploy ordered SQL scripts (BAU service identity)
+        if: github.event_name == 'push' || inputs.deployment_mode == 'bau'
         env:
-          DEPLOYMENT_MODE: ${{ github.event_name == 'push' && 'bau' || inputs.deployment_mode }}
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_SERVICE_USER }}
+          # See the validation step above: base64-encoded to keep masking safe.
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          python -m scripts.deploy_snowflake \
+            --script infra/snowflake/04_grants.sql \
+            --script infra/snowflake/06_validation.sql
+      - name: Deploy ordered SQL scripts (bootstrap human identity)
+        if: github.event_name == 'workflow_dispatch' && inputs.deployment_mode == 'bootstrap'
+        env:
           SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
@@ -62,13 +102,7 @@ jobs:
           SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
         run: |
           echo "::add-mask::$SNOWFLAKE_PASSWORD"
-          if [ "$DEPLOYMENT_MODE" = "bootstrap" ]; then
-            python -m scripts.deploy_snowflake
-          else
-            python -m scripts.deploy_snowflake \
-              --script infra/snowflake/04_grants.sql \
-              --script infra/snowflake/06_validation.sql
-          fi
+          python -m scripts.deploy_snowflake
       - name: Failure guidance
         if: failure()
         run: |

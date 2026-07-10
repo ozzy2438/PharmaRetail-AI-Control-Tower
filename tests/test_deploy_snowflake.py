@@ -3,8 +3,15 @@ from __future__ import annotations
 from pathlib import Path
 
 import pytest
+from cryptography.hazmat.primitives import serialization
+from cryptography.hazmat.primitives.asymmetric import ed25519, rsa
 
-from scripts.deploy_snowflake import discover_scripts, execute_scripts, validate_scripts
+from scripts.deploy_snowflake import (
+    discover_scripts,
+    execute_scripts,
+    load_private_key_der,
+    validate_scripts,
+)
 from scripts.validate_snowflake_config import SnowflakeConfig
 
 
@@ -61,3 +68,73 @@ def test_execute_scripts_uses_string_api(tmp_path: Path, monkeypatch: pytest.Mon
     )
     execute_scripts(config, [script])
     assert executed == ["SELECT 1;"]
+
+
+def _generate_test_private_key_pem(passphrase: str | None) -> str:
+    key = rsa.generate_private_key(public_exponent=65537, key_size=2048)
+    encryption: serialization.KeySerializationEncryption
+    if passphrase:
+        encryption = serialization.BestAvailableEncryption(passphrase.encode("utf-8"))
+    else:
+        encryption = serialization.NoEncryption()
+    pem = key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=encryption,
+    )
+    return pem.decode("utf-8")
+
+
+def test_load_private_key_der_supports_encrypted_pem() -> None:
+    pem_text = _generate_test_private_key_pem(passphrase="correct-horse-battery-staple")
+    der = load_private_key_der(pem_text, "correct-horse-battery-staple")
+    assert isinstance(der, bytes)
+    assert len(der) > 0
+
+
+def test_load_private_key_der_rejects_non_rsa_key() -> None:
+    key = ed25519.Ed25519PrivateKey.generate()
+    pem_text = key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption(),
+    ).decode("utf-8")
+    with pytest.raises(ValueError, match="RSA"):
+        load_private_key_der(pem_text, None)
+
+
+def test_execute_scripts_uses_private_key_for_key_pair_auth(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    script = tmp_path / "01_test.sql"
+    script.write_text("SELECT 1;", encoding="utf-8")
+    captured_kwargs: dict[str, object] = {}
+
+    class FakeCursor:
+        def close(self) -> None:
+            return None
+
+    class FakeConnection:
+        def execute_string(self, sql: str) -> list[FakeCursor]:
+            return [FakeCursor()]
+
+        def close(self) -> None:
+            return None
+
+    def fake_connect(**kwargs: object) -> FakeConnection:
+        captured_kwargs.update(kwargs)
+        return FakeConnection()
+
+    monkeypatch.setattr("snowflake.connector.connect", fake_connect)
+    config = SnowflakeConfig(
+        account="ORG-ACCOUNT",
+        user="SVC_PHARMARETAIL_CICD",
+        role="PHARMARETAIL_ADMIN",
+        warehouse="WH_PHARMARETAIL",
+        database="PHARMARETAIL_AI_CONTROL_TOWER",
+        private_key_pem=_generate_test_private_key_pem(passphrase=None),
+    )
+    execute_scripts(config, [script])
+    assert "private_key" in captured_kwargs
+    assert isinstance(captured_kwargs["private_key"], bytes)
+    assert "password" not in captured_kwargs
