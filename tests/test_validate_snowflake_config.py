@@ -67,6 +67,17 @@ def test_missing_auth_method_is_reported_without_values(monkeypatch: pytest.Monk
     assert "not-a-real-secret" not in str(exc_info.value)
 
 
+def test_both_auth_methods_set_is_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
+    _clear_auth_vars(monkeypatch)
+    for name, value in VALID_ENV.items():
+        monkeypatch.setenv(name, value)
+    monkeypatch.setenv("SNOWFLAKE_PRIVATE_KEY", "not-a-real-private-key")
+    with pytest.raises(ValueError, match="Exactly one") as exc_info:
+        SnowflakeConfig.from_environment()
+    assert "not-a-real-secret" not in str(exc_info.value)
+    assert "not-a-real-private-key" not in str(exc_info.value)
+
+
 def test_account_url_is_rejected(monkeypatch: pytest.MonkeyPatch) -> None:
     _clear_auth_vars(monkeypatch)
     for name, value in VALID_ENV.items():

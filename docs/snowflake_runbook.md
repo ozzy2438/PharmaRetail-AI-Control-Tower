@@ -67,7 +67,7 @@ On notification:
 
 1. Generate a new RSA key pair locally; never generate it inside a shared or logged shell session.
 2. Set the new public key with `ALTER USER SVC_PHARMARETAIL_CICD SET RSA_PUBLIC_KEY = '...'` (or `RSA_PUBLIC_KEY_2` for a zero-downtime rollover, then remove the old key after cutover) during an approved `bootstrap` change window.
-3. Replace `SNOWFLAKE_SERVICE_PRIVATE_KEY` and `SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE` independently in development, staging and production GitHub Environments.
+3. Replace `SNOWFLAKE_SERVICE_PRIVATE_KEY` (the PEM, **base64-encoded** as a single line — see [setup](snowflake_setup.md#connection-method)) and `SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE` independently in development, staging and production GitHub Environments.
 4. Do not place the new private key or passphrase in an issue, PR, Actions input, shell command argument or screenshot.
 5. Run connection configuration validation, then a tagged `bau` connection test.
 6. Unset the retired public key and attach value-free evidence to the issue.

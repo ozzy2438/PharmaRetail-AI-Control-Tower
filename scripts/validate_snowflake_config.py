@@ -40,11 +40,15 @@ class SnowflakeConfig:
         missing = [name for name in REQUIRED_VARIABLES if not os.getenv(name, "").strip()]
         if missing:
             raise ValueError(f"Missing required environment variables: {', '.join(missing)}")
-        password = os.getenv("SNOWFLAKE_PASSWORD") or None
-        private_key_pem = os.getenv("SNOWFLAKE_PRIVATE_KEY") or None
+        password = os.getenv("SNOWFLAKE_PASSWORD", "").strip() or None
+        private_key_pem = os.getenv("SNOWFLAKE_PRIVATE_KEY", "").strip() or None
         if not password and not private_key_pem:
             raise ValueError(
                 f"Missing required environment variables: one of {', '.join(AUTH_VARIABLES)}"
+            )
+        if password and private_key_pem:
+            raise ValueError(
+                f"Exactly one of {', '.join(AUTH_VARIABLES)} must be set, not both"
             )
         return cls(
             account=os.environ["SNOWFLAKE_ACCOUNT"].strip(),
@@ -54,7 +58,8 @@ class SnowflakeConfig:
             database=os.environ["SNOWFLAKE_DATABASE"].strip(),
             password=password,
             private_key_pem=private_key_pem,
-            private_key_passphrase=os.getenv("SNOWFLAKE_PRIVATE_KEY_PASSPHRASE") or None,
+            private_key_passphrase=os.getenv("SNOWFLAKE_PRIVATE_KEY_PASSPHRASE", "").strip()
+            or None,
         )
 
     def validate(self) -> None:

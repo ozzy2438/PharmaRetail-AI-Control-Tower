@@ -29,11 +29,14 @@ def validate_scripts(scripts: list[Path]) -> None:
 def load_private_key_der(pem_text: str, passphrase: str | None) -> bytes:
     """Convert a PEM private key (optionally encrypted) to unencrypted PKCS8 DER bytes."""
     from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric import rsa
 
     private_key = serialization.load_pem_private_key(
         pem_text.encode("utf-8"),
         password=passphrase.encode("utf-8") if passphrase else None,
     )
+    if not isinstance(private_key, rsa.RSAPrivateKey):
+        raise ValueError("SNOWFLAKE_PRIVATE_KEY must be an RSA private key")
     return private_key.private_bytes(
         encoding=serialization.Encoding.DER,
         format=serialization.PrivateFormat.PKCS8,

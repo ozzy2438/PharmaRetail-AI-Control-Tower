@@ -12,7 +12,7 @@ Foundation automation uses the Python Snowflake Connector. All connection values
 
 Exactly one authentication path must also be provided:
 
-- **Key-pair (BAU/service identity)**: `SNOWFLAKE_PRIVATE_KEY` (PEM text, optionally encrypted) and, if encrypted, `SNOWFLAKE_PRIVATE_KEY_PASSPHRASE`. This is the only path used by the `SVC_PHARMARETAIL_CICD` service identity; see [Identities](#identities) below.
+- **Key-pair (BAU/service identity)**: `SNOWFLAKE_PRIVATE_KEY` (PEM text, optionally encrypted) and, if encrypted, `SNOWFLAKE_PRIVATE_KEY_PASSPHRASE`. This is the only path used by the `SVC_PHARMARETAIL_CICD` service identity; see [Identities](#identities) below. In CI, the GitHub Environment secret `SNOWFLAKE_SERVICE_PRIVATE_KEY` stores the PEM **base64-encoded** (a single line) because GitHub Actions log masking is not reliable for multi-line secrets; the workflow decodes it into `SNOWFLAKE_PRIVATE_KEY` without ever echoing the decoded value.
 - **Password (bootstrap human identity only)**: `SNOWFLAKE_PASSWORD`. Reserved for the manual, ACCOUNTADMIN-only bootstrap path run by a human operator.
 
 Secrets must come from a local ignored `.env` assignment loaded by a safe parser, or from a protected GitHub Environment secret. Never execute `source .env`, print environment contents, or pass a password/private key as a command-line argument. The bootstrap connection omits warehouse and database parameters until those objects exist.

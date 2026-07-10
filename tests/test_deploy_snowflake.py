@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import rsa
+from cryptography.hazmat.primitives.asymmetric import ed25519, rsa
 
 from scripts.deploy_snowflake import (
     discover_scripts,
@@ -90,6 +90,17 @@ def test_load_private_key_der_supports_encrypted_pem() -> None:
     der = load_private_key_der(pem_text, "correct-horse-battery-staple")
     assert isinstance(der, bytes)
     assert len(der) > 0
+
+
+def test_load_private_key_der_rejects_non_rsa_key() -> None:
+    key = ed25519.Ed25519PrivateKey.generate()
+    pem_text = key.private_bytes(
+        encoding=serialization.Encoding.PEM,
+        format=serialization.PrivateFormat.PKCS8,
+        encryption_algorithm=serialization.NoEncryption(),
+    ).decode("utf-8")
+    with pytest.raises(ValueError, match="RSA"):
+        load_private_key_der(pem_text, None)
 
 
 def test_execute_scripts_uses_private_key_for_key_pair_auth(
