@@ -18,6 +18,16 @@ def test_scripts_are_discovered_in_order(tmp_path: Path) -> None:
     ]
 
 
+def test_explicit_script_order_is_preserved(tmp_path: Path) -> None:
+    second = tmp_path / "06_validation.sql"
+    first = tmp_path / "04_grants.sql"
+    second.write_text("SELECT 2;", encoding="utf-8")
+    first.write_text("SELECT 1;", encoding="utf-8")
+    scripts = [first, second]
+    validate_scripts(scripts)
+    assert scripts == [first, second]
+
+
 def test_empty_script_set_is_rejected() -> None:
     with pytest.raises(ValueError, match="No ordered"):
         validate_scripts([])

@@ -50,12 +50,19 @@ def execute_scripts(config: SnowflakeConfig, scripts: list[Path]) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--sql-directory", type=Path, default=DEFAULT_SQL_DIRECTORY)
+    parser.add_argument(
+        "--script",
+        action="append",
+        type=Path,
+        dest="scripts",
+        help="Execute only this SQL script; may be supplied more than once.",
+    )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
     config = SnowflakeConfig.from_environment()
     config.validate()
-    scripts = discover_scripts(args.sql_directory)
+    scripts = args.scripts if args.scripts else discover_scripts(args.sql_directory)
     validate_scripts(scripts)
     print(f"Validated {len(scripts)} ordered Snowflake SQL scripts.")
     if args.dry_run:
