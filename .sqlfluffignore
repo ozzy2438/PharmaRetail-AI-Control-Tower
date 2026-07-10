@@ -1,0 +1,3 @@
+# SQLFluff 4.2 does not parse Snowflake's official RESOURCE MONITOR grammar.
+# This file is contract-tested locally and syntax-validated in the real account.
+infra/snowflake/05_resource_monitor.sql
