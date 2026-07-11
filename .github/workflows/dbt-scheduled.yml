@@ -1,0 +1,31 @@
+name: dbt Scheduled
+
+# Targets development, not production: the "production" GitHub Environment
+# has a required-reviewer protection rule (Phase 1), which applies to every
+# job that references it regardless of trigger type — a cron-triggered run
+# against "production" would just queue for manual approval every day
+# instead of running unattended. Changing that protection rule is a
+# deliberate governance decision for a human to make, not something this
+# workflow should do silently. Re-target "production" here once that
+# decision is made.
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dbt-scheduled
+  cancel-in-progress: false
+
+jobs:
+  dbt:
+    name: Scheduled job
+    uses: ./.github/workflows/dbt-run.yml
+    with:
+      target_environment: development
+      query_tag: PHARMARETAIL_DBT_SCHEDULED
+      run_label: scheduled
+    secrets: inherit

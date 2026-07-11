@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: dim_date
+    description: Generated calendar dimension, 2009-01-01 through 2030-12-31.
+    columns:
+      - name: date_day
+        tests: [not_null, unique]
+      - name: date_key
+        tests: [not_null, unique]
+      - name: is_weekend
+        tests: [not_null]
+
+  - name: dim_store
+    description: >
+      Store dimension from the synthetic Australian seed (contracts/dim_store.yml).
+      Not joined to the UCI-based sales facts in this phase.
+    columns:
+      - name: store_id
+        tests: [not_null, unique]
+      - name: state
+        tests:
+          - accepted_values:
+              values: ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+
+  - name: dim_product
+    description: >
+      Product dimension from the synthetic catalog (contracts/dim_product.yml).
+      Not joined to the UCI-based sales facts in this phase.
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+      - name: category
+        tests:
+          - accepted_values:
+              values:
+                [
+                  "vitamins",
+                  "skincare",
+                  "oral care",
+                  "baby care",
+                  "pain relief",
+                  "cold & flu",
+                  "personal care",
+                ]
+
+  - name: fct_sales_daily
+    description: Daily UCI sales fact at (date_day, country) grain.
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_day
+      - name: country
+        tests: [not_null]
+      - name: total_revenue
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+
+  - name: fct_returns
+    description: Daily UCI returns fact at (date_day, country) grain.
+    columns:
+      - name: date_day
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_day
+      - name: country
+        tests: [not_null]

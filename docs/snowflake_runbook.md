@@ -106,28 +106,35 @@ Rollback is manual because automatic destructive recovery could remove governed 
 - Review role/future-grant drift before approving security changes.
 - Run smoke tests after access-control or managed-schema changes.
 
-## dbt Cloud Jobs preparation
+## dbt jobs
 
-No dbt project or model is created in this foundation phase. The planned integration is:
+The dbt project (`dbt/pharma_retail/`) runs on **dbt-core via GitHub Actions**, not dbt Cloud SaaS. Creating a dbt Cloud account requires a human to sign up, connect this repository and generate an API token — none of that can be done without a person at the keyboard. Everything else the original plan called for is delivered through dbt-core instead, which produces the identical dbt project (100% portable to real dbt Cloud later, since dbt Cloud runs the same project) with equivalent PR/deployment/scheduled automation:
 
-| Environment | Snowflake role | dbt target pattern | Job purpose |
-|---|---|---|---|
-| Development | `PHARMARETAIL_DBT` | Developer-isolated schema suffixes | Interactive development only |
-| Staging | `PHARMARETAIL_DBT` | Controlled staging target | Integration and deployment rehearsal |
-| Production | `PHARMARETAIL_DBT` | STAGING/INTERMEDIATE/MARTS | Scheduled governed transformations |
+| Job | Workflow | Trigger | GitHub Environment | Purpose |
+|---|---|---|---|---|
+| PR job | `dbt-ci.yml` | `pull_request` touching `dbt/**` | `development` | Full `dbt build` (models + tests) on the branch; posts results as a PR comment |
+| Deployment job | `dbt-deploy.yml` | `push` to `main` touching `dbt/**`; `workflow_dispatch` for staging/production | `development` (push) or the chosen environment (dispatch) | Confirms `main` still builds cleanly after merge; manual promotion to staging/production |
+| Scheduled job | `dbt-scheduled.yml` | daily cron (03:00 UTC) | `development` | Unattended periodic rebuild so MARTS stay fresh even without code changes |
 
-Planned jobs:
+All three call a shared reusable workflow (`dbt-run.yml`) so the actual `dbt build`/`dbt test`/`dbt docs generate`/artifact-upload logic exists in one place. Every job authenticates as `SVC_PHARMARETAIL_DBT` (key-pair auth, `PHARMARETAIL_DBT` role only — see ADR-003); none of them ever use `OMRUM` or `SVC_PHARMARETAIL_CICD`.
 
-- PR job: defer/state-aware build of changed models plus tests; no production mutation.
-- Deployment job: merge-triggered staging build, then approved production promotion.
-- Scheduled production job: freshness-sensitive source ingestion checks followed by build/test and artifacts.
+The scheduled job targets `development`, not `production`: the `production` GitHub Environment has a required-reviewer protection rule (established in the Snowflake foundation phase) that applies to every job referencing it regardless of trigger type, so a cron-triggered run against `production` would queue for manual approval every day instead of running unattended. Re-pointing it at `production` is a deliberate governance decision for a human to make, not something automation should do silently.
 
-GitHub Actions will call the dbt Cloud Administrative API using a `DBT_CLOUD_API_TOKEN` stored only in a protected GitHub Environment secret. Account ID, job ID and environment ID will be non-secret Environment variables. The trigger action will record only dbt Cloud run IDs and URLs, poll completion, and fail the GitHub job on a failed/cancelled dbt run. Token values and API authorization headers must never be logged.
+`PHARMARETAIL_DBT` has no `CREATE SCHEMA` grant, so there is no isolated per-environment schema today: PR, deployment and scheduled runs all target the same physical `STAGING`/`INTERMEDIATE`/`MARTS` schemas (see `dbt/pharma_retail/README.md` and ADR-003). This is safe today because every model is a deterministic transformation of `RAW`, with no manually-curated state and no downstream consumers yet.
 
-Future automation insertion points:
+Results and artifacts:
 
-- add a PR workflow job after the dbt project exists;
-- add staging and production deployment jobs behind existing GitHub Environments;
-- add scheduled production invocation with concurrency control;
-- add dbt artifacts and test evidence to PR comments;
-- keep Snowflake grants and dbt environment credentials independently reviewable.
+- `dbt_run_summary.md` (rendered from `run_results.json` by `scripts/summarize_dbt_results.py`) is posted as a PR comment on PR-triggered runs, and always written to the job's step summary regardless of trigger.
+- `manifest.json`, `catalog.json`, `run_results.json` and the generated docs `index.html` are uploaded as a build artifact (`dbt-artifacts-<pr|deploy|scheduled>`) on every run, success or failure.
+
+## Manual dbt Cloud setup (if wanted later)
+
+Real dbt Cloud Jobs (its own scheduler and UI, distinct from the GitHub Actions automation above) require a human to:
+
+1. Sign up at `https://cloud.getdbt.com` and create a project pointing at this repository.
+2. Add a Snowflake connection using `SVC_PHARMARETAIL_DBT` (key-pair auth) — dbt Cloud needs the private key uploaded through its own UI; it cannot read GitHub Environment secrets.
+3. Generate a Service Token (Account Settings → Service Tokens) with Job Admin access.
+4. Add `DBT_CLOUD_API_TOKEN` as a GitHub Environment secret, and the account ID / job ID / environment ID as non-secret Environment variables, if GitHub Actions should trigger dbt Cloud jobs remotely instead of running dbt-core directly.
+5. Configure PR, deployment and scheduled jobs in the dbt Cloud UI, mirroring the three jobs already running via GitHub Actions above.
+
+None of this is required for the dbt project to work today — it already builds, tests, documents and runs on a schedule without it.

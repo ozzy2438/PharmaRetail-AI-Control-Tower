@@ -1,0 +1,97 @@
+name: dbt Run (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      target_environment:
+        description: GitHub Environment supplying Snowflake connection vars/secrets
+        required: true
+        type: string
+      query_tag:
+        description: Snowflake session query tag for this run
+        required: true
+        type: string
+      run_label:
+        description: Short label used in artifact/comment naming (pr, deploy, scheduled)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  run:
+    name: dbt build (${{ inputs.run_label }})
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target_environment }}
+    defaults:
+      run:
+        working-directory: dbt/pharma_retail
+    env:
+      DBT_PROFILES_DIR: ${{ github.workspace }}/dbt/pharma_retail
+      DBT_QUERY_TAG: ${{ inputs.query_tag }}
+      SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+      SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+      SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+      SNOWFLAKE_DBT_USER: ${{ vars.SNOWFLAKE_DBT_USER }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Install dbt and summary tooling
+        run: |
+          pip install -r requirements.txt
+          pip install -r ../../requirements-dev.txt
+      - name: dbt deps, build and docs
+        env:
+          # Base64-encoded: GitHub Actions log masking is not reliable for
+          # multi-line secrets (see ADR-002). Decoded only into a local shell
+          # variable within THIS step (never written to GITHUB_ENV or a step
+          # env: block, which GitHub dumps into every subsequent step's log
+          # regardless of masking on the original secret) — matching the
+          # pattern already used in snowflake-deploy.yml/snowflake-data-load.yml.
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_DBT_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_DBT_PRIVATE_KEY_PASSPHRASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          dbt deps
+          set +e
+          dbt build
+          build_exit_code=$?
+          set -e
+          dbt docs generate || true
+          exit "$build_exit_code"
+      - name: Summarize dbt results
+        if: always()
+        working-directory: .
+        run: |
+          python -m scripts.summarize_dbt_results \
+            --run-results dbt/pharma_retail/target/run_results.json \
+            --output dbt_run_summary.md
+          cat dbt_run_summary.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload dbt artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dbt-artifacts-${{ inputs.run_label }}
+          # The whole target/ dir, not a hand-picked file list: dbt-core 1.7
+          # generates no separate assets/ folder (index.html, manifest.json
+          # and catalog.json alongside each other is everything it needs
+          # today), but hand-picking files would silently drop anything a
+          # future dbt version adds.
+          path: |
+            dbt/pharma_retail/target/
+            dbt_run_summary.md
+          if-no-files-found: warn
+      - name: Comment on pull request
+        if: always() && github.event_name == 'pull_request'
+        working-directory: .
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh pr comment "${{ github.event.pull_request.number }}" --body-file dbt_run_summary.md

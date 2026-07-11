@@ -1,0 +1,28 @@
+name: dbt PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "dbt/**"
+      - "requirements-dev.txt"
+      - ".github/workflows/dbt-run.yml"
+      - ".github/workflows/dbt-ci.yml"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: dbt-pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  dbt:
+    name: PR job
+    uses: ./.github/workflows/dbt-run.yml
+    with:
+      target_environment: development
+      query_tag: PHARMARETAIL_DBT_PR
+      run_label: pr
+    secrets: inherit

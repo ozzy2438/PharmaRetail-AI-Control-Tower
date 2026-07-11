@@ -18,3 +18,9 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# dbt local artifacts
+dbt/pharma_retail/target/
+dbt/pharma_retail/dbt_packages/
+dbt/pharma_retail/logs/
+dbt/pharma_retail/.user.yml
