@@ -39,4 +39,4 @@ Closes #
 - [ ] Idempotency was checked where applicable
 - [ ] Failure behavior is explicit
 - [ ] Documentation matches implementation
-- [ ] No out-of-scope AI, RAG, dashboard, frontend, or dbt model work is included
+- [ ] No out-of-scope AI, RAG, dashboard, frontend, or unrelated model work is included

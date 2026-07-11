@@ -1,3 +1,5 @@
+{{ config(post_hook=phase4_access_grants()) }}
+
 -- Standalone calendar dimension, generated (not sourced from RAW) so it can
 -- join to any date-grained fact table, now or in a later phase. Spans a
 -- fixed range wide enough to cover the UCI data (2009-2011) plus headroom

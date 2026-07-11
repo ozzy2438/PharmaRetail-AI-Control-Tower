@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0 - 2026-07-11
+
+### Phase 4 operational data and governance
+
+- Added six governed operational MARTS models and three reusable intermediate models using fixed dates and versioned deterministic hash seeds.
+- Added all seven required root-cause scenarios, exact inventory equation/continuity, supplier OTIF, promotion, incident and stockout-island logic.
+- Expanded dbt coverage from 96 to 147 tests and added live double-run fingerprint verification.
+- Added store, area and national supply-chain personas; row access and masking policies; explicit AI_APP MARTS grants; append-only audit logging; query tags; leakage and future-grant validation.
+- Added Phase 3 security-closure evidence and explicitly retained dbt Cloud SaaS as a known limitation.
+
 ## 0.5.0 - 2026-07-11
 
 ### dbt transformation pipeline
