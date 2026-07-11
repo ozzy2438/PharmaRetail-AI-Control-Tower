@@ -12,7 +12,7 @@ with delivery_receipts as (
 inventory_snapshots as (
     select store_id, product_id, snapshot_date, received_qty
     from {{ ref('fct_inventory_snapshot') }}
-),
+)
 
 select
     delivery_receipts.store_id,
