@@ -13,16 +13,17 @@
     {% if not phase4_governance_enabled() %}
         {{ return([]) }}
     {% endif %}
+    {% set relation = '{{ this }}' %}
     {% set hooks = phase4_access_grants() %}
     {% do hooks.append(
-        'alter table ' ~ this
+        'alter table ' ~ relation
         ~ ' add row access policy '
         ~ 'PHARMARETAIL_AI_CONTROL_TOWER.GOVERNANCE.OPERATIONAL_STORE_REGION_POLICY '
         ~ 'on (store_id, region)'
     ) %}
     {% if mask_column is not none %}
         {% do hooks.append(
-            'alter table ' ~ this ~ ' modify column ' ~ mask_column
+            'alter table ' ~ relation ~ ' modify column ' ~ mask_column
             ~ ' set masking policy '
             ~ 'PHARMARETAIL_AI_CONTROL_TOWER.GOVERNANCE.SENSITIVE_TEXT_MASK'
         ) %}
@@ -34,9 +35,10 @@
     {% if not phase4_governance_enabled() %}
         {{ return([]) }}
     {% endif %}
+    {% set relation = '{{ this }}' %}
     {% set hooks = phase4_access_grants() %}
     {% do hooks.append(
-        'alter table ' ~ this ~ ' modify column contact_email set masking policy '
+        'alter table ' ~ relation ~ ' modify column contact_email set masking policy '
         ~ 'PHARMARETAIL_AI_CONTROL_TOWER.GOVERNANCE.SENSITIVE_TEXT_MASK'
     ) %}
     {{ return(hooks) }}
