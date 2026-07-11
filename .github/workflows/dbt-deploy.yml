@@ -15,6 +15,16 @@ on:
 
 permissions:
   contents: read
+  # dbt-run.yml (the called reusable workflow) declares pull-requests: write
+  # at its own top level (needed for its PR-comment step). GitHub validates
+  # that a reusable workflow's declared permissions are a subset of what the
+  # calling job is allowed at trigger time; if the caller doesn't also grant
+  # pull-requests: write here, the run fails with startup_failure (0 jobs)
+  # regardless of the if:/inputs.* logic below -- this was the real root
+  # cause of the earlier startup_failure investigations (#21), confirmed via
+  # the "Invalid workflow file" banner on the run page, which isn't exposed
+  # through the Actions REST API.
+  pull-requests: write
 
 concurrency:
   group: dbt-deploy-${{ github.event.inputs.target_environment || 'development' }}
@@ -23,14 +33,10 @@ concurrency:
 jobs:
   # Two mutually-exclusive jobs, gated by if:, rather than one job computing
   # target_environment via a github.event_name/inputs ternary or a
-  # needs.*.outputs indirection. A reusable workflow's typed with: inputs
-  # are validated before such a ternary could short-circuit, so referencing
-  # inputs.* in it caused startup_failure regardless of trigger. Splitting
-  # by job-level if: (the same pattern snowflake-deploy.yml already uses
-  # for its bau/bootstrap steps) avoids the cross-context reference
-  # entirely; github.event.inputs.* (not inputs.*) is used for consistency
-  # with concurrency.group even where it's only ever evaluated inside the
-  # workflow_dispatch-gated job.
+  # needs.*.outputs indirection, to avoid a cross-context inputs.* reference
+  # in a with: block. github.event.inputs.* (not inputs.*) is used for
+  # consistency with concurrency.group even where it's only ever evaluated
+  # inside the workflow_dispatch-gated job.
   dbt-on-push:
     name: Deployment job (push)
     if: github.event_name == 'push'

@@ -15,6 +15,11 @@ on:
 
 permissions:
   contents: read
+  # dbt-run.yml (the called reusable workflow) declares pull-requests: write
+  # at its own top level; the caller must grant at least that or the run
+  # fails with startup_failure before any job starts. See dbt-deploy.yml for
+  # the full explanation (root cause of #21).
+  pull-requests: write
 
 concurrency:
   group: dbt-scheduled
