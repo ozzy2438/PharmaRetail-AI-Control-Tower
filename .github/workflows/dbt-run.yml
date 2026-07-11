@@ -77,10 +77,10 @@ jobs:
           echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
           SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
           export SNOWFLAKE_PRIVATE_KEY
-          dbt show --inline "select count(*) as n from {{ ref('int_sales_daily') }} s inner join {{ ref('dim_date') }} d on s.invoice_date_day = d.date_day" --limit 5 || true
-          dbt show --inline "select count(*) as n from {{ ref('int_sales_daily') }} s left join {{ ref('dim_date') }} d on s.invoice_date_day = d.date_day where d.date_day is null" --limit 5 || true
-          dbt show --inline "select count(*) as n from {{ ref('dim_date') }} where date_day = '2010-06-15'" --limit 5 || true
-          dbt show --inline "select count(*) as n from {{ ref('int_sales_daily') }} where invoice_date_day = '2010-06-15'" --limit 5 || true
+          dbt show --inline "select count(*) as n from {{ ref('stg_uci_sales') }} where invoice_date_day = '2010-06-15'" --limit 5 || true
+          dbt show --inline "select count(*) as n from {{ ref('stg_uci_sales') }} where invoice_date_day between '2009-01-01' and '2012-01-01'" --limit 5 || true
+          dbt show --inline "select count(*) as n from {{ ref('int_sales_daily') }} where invoice_date_day between '2009-01-01' and '2012-01-01'" --limit 5 || true
+          dbt show --inline "select count(*) as n from {{ ref('int_sales_daily') }} s inner join {{ ref('stg_uci_sales') }} t on s.invoice_date_day = t.invoice_date_day" --limit 5 || true
       - name: Summarize dbt results
         if: always()
         working-directory: .
