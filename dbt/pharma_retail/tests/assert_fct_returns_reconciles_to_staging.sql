@@ -1,11 +1,13 @@
 -- Return-value reconciliation, mirroring assert_fct_sales_daily_reconciles_to_staging.sql
--- (see that file for why the tolerance isn't tighter: RAW.PRICE is FLOAT).
+-- (see that file for why the tolerance isn't tighter, and why the coalesce
+-- to 0 is needed: an empty table's SUM is NULL, which would otherwise make
+-- the comparison NULL and silently pass instead of failing).
 with staging_total as (
-    select sum(line_return_value) as total from {{ ref('stg_uci_returns') }}
+    select coalesce(sum(line_return_value), 0) as total from {{ ref('stg_uci_returns') }}
 ),
 
 mart_total as (
-    select sum(total_return_value) as total from {{ ref('fct_returns') }}
+    select coalesce(sum(total_return_value), 0) as total from {{ ref('fct_returns') }}
 )
 
 select

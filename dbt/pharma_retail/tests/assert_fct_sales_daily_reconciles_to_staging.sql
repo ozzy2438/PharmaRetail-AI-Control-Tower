@@ -11,12 +11,15 @@
 -- ~$20.5M total) comfortably absorbs that residual float noise while still
 -- catching anything a real bug would cause — a dropped/duplicated row or a
 -- mis-grouped join moves the total by many dollars, not fractions of one.
+-- coalesce to 0: an empty/missing table's SUM is NULL, and
+-- abs(NULL - x) > 1.00 evaluates to NULL (not TRUE), so an empty-table
+-- failure would otherwise return 0 rows and this test would wrongly pass.
 with staging_total as (
-    select sum(line_revenue) as total from {{ ref('stg_uci_sales') }}
+    select coalesce(sum(line_revenue), 0) as total from {{ ref('stg_uci_sales') }}
 ),
 
 mart_total as (
-    select sum(total_revenue) as total from {{ ref('fct_sales_daily') }}
+    select coalesce(sum(total_revenue), 0) as total from {{ ref('fct_sales_daily') }}
 )
 
 select

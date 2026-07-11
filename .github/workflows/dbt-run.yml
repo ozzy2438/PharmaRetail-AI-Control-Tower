@@ -80,11 +80,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: dbt-artifacts-${{ inputs.run_label }}
+          # The whole target/ dir, not a hand-picked file list: dbt-core 1.7
+          # generates no separate assets/ folder (index.html, manifest.json
+          # and catalog.json alongside each other is everything it needs
+          # today), but hand-picking files would silently drop anything a
+          # future dbt version adds.
           path: |
-            dbt/pharma_retail/target/manifest.json
-            dbt/pharma_retail/target/catalog.json
-            dbt/pharma_retail/target/run_results.json
-            dbt/pharma_retail/target/index.html
+            dbt/pharma_retail/target/
             dbt_run_summary.md
           if-no-files-found: warn
       - name: Comment on pull request
