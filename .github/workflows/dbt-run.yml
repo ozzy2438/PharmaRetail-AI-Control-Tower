@@ -67,6 +67,18 @@ jobs:
           set -e
           dbt docs generate || true
           exit "$build_exit_code"
+      - name: TEMP diagnostic - revenue reconciliation values
+        if: always()
+        env:
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_DBT_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_DBT_PRIVATE_KEY_PASSPHRASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          dbt show --inline "select 'staging' as src, sum(line_revenue) as total, count(*) as n from {{ ref('stg_uci_sales') }}" --limit 5 || true
+          dbt show --inline "select 'mart' as src, sum(total_revenue) as total, count(*) as n from {{ ref('fct_sales_daily') }}" --limit 5 || true
       - name: Summarize dbt results
         if: always()
         working-directory: .
