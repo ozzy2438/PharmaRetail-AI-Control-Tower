@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 - 2026-07-11
+
+### dbt service identity
+
+- Added a dedicated `SVC_PHARMARETAIL_DBT` service identity (`TYPE = SERVICE`, RSA key-pair authentication) scoped to the existing `PHARMARETAIL_DBT` role only — no ADMIN, no ACCOUNTADMIN.
+- dbt jobs never use the human bootstrap user or the foundation CI/CD identity; all three identities are independent (ADR-003).
+- No existing role, grant, warehouse, database, schema or RAW table was modified.
+
 ## 0.3.0 - 2026-07-11
 
 ### Data ingestion
