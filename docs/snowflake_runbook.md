@@ -85,7 +85,7 @@ This path is reserved for the manual, ACCOUNTADMIN-gated `bootstrap` mode; routi
 ### dbt service identity (`SVC_PHARMARETAIL_DBT`, key-pair, routine)
 
 1. Generate a new RSA key pair locally; never generate it inside a shared or logged shell session.
-2. Set the new public key with `ALTER USER SVC_PHARMARETAIL_DBT SET RSA_PUBLIC_KEY = '...'` during an approved `bootstrap` change window.
+2. Set the new public key with `ALTER USER SVC_PHARMARETAIL_DBT SET RSA_PUBLIC_KEY = '...'` (or `RSA_PUBLIC_KEY_2` for a zero-downtime rollover, then remove the old key after cutover) during an approved `bootstrap` change window.
 3. Replace `SNOWFLAKE_DBT_PRIVATE_KEY` (base64-encoded, same reasoning as the CI/CD key) and `SNOWFLAKE_DBT_PRIVATE_KEY_PASSPHRASE` independently in development, staging and production GitHub Environments.
 4. Do not place the new private key or passphrase in an issue, PR, Actions input, shell command argument or screenshot.
 5. Run a tagged dbt job to confirm the new key works before removing the old one.
