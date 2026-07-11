@@ -77,12 +77,10 @@ jobs:
           echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
           SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
           export SNOWFLAKE_PRIVATE_KEY
-          dbt show --inline "select 'staging' as src, sum(line_revenue) as total, count(*) as n from {{ ref('stg_uci_sales') }}" --limit 5 || true
-          dbt show --inline "select 'mart' as src, sum(total_revenue) as total, count(*) as n from {{ ref('fct_sales_daily') }}" --limit 5 || true
-          dbt show --inline "select count(*) as n, min(date_day) as min_d, max(date_day) as max_d from {{ ref('dim_date') }}" --limit 5 || true
-          dbt show --inline "select count(*) as n, min(invoice_date_day) as min_d, max(invoice_date_day) as max_d from {{ ref('int_sales_daily') }}" --limit 5 || true
-          dbt show --inline "select typeof(date_day) as t from {{ ref('dim_date') }} limit 1" --limit 5 || true
-          dbt show --inline "select typeof(invoice_date_day) as t from {{ ref('int_sales_daily') }} limit 1" --limit 5 || true
+          dbt show --inline "select count(*) as n from {{ ref('int_sales_daily') }}" --limit 5 || true
+          dbt show --inline "select count(distinct invoice_date_day) as n from {{ ref('int_sales_daily') }}" --limit 5 || true
+          dbt show --inline "select s.invoice_date_day, s.country from {{ ref('int_sales_daily') }} s left join {{ ref('dim_date') }} d on s.invoice_date_day = d.date_day where d.date_day is null limit 5" --limit 5 || true
+          dbt show --inline "select invoice_date_day, count(*) as n from {{ ref('int_sales_daily') }} group by 1 order by 1 limit 5" --limit 5 || true
       - name: Summarize dbt results
         if: always()
         working-directory: .
