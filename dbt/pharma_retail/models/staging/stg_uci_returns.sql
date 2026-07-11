@@ -13,7 +13,9 @@ renamed as (
         invoice_date,
         cast(invoice_date as date) as invoice_date_day,
         price as unit_price,
-        quantity * price as line_return_value,
+        -- See stg_uci_sales.sql: NUMBER, not FLOAT, so SUM(line_return_value)
+        -- reconciles exactly between staging and the grouped mart totals.
+        cast(quantity * price as number(18, 4)) as line_return_value,
         customer_id,
         country,
         is_customer_identified,
