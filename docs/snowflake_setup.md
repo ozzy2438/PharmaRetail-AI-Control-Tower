@@ -19,7 +19,7 @@ Secrets must come from a local ignored `.env` assignment loaded by a safe parser
 
 ## Identities
 
-Three distinct Snowflake identities are used, and none is a substitute for another:
+Three distinct Snowflake identities are used, and none is a substitute for any other:
 
 | Identity | Type | Auth | Role | Used for |
 |---|---|---|---|---|
