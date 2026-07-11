@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.0 - 2026-07-11
+
+### dbt transformation pipeline
+
+- Added a dbt-core project (`dbt/pharma_retail/`) transforming `RAW` into `STAGING` (5 models) → `INTERMEDIATE` (4 models) → `MARTS` (5 models: `dim_store`, `dim_product`, `dim_date`, `fct_sales_daily`, `fct_returns`), authenticating only as `SVC_PHARMARETAIL_DBT`.
+- `fct_sales_daily`/`fct_returns` are built from the real UCI dataset and join `dim_date` (a real relationship); they deliberately do not join `dim_store`/`dim_product`, which come from an unrelated synthetic seed with no shared key — documented in `dbt/pharma_retail/README.md` rather than papered over with a fabricated join.
+- Generic tests (unique/not_null/relationships/accepted_values), custom positivity tests (quantity/price via `dbt_utils.expression_is_true`), source freshness, and singular row-count/revenue reconciliation tests between `RAW` and `MARTS`.
+- Three GitHub Actions workflows (PR job, deployment job, scheduled job) share one reusable workflow; results are posted as PR comments and always written to the job step summary; `dbt docs`/lineage and run artifacts are uploaded on every run.
+- Runs on dbt-core via GitHub Actions, not dbt Cloud SaaS — that requires a human to create an account, connect the repo and generate an API token. `docs/snowflake_runbook.md` documents both what was actually built and the manual steps for connecting real dbt Cloud later, if wanted.
+- No existing role, grant, warehouse, database, schema or RAW table was modified.
+
 ## 0.4.0 - 2026-07-11
 
 ### dbt service identity
