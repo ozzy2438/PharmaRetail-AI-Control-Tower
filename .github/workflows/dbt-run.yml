@@ -45,30 +45,28 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r ../../requirements-dev.txt
-      - name: Decode Snowflake private key
+      - name: dbt deps, build and docs
         env:
           # Base64-encoded: GitHub Actions log masking is not reliable for
-          # multi-line secrets (see ADR-002). Decoded PEM is written straight
-          # to GITHUB_ENV via the delimiter form, never echoed to the log.
+          # multi-line secrets (see ADR-002). Decoded only into a local shell
+          # variable within THIS step (never written to GITHUB_ENV or a step
+          # env: block, which GitHub dumps into every subsequent step's log
+          # regardless of masking on the original secret) — matching the
+          # pattern already used in snowflake-deploy.yml/snowflake-data-load.yml.
           SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_DBT_PRIVATE_KEY }}
           SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_DBT_PRIVATE_KEY_PASSPHRASE }}
         run: |
           echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
           echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
-          echo "SNOWFLAKE_PRIVATE_KEY_PASSPHRASE=$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE" >> "$GITHUB_ENV"
-          {
-            echo "SNOWFLAKE_PRIVATE_KEY<<PHARMARETAIL_DBT_KEY_EOF"
-            printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode
-            echo
-            echo "PHARMARETAIL_DBT_KEY_EOF"
-          } >> "$GITHUB_ENV"
-      - name: dbt deps
-        run: dbt deps
-      - name: dbt build
-        run: dbt build
-      - name: dbt docs generate
-        if: always()
-        run: dbt docs generate
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          dbt deps
+          set +e
+          dbt build
+          build_exit_code=$?
+          set -e
+          dbt docs generate || true
+          exit "$build_exit_code"
       - name: Summarize dbt results
         if: always()
         working-directory: .
