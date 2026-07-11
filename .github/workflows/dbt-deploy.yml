@@ -1,0 +1,31 @@
+name: dbt Deploy
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "dbt/**"
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: GitHub Environment to deploy
+        required: true
+        type: choice
+        options: [development, staging, production]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dbt-deploy-${{ github.event_name == 'push' && 'development' || inputs.target_environment }}
+  cancel-in-progress: false
+
+jobs:
+  dbt:
+    name: Deployment job
+    uses: ./.github/workflows/dbt-run.yml
+    with:
+      target_environment: ${{ github.event_name == 'push' && 'development' || inputs.target_environment }}
+      query_tag: PHARMARETAIL_DBT_DEPLOY
+      run_label: deploy
+    secrets: inherit
