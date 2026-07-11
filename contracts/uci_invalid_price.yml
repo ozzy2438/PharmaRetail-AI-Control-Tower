@@ -1,0 +1,47 @@
+version: 1
+dataset: uci_invalid_price
+path: data/quarantine/uci_invalid_price.parquet
+format: parquet
+grain: One deduplicated UCI Online Retail invoice line with non-positive price, quarantined before return/sales classification.
+columns:
+  - name: invoice
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: stock_code
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: description
+    type: string
+    nullable: true
+  - name: quantity
+    type: integer
+    nullable: false
+  - name: invoice_date
+    type: timestamp
+    nullable: false
+    tests: [not_null]
+  - name: price
+    type: number
+    nullable: false
+    maximum: 0
+  - name: customer_id
+    type: string
+    nullable: true
+  - name: country
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: is_customer_identified
+    type: boolean
+    nullable: false
+  - name: quarantine_reason
+    type: string
+    nullable: false
+    accepted_values: [non_positive_price]
+rules:
+  - Quarantine has precedence over return classification; a row here never also appears in uci_sales_clean or uci_returns_clean.
+  - This dataset is a governed exception queue, not a fact table; it must not be blended into sales or returns reporting.
+notes:
+  - Some rows also match return logic (negative quantity or invoice beginning with C); quarantine precedence means they are recorded here only.

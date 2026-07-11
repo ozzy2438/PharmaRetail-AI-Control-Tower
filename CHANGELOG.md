@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0 - 2026-07-11
+
+### Data ingestion
+
+- Added RAW landing tables (`08_raw_tables.sql`) for the five existing processed/quarantine datasets plus a `RAW.LOAD_AUDIT` audit table, deployed via the existing BAU pipeline under `PHARMARETAIL_ADMIN`.
+- Added a contract-driven loader (`scripts/load_raw_data.py`) that is idempotent (truncate-and-reload), records row counts/null summaries/duplicate counts/file checksums/status for every run, and generates a source-to-target reconciliation report.
+- Added `contracts/uci_returns.yml` and `contracts/uci_invalid_price.yml` to match the existing contract pattern, and corrected `contracts/dim_store.yml`'s `postcode` to `nullable: true` to match the documented seed data.
+- Added a cross-check test verifying `08_raw_tables.sql` columns never drift from their contracts.
+- Added a new, separately-dispatched `Snowflake Data Load` workflow reusing the Phase 1 service identity; no new Snowflake identity was introduced.
+- No dataset was downloaded; only already-processed local files were loaded.
+
 ## 0.2.0 - 2026-07-10
 
 ### Service identity and connection hardening

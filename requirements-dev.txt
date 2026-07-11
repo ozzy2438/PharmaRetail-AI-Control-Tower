@@ -1,5 +1,8 @@
 cryptography>=42,<47
+pandas>=2.2,<3
+pyarrow>=15,<24
 pytest>=8,<10
+pyyaml>=6,<7
 ruff>=0.9,<1
 snowflake-connector-python>=3.12,<5
 sqlfluff>=3.3,<5

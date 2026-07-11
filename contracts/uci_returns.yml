@@ -1,0 +1,43 @@
+version: 1
+dataset: uci_returns_clean
+path: data/processed/uci_returns_clean.parquet
+format: parquet
+grain: One deduplicated, valid-price UCI Online Retail invoice line classified as a return or cancellation.
+columns:
+  - name: invoice
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: stock_code
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: description
+    type: string
+    nullable: true
+  - name: quantity
+    type: integer
+    nullable: false
+    maximum_exclusive: 0
+  - name: invoice_date
+    type: timestamp
+    nullable: false
+    tests: [not_null]
+  - name: price
+    type: number
+    nullable: false
+    minimum_exclusive: 0
+  - name: customer_id
+    type: string
+    nullable: true
+  - name: country
+    type: string
+    nullable: false
+    tests: [not_null]
+  - name: is_customer_identified
+    type: boolean
+    nullable: false
+rules:
+  - Exact duplicates and non-positive-price rows are removed before return classification.
+  - A row is a return when quantity is negative or invoice begins with C.
+  - customer_id may be null; is_customer_identified must be false for those rows.

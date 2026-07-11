@@ -1,8 +1,15 @@
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
+import yaml
+
+from scripts.load_raw_data import DATASET_TABLES
+
 SQL_DIRECTORY = Path("infra/snowflake")
+AUDIT_COLUMNS = {"_LOAD_ID", "_LOADED_AT", "_SOURCE_FILE"}
+DATABASE = "PHARMARETAIL_AI_CONTROL_TOWER"
 
 
 def test_foundation_sql_never_references_abs_data() -> None:
@@ -30,3 +37,46 @@ def test_resource_monitor_contract_is_complete_and_non_replacing() -> None:
     }
     assert all(clause in sql for clause in required_clauses)
     assert "CREATE OR REPLACE RESOURCE MONITOR" not in sql
+
+
+def _raw_table_columns() -> dict[str, list[str]]:
+    sql = (SQL_DIRECTORY / "08_raw_tables.sql").read_text(encoding="utf-8")
+    tables = re.findall(
+        rf"CREATE TABLE IF NOT EXISTS ({re.escape(DATABASE)}\.RAW\.\w+) \((.*?)\n\)", sql, re.S
+    )
+    return {
+        name: [line.strip().split()[0] for line in body.splitlines() if line.strip()]
+        for name, body in tables
+    }
+
+
+def _qualify(table: str) -> str:
+    # DATASET_TABLES values are schema-qualified only (e.g. "RAW.UCI_SALES");
+    # the DDL is database-qualified too (e.g. "PHARMARETAIL_AI_CONTROL_TOWER.RAW.UCI_SALES").
+    return f"{DATABASE}.{table}"
+
+
+def test_raw_tables_are_fully_qualified() -> None:
+    # 08_raw_tables.sql runs via deploy_snowflake.py, whose connection does not
+    # set an explicit database, so unqualified RAW.<object> names would resolve
+    # against whatever database happens to be current for the connecting
+    # identity. Every object must be fully qualified to avoid that ambiguity.
+    ddl_columns = _raw_table_columns()
+    for table in DATASET_TABLES.values():
+        assert _qualify(table) in ddl_columns, f"{table} is not fully qualified"
+
+
+def test_raw_tables_match_contract_columns() -> None:
+    ddl_columns = _raw_table_columns()
+    for contract_path_str, table in DATASET_TABLES.items():
+        contract = yaml.safe_load(Path(contract_path_str).read_text(encoding="utf-8"))
+        expected = {column["name"].upper() for column in contract["columns"]}
+        actual = set(ddl_columns[_qualify(table)]) - AUDIT_COLUMNS
+        assert actual == expected, f"{table} columns diverge from {contract_path_str}"
+
+
+def test_raw_tables_include_audit_columns() -> None:
+    ddl_columns = _raw_table_columns()
+    for table in DATASET_TABLES.values():
+        actual = ddl_columns[_qualify(table)]
+        assert AUDIT_COLUMNS.issubset(actual), f"{table} missing audit columns"
