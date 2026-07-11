@@ -8,6 +8,7 @@ import yaml
 
 from scripts.load_raw_data import (
     Contract,
+    ContractColumn,
     FileStats,
     LoadResult,
     build_copy_sql,
@@ -132,18 +133,44 @@ def test_compute_file_stats_rejects_csv_column_order_mismatch(tmp_path: Path) ->
         compute_file_stats(reordered)
 
 
+def test_compute_file_stats_rejects_missing_parquet_column(tmp_path: Path) -> None:
+    contract_path = _write_parquet_contract(tmp_path)
+    contract = load_contract(contract_path)
+    drifted = Contract(
+        dataset=contract.dataset,
+        path=contract.path,
+        format=contract.format,
+        columns=[*contract.columns, ContractColumn(name="not_in_file", type="string")],
+    )
+    with pytest.raises(ValueError, match="missing contract columns"):
+        compute_file_stats(drifted)
+
+
 def test_build_copy_sql_parquet_uses_named_field_access(tmp_path: Path) -> None:
     contract = load_contract(_write_parquet_contract(tmp_path))
-    sql = build_copy_sql(contract, "RAW.FIXTURE_SALES", "fixture_sales.parquet", "load-123")
+    sql = build_copy_sql(
+        contract,
+        "RAW.FIXTURE_SALES",
+        "fixture_sales.parquet",
+        "load-123",
+        "data/processed/fixture_sales.parquet",
+    )
     assert "$1:invoice::STRING AS INVOICE" in sql
     assert "'load-123' AS _LOAD_ID" in sql
     assert "FROM @RAW.RAW_LOAD_STAGE/fixture_sales.parquet" in sql
+    assert "'data/processed/fixture_sales.parquet' AS _SOURCE_FILE" in sql
     assert "FILE_FORMAT = (TYPE = PARQUET)" in sql
 
 
 def test_build_copy_sql_csv_uses_positional_access(tmp_path: Path) -> None:
     contract = load_contract(_write_csv_contract(tmp_path))
-    sql = build_copy_sql(contract, "RAW.FIXTURE_STORES", "fixture_stores.csv", "load-456")
+    sql = build_copy_sql(
+        contract,
+        "RAW.FIXTURE_STORES",
+        "fixture_stores.csv",
+        "load-456",
+        "data/processed/fixture_stores.csv",
+    )
     assert "$1::STRING AS STORE_ID" in sql
     assert "$2::STRING AS POSTCODE" in sql
     assert "TYPE = CSV" in sql
@@ -152,7 +179,17 @@ def test_build_copy_sql_csv_uses_positional_access(tmp_path: Path) -> None:
 def test_build_copy_sql_rejects_quote_in_load_id(tmp_path: Path) -> None:
     contract = load_contract(_write_parquet_contract(tmp_path))
     with pytest.raises(ValueError, match="single quote"):
-        build_copy_sql(contract, "RAW.FIXTURE_SALES", "fixture_sales.parquet", "bad'id")
+        build_copy_sql(
+            contract, "RAW.FIXTURE_SALES", "fixture_sales.parquet", "bad'id", "source.parquet"
+        )
+
+
+def test_build_copy_sql_rejects_quote_in_source_file(tmp_path: Path) -> None:
+    contract = load_contract(_write_parquet_contract(tmp_path))
+    with pytest.raises(ValueError, match="single quote"):
+        build_copy_sql(
+            contract, "RAW.FIXTURE_SALES", "fixture_sales.parquet", "load-1", "bad'source.parquet"
+        )
 
 
 def test_load_result_row_count_match() -> None:
@@ -200,7 +237,10 @@ def test_load_dataset_row_count_mismatch_is_recorded(tmp_path: Path) -> None:
     assert result.row_count_match is False
 
 
-def test_load_dataset_failure_writes_audit_row_then_reraises(tmp_path: Path) -> None:
+def test_load_dataset_failure_returns_failed_result_without_raising(tmp_path: Path) -> None:
+    # load_dataset must not raise: the caller (main's loop) needs every
+    # dataset attempted and audited even if an earlier one failed, so the
+    # reconciliation report always covers the whole batch.
     contract_path = _write_parquet_contract(tmp_path)
 
     class FailingCursor(FakeCursor):
@@ -211,8 +251,12 @@ def test_load_dataset_failure_writes_audit_row_then_reraises(tmp_path: Path) -> 
             return self
 
     cursor = FailingCursor(count_value=5)
-    with pytest.raises(RuntimeError, match="simulated COPY failure"):
-        load_dataset(cursor, contract_path, "RAW.FIXTURE_SALES")
+    result = load_dataset(cursor, contract_path, "RAW.FIXTURE_SALES")
+
+    assert result.status == "FAILED"
+    assert result.loaded_row_count is None
+    assert result.row_count_match is None
+    assert "simulated COPY failure" in result.error_message
 
     insert_calls = [(sql, params) for sql, params in cursor.executed if sql.startswith("INSERT")]
     assert len(insert_calls) == 1
@@ -241,6 +285,20 @@ def test_generate_reconciliation_report_marks_mismatch() -> None:
     assert "bad_dataset" in report
     assert "| no |" in report
     assert "a=2" in report
+
+
+def test_generate_reconciliation_report_renders_na_for_failed_dataset() -> None:
+    stats = FileStats(row_count=10, null_counts={}, duplicate_row_count=0, sha256="abc123")
+    failed = LoadResult(
+        dataset="failed_dataset", table="RAW.FAILED", source_file="f3", stats=stats, load_id="l3"
+    )
+    failed.status = "FAILED"
+    failed.error_message = "boom"
+
+    report = generate_reconciliation_report([failed])
+    assert failed.row_count_match is None
+    assert "| n/a |" in report
+    assert "None" not in report
 
 
 def test_connect_uses_key_pair_and_sets_warehouse_database(monkeypatch: pytest.MonkeyPatch) -> None:

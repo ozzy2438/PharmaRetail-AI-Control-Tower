@@ -75,6 +75,9 @@ class FileStats:
 def compute_file_stats(contract: Contract) -> FileStats:
     if contract.format == "parquet":
         frame = pd.read_parquet(contract.path)
+        missing = [column.name for column in contract.columns if column.name not in frame.columns]
+        if missing:
+            raise ValueError(f"{contract.path}: missing contract columns in file: {missing}")
     elif contract.format == "csv":
         frame = pd.read_csv(contract.path, dtype=str)
         expected_order = [column.name for column in contract.columns]
@@ -86,10 +89,9 @@ def compute_file_stats(contract: Contract) -> FileStats:
     else:
         raise ValueError(f"Unsupported contract format: {contract.format}")
 
+    # Every contract column is now guaranteed present (checked above per format).
     null_counts = {
-        column.name: int(frame[column.name].isna().sum())
-        for column in contract.columns
-        if column.name in frame.columns
+        column.name: int(frame[column.name].isna().sum()) for column in contract.columns
     }
     return FileStats(
         row_count=len(frame),
@@ -117,12 +119,19 @@ class LoadResult:
         return self.loaded_row_count == self.stats.row_count
 
 
-def build_copy_sql(contract: Contract, table: str, stage_file: str, load_id: str) -> str:
+def build_copy_sql(
+    contract: Contract, table: str, stage_file: str, load_id: str, source_file: str
+) -> str:
     """Build a single COPY INTO that populates source + audit columns atomically.
 
     Audit columns are set inline (not via a follow-up UPDATE) because they are
     declared NOT NULL, and a separate UPDATE-after-COPY would violate that
     constraint the instant COPY inserts the row.
+
+    stage_file is the bare filename on the internal stage (used to locate the
+    file); source_file is the contract's declared path (e.g.
+    data/processed/uci_sales_clean.parquet), stored in _SOURCE_FILE so landed
+    rows match RAW.LOAD_AUDIT.SOURCE_FILE and are self-describing.
     """
     if contract.format == "parquet":
         select_parts = [
@@ -141,12 +150,12 @@ def build_copy_sql(contract: Contract, table: str, stage_file: str, load_id: str
     else:
         raise ValueError(f"Unsupported contract format: {contract.format}")
 
-    if "'" in load_id or "'" in stage_file:
-        raise ValueError("load_id/stage_file must not contain a single quote")
+    if "'" in load_id or "'" in stage_file or "'" in source_file:
+        raise ValueError("load_id/stage_file/source_file must not contain a single quote")
 
     select_parts.append(f"'{load_id}' AS _LOAD_ID")
     select_parts.append("CURRENT_TIMESTAMP() AS _LOADED_AT")
-    select_parts.append(f"'{stage_file}' AS _SOURCE_FILE")
+    select_parts.append(f"'{source_file}' AS _SOURCE_FILE")
 
     column_list = ", ".join(column.name.upper() for column in contract.columns)
     column_list += ", _LOAD_ID, _LOADED_AT, _SOURCE_FILE"
@@ -221,6 +230,12 @@ def write_audit_row(
 
 
 def load_dataset(cursor, contract_path: Path, table: str) -> LoadResult:
+    """Load one dataset. Never raises: a failure is recorded as a FAILED
+    LoadResult (with its own RAW.LOAD_AUDIT row) so the caller can continue
+    attempting the remaining datasets and still produce a complete
+    reconciliation report covering every dataset, not just the ones that
+    happened to run before the first failure.
+    """
     contract = load_contract(contract_path)
     stats = compute_file_stats(contract)
     load_id = uuid.uuid4().hex
@@ -239,7 +254,7 @@ def load_dataset(cursor, contract_path: Path, table: str) -> LoadResult:
             "AUTO_COMPRESS=FALSE OVERWRITE=TRUE"
         )
         cursor.execute(f"TRUNCATE TABLE {table}")
-        cursor.execute(build_copy_sql(contract, table, stage_file, load_id))
+        cursor.execute(build_copy_sql(contract, table, stage_file, load_id, result.source_file))
         cursor.execute(f"SELECT COUNT(*) FROM {table}")
         (loaded_row_count,) = cursor.fetchone()
         result.loaded_row_count = int(loaded_row_count)
@@ -248,7 +263,6 @@ def load_dataset(cursor, contract_path: Path, table: str) -> LoadResult:
     except Exception as exc:
         result.status = "FAILED"
         result.error_message = str(exc)[:2000]
-        raise
     finally:
         write_audit_row(cursor, result, started_at, datetime.now(timezone.utc))
     return result
@@ -266,10 +280,14 @@ def generate_reconciliation_report(results: list[LoadResult]) -> str:
     ]
     for result in results:
         nulls = ", ".join(f"{k}={v}" for k, v in result.stats.null_counts.items() if v) or "none"
-        match = "yes" if result.row_count_match else "no"
+        if result.row_count_match is None:
+            match = "n/a"
+        else:
+            match = "yes" if result.row_count_match else "no"
+        loaded_rows = result.loaded_row_count if result.loaded_row_count is not None else "n/a"
         lines.append(
             f"| {result.dataset} | {result.table} | {result.stats.row_count} | "
-            f"{result.loaded_row_count} | {match} | {result.stats.duplicate_row_count} | "
+            f"{loaded_rows} | {match} | {result.stats.duplicate_row_count} | "
             f"{nulls} | `{result.stats.sha256[:12]}…` | {result.status} |"
         )
     return "\n".join(lines) + "\n"
@@ -304,8 +322,11 @@ def main() -> int:
     args.report_path.write_text(report, encoding="utf-8")
     print(f"Reconciliation report written to {args.report_path}")
 
-    if not all(result.row_count_match for result in results):
-        print("Row-count mismatch detected; review RAW.LOAD_AUDIT and the reconciliation report.")
+    unhealthy = [result for result in results if result.status != "SUCCESS"]
+    if unhealthy:
+        names = ", ".join(f"{result.table}({result.status})" for result in unhealthy)
+        print(f"One or more datasets did not load cleanly: {names}")
+        print("Review RAW.LOAD_AUDIT and the reconciliation report.")
         return 1
     return 0
 
