@@ -4,12 +4,13 @@ The matrix reflects direct role privileges. Validation sessions explicitly run `
 
 ## Identities
 
-| Identity | Type | Authentication | Roles granted | Permitted deployment mode |
+| Identity | Type | Authentication | Roles granted | Permitted use |
 |---|---|---|---|---|
-| `OMRUM` | Human | Password | `ACCOUNTADMIN`, `PHARMARETAIL_ADMIN` | `bootstrap` only (manual, approved change window) |
-| `SVC_PHARMARETAIL_CICD` | `TYPE = SERVICE` | RSA key-pair | `PHARMARETAIL_ADMIN` | `bau` only (automated) |
+| `OMRUM` | Human | Password | `ACCOUNTADMIN`, `PHARMARETAIL_ADMIN` | `bootstrap` deployment mode only (manual, approved change window) |
+| `SVC_PHARMARETAIL_CICD` | `TYPE = SERVICE` | RSA key-pair | `PHARMARETAIL_ADMIN` | `bau` deployment mode only (automated foundation/RAW DDL) |
+| `SVC_PHARMARETAIL_DBT` | `TYPE = SERVICE` | RSA key-pair | `PHARMARETAIL_DBT` | dbt jobs only (PR/deployment/scheduled transformation runs) |
 
-`TYPE = SERVICE` users cannot authenticate with a password, complete MFA, or log in through the Snowflake UI; the key-pair is the only credential. `SVC_PHARMARETAIL_CICD` holds no `ACCOUNTADMIN` privilege and cannot run `01_roles.sql`, `02_warehouse.sql`, `03_database_schemas.sql`, `05_resource_monitor.sql` or `07_service_identity.sql`, all of which require `ACCOUNTADMIN` and stay on the human bootstrap path. The residual risk of `OMRUM`'s password-based bootstrap credential is accepted and documented in [ADR-002](adr/ADR-002-service-identity.md); it is not eliminated by this change.
+`TYPE = SERVICE` users cannot authenticate with a password, complete MFA, or log in through the Snowflake UI; the key-pair is the only credential. `SVC_PHARMARETAIL_CICD` holds no `ACCOUNTADMIN` privilege and cannot run `01_roles.sql`, `02_warehouse.sql`, `03_database_schemas.sql`, `05_resource_monitor.sql`, `07_service_identity.sql` or `09_dbt_service_identity.sql`, all of which require `ACCOUNTADMIN` and stay on the human bootstrap path. `SVC_PHARMARETAIL_DBT` holds neither `ACCOUNTADMIN` nor `PHARMARETAIL_ADMIN`: it cannot deploy foundation SQL, cannot write to RAW, and cannot touch GOVERNANCE or AI_LOGS — its ceiling is exactly `PHARMARETAIL_DBT` (read RAW, read/write STAGING/INTERMEDIATE/MARTS). dbt jobs never use `OMRUM` or `SVC_PHARMARETAIL_CICD`. The residual risk of `OMRUM`'s password-based bootstrap credential is accepted and documented in [ADR-002](adr/ADR-002-service-identity.md); it is not eliminated by this change.
 
 | Role | Warehouse | Database and schemas | Create | Read | Write | Explicitly denied/not granted |
 |---|---|---|---|---|---|---|
