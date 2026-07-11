@@ -1,3 +1,5 @@
+{{ config(post_hook=phase4_scoped_hooks()) }}
+
 -- Standalone store dimension from the synthetic Australian seed. Prepared
 -- and tested here, ready for the synthetic store-keyed operational fact
 -- tables (inventory, stockout, promotion) planned in a later phase; not

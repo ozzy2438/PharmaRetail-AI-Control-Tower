@@ -9,6 +9,8 @@ select = ["E", "F", "I", "S"]
 "tests/**/*.py" = ["S101", "S105", "S106"]
 "scripts/validate_snowflake_foundation.py" = ["S608"]
 "scripts/load_raw_data.py" = ["S608"]
+"scripts/validate_phase4_determinism.py" = ["S608"]
+"scripts/validate_phase4_governance.py" = ["S608"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

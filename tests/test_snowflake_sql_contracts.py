@@ -80,3 +80,45 @@ def test_raw_tables_include_audit_columns() -> None:
     for table in DATASET_TABLES.values():
         actual = ddl_columns[_qualify(table)]
         assert AUDIT_COLUMNS.issubset(actual), f"{table} missing audit columns"
+
+
+def test_phase4_persona_roles_and_policies_are_declared() -> None:
+    roles = (SQL_DIRECTORY / "01_roles.sql").read_text(encoding="utf-8").upper()
+    governance = (SQL_DIRECTORY / "10_phase4_governance.sql").read_text(
+        encoding="utf-8"
+    ).upper()
+    for role in (
+        "PHARMARETAIL_STORE_MANAGER",
+        "PHARMARETAIL_AREA_MANAGER",
+        "PHARMARETAIL_SUPPLY_CHAIN_ANALYST",
+    ):
+        assert f"CREATE ROLE IF NOT EXISTS {role}" in roles
+    assert "CREATE ROW ACCESS POLICY IF NOT EXISTS" in governance
+    assert "CREATE MASKING POLICY IF NOT EXISTS" in governance
+    assert "USE SECONDARY ROLES" not in governance
+
+
+def test_phase4_personas_never_receive_future_marts_select() -> None:
+    grants = (SQL_DIRECTORY / "04_grants.sql").read_text(encoding="utf-8").upper()
+    for role in ("PHARMARETAIL_STORE_MANAGER", "PHARMARETAIL_AREA_MANAGER"):
+        pattern = re.compile(
+            r"GRANT SELECT ON FUTURE (?:TABLES|VIEWS) IN SCHEMA "
+            rf"{DATABASE}\.MARTS\s+TO ROLE {role}"
+        )
+        assert not pattern.search(grants)
+
+
+def test_ai_app_broad_marts_access_is_revoked_before_explicit_grants() -> None:
+    grants = (SQL_DIRECTORY / "phase4_model_grants.sql").read_text(encoding="utf-8").upper()
+    revoke_position = grants.index("REVOKE SELECT ON ALL TABLES")
+    explicit_position = grants.index(f"GRANT SELECT ON TABLE {DATABASE}.MARTS.DIM_DATE")
+    assert revoke_position < explicit_position
+    assert "REVOKE SELECT ON FUTURE TABLES" in grants
+    assert "REVOKE SELECT ON FUTURE VIEWS" in grants
+
+
+def test_dbt_workflow_never_writes_private_key_to_github_env() -> None:
+    workflow = Path(".github/workflows/dbt-run.yml").read_text(encoding="utf-8")
+    assert "GITHUB_ENV" not in "\n".join(
+        line for line in workflow.splitlines() if not line.lstrip().startswith("#")
+    )

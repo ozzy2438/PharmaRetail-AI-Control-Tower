@@ -40,6 +40,29 @@ Run `06_validation.sql` for read-only inventory. Run `scripts/validate_snowflake
 
 Never load local credentials by sourcing `.env`. A local launcher may parse only the exact `SNOWFLAKE_PASSWORD=` assignment into process memory; it must not print the value or pass it as a command-line argument.
 
+## Phase 4 deployment order
+
+Phase 4 introduces three account roles and two Enterprise governance policy
+types. Deploy in this order:
+
+1. On the feature-branch ref, run `Snowflake Deploy` once in `bootstrap` mode
+   with human approval. This creates persona roles, mapping/audit tables and the
+   row/masking policy objects through `10_phase4_governance.sql`.
+2. Let the PR dbt job build with governance hooks disabled; it validates data
+   models without mutating account policies.
+3. Merge only after the bootstrap evidence and PR checks are green. The main
+   dbt deployment enables governance hooks, attaches policies to newly-created
+   tables, and reruns all deterministic models.
+4. The same protected job runs `phase4_model_grants.sql` as
+   `SVC_PHARMARETAIL_CICD`, because MARTS is a managed-access schema and only
+   its ADMIN owner can issue consumer grants.
+5. `validate_phase4_governance.py` must report leakage=0, masking PASS, no broad
+   persona/AI MARTS future grants, and audit/query tagging PASS.
+
+If step 1 has not happened, stop: missing account roles/policies are a genuine
+human approval blocker. Do not weaken hooks or grant DBT `MANAGE GRANTS` to
+route around it.
+
 ## Incident response
 
 1. Stop deployments and open an incident issue.

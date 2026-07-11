@@ -17,12 +17,15 @@ The matrix reflects direct role privileges. Validation sessions explicitly run `
 | `PHARMARETAIL_ADMIN` | Owns and manages `WH_PHARMARETAIL` | Owns the database and all six managed-access schemas | All project objects | All project objects | All project objects | No privileges outside the dedicated project boundary are introduced |
 | `PHARMARETAIL_ENGINEER` | USAGE, OPERATE, MONITOR | USAGE on database, RAW, STAGING, INTERMEDIATE, MARTS | Tables/views/sequences in modelling schemas; stages/file formats in RAW | Current and future tables/views in RAW through MARTS | DML on current and future tables in RAW through MARTS | GOVERNANCE and AI_LOGS |
 | `PHARMARETAIL_DBT` | USAGE, MONITOR | USAGE on database and RAW through MARTS | Tables/views/sequences only in STAGING, INTERMEDIATE, MARTS | RAW plus all modelling schemas | DML only in STAGING, INTERMEDIATE, MARTS | Create in RAW; all GOVERNANCE and AI_LOGS access |
-| `PHARMARETAIL_AI_APP` | USAGE | USAGE on database, MARTS, GOVERNANCE, AI_LOGS | None | Current/future MARTS and GOVERNANCE tables/views | INSERT only to current/future administrator-created AI_LOGS tables | RAW, STAGING, INTERMEDIATE; log-table creation, update, delete and truncate |
+| `PHARMARETAIL_AI_APP` | USAGE | USAGE on database, MARTS, GOVERNANCE, AI_LOGS | None | Explicit approved Phase 4 models and governance scope references; no broad MARTS future grant | INSERT only to current/future administrator-created AI_LOGS tables | RAW, STAGING, INTERMEDIATE; unapproved MARTS objects; log-table create/update/delete/truncate |
 | `PHARMARETAIL_READONLY` | USAGE | USAGE on database and MARTS | None | Current/future MARTS tables/views | None | RAW, STAGING, INTERMEDIATE, GOVERNANCE and AI_LOGS |
+| `PHARMARETAIL_STORE_MANAGER` | USAGE | USAGE on database and MARTS | None | Explicit approved models; rows restricted to `USER_STORE_SCOPE` | None | Other stores and all non-MARTS schemas |
+| `PHARMARETAIL_AREA_MANAGER` | USAGE | USAGE on database and MARTS | None | Explicit approved models; rows restricted to `USER_REGION_SCOPE` | None | Other regions and all non-MARTS schemas |
+| `PHARMARETAIL_SUPPLY_CHAIN_ANALYST` | USAGE | USAGE on database, MARTS and GOVERNANCE | None | National operational MARTS view | None | RAW, STAGING, INTERMEDIATE and AI_LOGS |
 
 ## Role hierarchy
 
-`PHARMARETAIL_ADMIN` inherits the four independent workload roles. It is granted beneath `SYSADMIN`. Workload roles do not inherit one another. `ACCOUNTADMIN` is reserved for bootstrap actions that require account-level authority, including initial role creation, warehouse/database creation and resource-monitor assignment.
+`PHARMARETAIL_ADMIN` inherits the four foundation workload roles plus the three independent persona roles. It is granted beneath `SYSADMIN`. Workload/persona roles do not inherit one another. `ACCOUNTADMIN` is reserved for bootstrap actions that require account-level authority, including role creation, warehouse/database creation and resource-monitor assignment.
 
 ## Future grants
 
@@ -30,7 +33,17 @@ Future table and view grants mirror the matrix so new objects do not silently lo
 
 - ENGINEER: 24
 - DBT: 20
-- AI_APP: 5
+- AI_APP: 3 (GOVERNANCE read and AI_LOGS insert only; zero MARTS future grants)
 - READONLY: 2
+- STORE_MANAGER: 0
+- AREA_MANAGER: 0
+- SUPPLY_CHAIN_ANALYST: 0
 
 Managed-access schemas ensure object creators cannot bypass the central grant model.
+
+## Phase 4 policy behavior
+
+`OPERATIONAL_STORE_REGION_POLICY` uses `CURRENT_ROLE()` plus owner-rights lookup
+tables. Tests always disable secondary roles. `SENSITIVE_TEXT_MASK` hides
+supplier contact data and ground-truth root cause from consumer and AI roles;
+only ADMIN, ENGINEER and DBT can view the unmasked evaluation truth.
