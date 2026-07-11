@@ -1,0 +1,27 @@
+# Committed profile: contains no secrets, only env_var() references resolved
+# at run time from GitHub Environment secrets/variables. Always connects as
+# SVC_PHARMARETAIL_DBT (PHARMARETAIL_DBT role, key-pair auth) — never OMRUM,
+# never SVC_PHARMARETAIL_CICD. See docs/adr/ADR-003-dbt-service-identity.md.
+#
+# A single target, not one per GitHub Environment: PHARMARETAIL_DBT has no
+# CREATE SCHEMA grant (see ADR-003), so development/staging/production all
+# resolve to the same physical STAGING/INTERMEDIATE/MARTS schemas today.
+# Real environment separation (which secrets are used, and production's
+# manual approval gate) happens at the GitHub Environment level, not here.
+# query_tag is set per invocation (PR/deploy/scheduled) via DBT_QUERY_TAG so
+# runs stay distinguishable in Snowflake's query history.
+pharma_retail:
+  target: "default"
+  outputs:
+    default:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_DBT_USER') }}"
+      private_key: "{{ env_var('SNOWFLAKE_PRIVATE_KEY') }}"
+      private_key_passphrase: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PASSPHRASE', '') }}"
+      role: PHARMARETAIL_DBT
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
+      schema: STAGING
+      threads: 4
+      query_tag: "{{ env_var('DBT_QUERY_TAG', 'PHARMARETAIL_DBT_RUN') }}"
