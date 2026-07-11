@@ -21,15 +21,16 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Two mutually-exclusive jobs, gated by if:, each with a static with:
-  # value — rather than one job computing target_environment via a
-  # github.event_name/inputs ternary. A reusable workflow's typed with:
-  # inputs are validated before such a ternary could short-circuit, so
-  # referencing inputs.* in it fails on push (workflow_dispatch's inputs
-  # context doesn't exist for that trigger). Splitting by job-level if:
-  # (the same pattern snowflake-deploy.yml already uses for its bau/
-  # bootstrap steps) means inputs.target_environment is only ever
-  # referenced inside a job whose if: guarantees workflow_dispatch.
+  # Two mutually-exclusive jobs, gated by if:, rather than one job computing
+  # target_environment via a github.event_name/inputs ternary or a
+  # needs.*.outputs indirection. A reusable workflow's typed with: inputs
+  # are validated before such a ternary could short-circuit, so referencing
+  # inputs.* in it caused startup_failure regardless of trigger. Splitting
+  # by job-level if: (the same pattern snowflake-deploy.yml already uses
+  # for its bau/bootstrap steps) avoids the cross-context reference
+  # entirely; github.event.inputs.* (not inputs.*) is used for consistency
+  # with concurrency.group even where it's only ever evaluated inside the
+  # workflow_dispatch-gated job.
   dbt-on-push:
     name: Deployment job (push)
     if: github.event_name == 'push'
@@ -45,7 +46,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     uses: ./.github/workflows/dbt-run.yml
     with:
-      target_environment: ${{ inputs.target_environment }}
+      target_environment: ${{ github.event.inputs.target_environment }}
       query_tag: PHARMARETAIL_DBT_DEPLOY
       run_label: deploy
     secrets: inherit
