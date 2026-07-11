@@ -25,6 +25,9 @@ never exported from the protected secret store, invalidation is proved by the
 Snowflake-side public-key replacement plus a successful connection with the
 new key; the retired private key can no longer satisfy authentication.
 
+Development bootstrap run `29154521116` successfully reapplied the active key,
+created the security evidence record, and left no secondary RSA key configured.
+
 ## Secret absence checks
 
 - Full git-history pattern scan contains no PEM private-key block.

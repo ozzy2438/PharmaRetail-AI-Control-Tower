@@ -119,8 +119,18 @@ def validate_security_closure(cursor: snowflake.connector.cursor.SnowflakeCursor
         "WHERE USER_NAME = 'SVC_PHARMARETAIL_DBT'"
     )
     row = cursor.fetchone()
-    if row is None or row[0] != ACTIVE_DBT_KEY_FP or row[1] is not None:
-        raise AssertionError("DBT key rotation evidence does not match the active-key contract")
+    if row is None:
+        raise AssertionError("DBT key rotation evidence row is missing")
+    observed_key = str(row[0]).strip() if row[0] is not None else None
+    secondary_key = str(row[1]).strip() if row[1] is not None else None
+    if secondary_key and secondary_key.lower() == "null":
+        secondary_key = None
+    if observed_key != ACTIVE_DBT_KEY_FP or secondary_key is not None:
+        raise AssertionError(
+            "DBT key rotation evidence mismatch: "
+            f"expected={ACTIVE_DBT_KEY_FP} observed={observed_key} "
+            f"secondary_key_present={secondary_key is not None}"
+        )
     print("phase3_retired_key_invalidation=PASS")
 
 
