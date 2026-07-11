@@ -91,6 +91,15 @@ def validate_masking(cursor: snowflake.connector.cursor.SnowflakeCursor) -> None
     print("phase4_masking=PASS")
 
 
+def is_broad_marts_future_grant(grant: dict[str, object]) -> bool:
+    """Return whether a SHOW FUTURE GRANTS row exposes all MARTS tables/views."""
+    grant_on = str(grant.get("grant_on", "")).upper()
+    name = str(grant.get("name", "")).upper()
+    return grant_on in {"TABLE", "VIEW"} and name.endswith(
+        (".MARTS.<TABLE>", ".MARTS.<VIEW>")
+    )
+
+
 def validate_future_grants(cursor: snowflake.connector.cursor.SnowflakeCursor) -> None:
     use_role(cursor, "PHARMARETAIL_ADMIN")
     for role in ("PHARMARETAIL_STORE_MANAGER", "PHARMARETAIL_AREA_MANAGER"):
@@ -100,12 +109,7 @@ def validate_future_grants(cursor: snowflake.connector.cursor.SnowflakeCursor) -
     cursor.execute("SHOW FUTURE GRANTS TO ROLE PHARMARETAIL_AI_APP")
     columns = [column[0].lower() for column in cursor.description]
     grants = [dict(zip(columns, row, strict=True)) for row in cursor.fetchall()]
-    leaked = [
-        grant
-        for grant in grants
-        if grant.get("grant_on") in {"TABLE", "VIEW"}
-        and str(grant.get("name", "")).upper().endswith(".MARTS.<TABLE>")
-    ]
+    leaked = [grant for grant in grants if is_broad_marts_future_grant(grant)]
     if leaked:
         raise AssertionError("AI_APP retains a broad MARTS future grant")
     print("phase4_future_grants=PASS")
