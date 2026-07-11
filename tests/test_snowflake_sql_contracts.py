@@ -122,3 +122,18 @@ def test_dbt_workflow_never_writes_private_key_to_github_env() -> None:
     assert "GITHUB_ENV" not in "\n".join(
         line for line in workflow.splitlines() if not line.lstrip().startswith("#")
     )
+
+
+def test_dbt_governance_access_is_schema_resolution_only() -> None:
+    grants = (SQL_DIRECTORY / "04_grants.sql").read_text(encoding="utf-8").upper()
+    assert (
+        f"GRANT USAGE ON SCHEMA {DATABASE}.GOVERNANCE\nTO ROLE PHARMARETAIL_DBT"
+        in grants
+    )
+    statements = [statement.strip() for statement in grants.split(";")]
+    assert not any(
+        statement.startswith(("GRANT SELECT", "GRANT INSERT", "GRANT UPDATE", "GRANT DELETE"))
+        and f"{DATABASE}.GOVERNANCE" in statement
+        and "TO ROLE PHARMARETAIL_DBT" in statement
+        for statement in statements
+    )
