@@ -160,6 +160,11 @@ def test_build_copy_sql_parquet_uses_named_field_access(tmp_path: Path) -> None:
     assert "FROM @RAW.RAW_LOAD_STAGE/fixture_sales.parquet" in sql
     assert "'data/processed/fixture_sales.parquet' AS _SOURCE_FILE" in sql
     assert "FILE_FORMAT = (TYPE = PARQUET)" in sql
+    # Parquet TIMESTAMP columns lose their logical type through $1:field
+    # access (Snowflake gotcha) and must go through TO_TIMESTAMP_NTZ(..., 9),
+    # not a plain ::TIMESTAMP_NTZ cast, or dates come back off by ~1e9.
+    assert "to_timestamp_ntz($1:invoice_date::number, 9) AS INVOICE_DATE" in sql
+    assert "$1:invoice_date::TIMESTAMP_NTZ" not in sql
 
 
 def test_build_copy_sql_csv_uses_positional_access(tmp_path: Path) -> None:

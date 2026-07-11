@@ -119,6 +119,25 @@ class LoadResult:
         return self.loaded_row_count == self.stats.row_count
 
 
+def _parquet_column_expression(column: ContractColumn) -> str:
+    """Build the SELECT expression for one column when reading Parquet via $1.
+
+    Parquet's native TIMESTAMP columns lose their logical type annotation
+    when accessed through Snowflake's semi-structured $1:field syntax: the
+    value comes back as the raw physical INT64 (nanoseconds since epoch, the
+    pandas/pyarrow default), and a plain ::TIMESTAMP_NTZ cast on that number
+    is interpreted as *seconds* since epoch, producing nonsense dates many
+    million years off. TO_TIMESTAMP_NTZ(..., 9) tells Snowflake the input is
+    nanosecond-scale, which correctly recovers the original value. Every
+    other type extracts fine with a direct cast.
+    """
+    name = column.name
+    if column.type == "timestamp":
+        return f"to_timestamp_ntz($1:{name}::number, 9) AS {name.upper()}"
+    snowflake_type = CONTRACT_TYPE_TO_SNOWFLAKE[column.type]
+    return f"$1:{name}::{snowflake_type} AS {name.upper()}"
+
+
 def build_copy_sql(
     contract: Contract, table: str, stage_file: str, load_id: str, source_file: str
 ) -> str:
@@ -134,10 +153,7 @@ def build_copy_sql(
     rows match RAW.LOAD_AUDIT.SOURCE_FILE and are self-describing.
     """
     if contract.format == "parquet":
-        select_parts = [
-            f"$1:{column.name}::{CONTRACT_TYPE_TO_SNOWFLAKE[column.type]} AS {column.name.upper()}"
-            for column in contract.columns
-        ]
+        select_parts = [_parquet_column_expression(column) for column in contract.columns]
         file_format = "(TYPE = PARQUET)"
     elif contract.format == "csv":
         select_parts = [
