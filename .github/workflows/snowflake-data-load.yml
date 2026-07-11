@@ -1,0 +1,60 @@
+name: Snowflake Data Load
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: GitHub Environment to load into
+        required: true
+        type: choice
+        options: [development, staging, production]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: snowflake-data-load-${{ inputs.target_environment }}
+  cancel-in-progress: false
+
+jobs:
+  load:
+    name: Load RAW datasets
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target_environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Load RAW datasets (BAU service identity)
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_SERVICE_USER }}
+          # Base64-encoded: see snowflake-deploy.yml for why (multi-line
+          # secret masking is unreliable). Decoded PEM is never echoed.
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          python -m scripts.load_raw_data
+      - name: Upload reconciliation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data-load-reconciliation-${{ inputs.target_environment }}
+          path: docs/data_load_reconciliation.md
+          if-no-files-found: warn
+      - name: Failure guidance
+        if: failure()
+        run: |
+          echo "Data load failed or a row-count mismatch was detected."
+          echo "Check RAW.LOAD_AUDIT in Snowflake and the uploaded reconciliation report."
+          echo "The affected table was truncated before the failed COPY; re-running this workflow reloads it from the same source file."

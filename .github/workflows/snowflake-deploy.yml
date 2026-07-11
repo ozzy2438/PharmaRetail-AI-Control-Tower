@@ -90,7 +90,8 @@ jobs:
           export SNOWFLAKE_PRIVATE_KEY
           python -m scripts.deploy_snowflake \
             --script infra/snowflake/04_grants.sql \
-            --script infra/snowflake/06_validation.sql
+            --script infra/snowflake/06_validation.sql \
+            --script infra/snowflake/08_raw_tables.sql
       - name: Deploy ordered SQL scripts (bootstrap human identity)
         if: github.event_name == 'workflow_dispatch' && inputs.deployment_mode == 'bootstrap'
         env:
