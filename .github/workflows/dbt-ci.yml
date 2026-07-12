@@ -25,6 +25,6 @@ jobs:
       target_environment: development
       query_tag: PHARMARETAIL_DBT_PR
       run_label: pr
-      build_select: "path:models/staging int_sales_daily int_returns_daily int_store_product_daily"
+      build_select: "path:models/staging tag:intermediate_foundation"
       indirect_selection: eager
     secrets: inherit
