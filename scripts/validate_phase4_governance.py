@@ -9,7 +9,11 @@ import snowflake.connector
 from scripts.deploy_snowflake import load_private_key_der
 from scripts.validate_snowflake_config import SnowflakeConfig
 
-DATABASE = "PHARMARETAIL_AI_CONTROL_TOWER"
+# Operational dbt models now live in the verified foundation database. The
+# Phase 4 governance control-plane objects remain in their original governed
+# database until a separate, explicitly approved migration is performed.
+DATA_DATABASE = "PHARMARETAIL"
+CONTROL_DATABASE = "PHARMARETAIL_AI_CONTROL_TOWER"
 ASSIGNED_STORE = "CW_OSM_NODE_1247865789"
 ASSIGNED_REGION = "VIC & TAS"
 ACTIVE_DBT_KEY_FP = "SHA256:LL6crTqYxltfSP/w572ZpNs9ij3wbh5mySlcCk7fmp8="
@@ -18,6 +22,10 @@ ACTIVE_DBT_KEY_FP = "SHA256:LL6crTqYxltfSP/w572ZpNs9ij3wbh5mySlcCk7fmp8="
 def connect() -> snowflake.connector.SnowflakeConnection:
     config = SnowflakeConfig.from_environment()
     config.validate()
+    if config.database != DATA_DATABASE:
+        raise ValueError(
+            f"SNOWFLAKE_DATABASE must be {DATA_DATABASE}, got {config.database}"
+        )
     kwargs: dict[str, object] = {
         "account": config.account,
         "user": config.user,
@@ -50,11 +58,11 @@ def validate_row_access(cursor: snowflake.connector.cursor.SnowflakeCursor) -> N
     use_role(cursor, "PHARMARETAIL_STORE_MANAGER")
     stores = scalar(
         cursor,
-        f"SELECT COUNT(DISTINCT STORE_ID) FROM {DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT",
+        f"SELECT COUNT(DISTINCT STORE_ID) FROM {DATA_DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT",
     )
     leakage = scalar(
         cursor,
-        f"SELECT COUNT(*) FROM {DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT "
+        f"SELECT COUNT(*) FROM {DATA_DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT "
         f"WHERE STORE_ID <> '{ASSIGNED_STORE}'",
     )
     if stores != 1 or leakage != 0:
@@ -63,7 +71,7 @@ def validate_row_access(cursor: snowflake.connector.cursor.SnowflakeCursor) -> N
     use_role(cursor, "PHARMARETAIL_AREA_MANAGER")
     leakage = scalar(
         cursor,
-        f"SELECT COUNT(*) FROM {DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT "
+        f"SELECT COUNT(*) FROM {DATA_DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT "
         f"WHERE REGION <> '{ASSIGNED_REGION}'",
     )
     if leakage != 0:
@@ -72,7 +80,7 @@ def validate_row_access(cursor: snowflake.connector.cursor.SnowflakeCursor) -> N
     use_role(cursor, "PHARMARETAIL_SUPPLY_CHAIN_ANALYST")
     stores = scalar(
         cursor,
-        f"SELECT COUNT(DISTINCT STORE_ID) FROM {DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT",
+        f"SELECT COUNT(DISTINCT STORE_ID) FROM {DATA_DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT",
     )
     if stores != 100:
         raise AssertionError(f"National role expected 100 stores, received {stores}")
@@ -81,10 +89,13 @@ def validate_row_access(cursor: snowflake.connector.cursor.SnowflakeCursor) -> N
 
 def validate_masking(cursor: snowflake.connector.cursor.SnowflakeCursor) -> None:
     use_role(cursor, "PHARMARETAIL_STORE_MANAGER")
-    email = scalar(cursor, f"SELECT MIN(CONTACT_EMAIL) FROM {DATABASE}.MARTS.DIM_SUPPLIER")
+    email = scalar(
+        cursor, f"SELECT MIN(CONTACT_EMAIL) FROM {DATA_DATABASE}.MARTS.DIM_SUPPLIER"
+    )
     root_cause = scalar(
         cursor,
-        f"SELECT MIN(GROUND_TRUTH_ROOT_CAUSE) FROM {DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT",
+        f"SELECT MIN(GROUND_TRUTH_ROOT_CAUSE) FROM "
+        f"{DATA_DATABASE}.MARTS.FCT_INVENTORY_SNAPSHOT",
     )
     if email != "***MASKED***" or root_cause != "***MASKED***":
         raise AssertionError("Sensitive text masking failed")
@@ -119,7 +130,7 @@ def validate_security_closure(cursor: snowflake.connector.cursor.SnowflakeCursor
     use_role(cursor, "PHARMARETAIL_ADMIN")
     cursor.execute(
         f"SELECT RSA_PUBLIC_KEY_FP, RSA_PUBLIC_KEY_2_FP FROM "
-        f"{DATABASE}.GOVERNANCE.SECURITY_CLOSURE_EVIDENCE "
+        f"{CONTROL_DATABASE}.GOVERNANCE.SECURITY_CLOSURE_EVIDENCE "
         "WHERE USER_NAME = 'SVC_PHARMARETAIL_DBT'"
     )
     row = cursor.fetchone()
@@ -142,7 +153,7 @@ def validate_audit(cursor: snowflake.connector.cursor.SnowflakeCursor) -> None:
     use_role(cursor, "PHARMARETAIL_AI_APP")
     audit_id = str(uuid.uuid4())
     cursor.execute(
-        f"INSERT INTO {DATABASE}.AI_LOGS.OPERATIONAL_ACCESS_AUDIT "
+        f"INSERT INTO {CONTROL_DATABASE}.AI_LOGS.OPERATIONAL_ACCESS_AUDIT "
         "(AUDIT_ID, EVENT_TIMESTAMP, ACTOR, ACTIVE_ROLE, QUERY_TAG, ACTION_NAME, "
         "OBJECT_NAME, ROW_COUNT, OUTCOME) "
         "SELECT %s, CURRENT_TIMESTAMP(), CURRENT_USER(), CURRENT_ROLE(), "

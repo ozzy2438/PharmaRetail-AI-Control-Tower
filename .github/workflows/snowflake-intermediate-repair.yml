@@ -1,4 +1,4 @@
-name: Snowflake Intermediate Schema Repair
+name: Snowflake dbt Schema Repair
 
 on:
   workflow_dispatch: {}
@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   repair:
-    name: Verify PHARMARETAIL and grant INTERMEDIATE
+    name: Verify PHARMARETAIL and grant dbt schemas
     runs-on: ubuntu-latest
     environment: development
     steps:
@@ -18,14 +18,14 @@ jobs:
           python-version: "3.11"
           cache: pip
       - run: pip install "snowflake-connector-python>=3.12,<5" "cryptography>=42,<47" "pyyaml>=6,<7"
-      - name: Verify database and apply least-privilege grants
+      - name: Verify database and apply least-privilege dbt grants
         env:
           SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
           SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
           SNOWFLAKE_ROLE: ACCOUNTADMIN
           SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
-          # This repair is intentionally pinned to the verified development
+          # This repair is intentionally pinned to the verified foundation
           # database; the script refuses any other target.
           SNOWFLAKE_DATABASE: PHARMARETAIL
         run: |

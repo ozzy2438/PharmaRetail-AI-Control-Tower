@@ -10,6 +10,7 @@ from scripts.load_raw_data import DATASET_TABLES
 SQL_DIRECTORY = Path("infra/snowflake")
 AUDIT_COLUMNS = {"_LOAD_ID", "_LOADED_AT", "_SOURCE_FILE"}
 DATABASE = "PHARMARETAIL_AI_CONTROL_TOWER"
+LIVE_DBT_DATABASE = "PHARMARETAIL"
 
 
 def test_foundation_sql_never_references_abs_data() -> None:
@@ -111,7 +112,9 @@ def test_phase4_personas_never_receive_future_marts_select() -> None:
 def test_ai_app_broad_marts_access_is_revoked_before_explicit_grants() -> None:
     grants = (SQL_DIRECTORY / "phase4_model_grants.sql").read_text(encoding="utf-8").upper()
     revoke_position = grants.index("REVOKE SELECT ON ALL TABLES")
-    explicit_position = grants.index(f"GRANT SELECT ON TABLE {DATABASE}.MARTS.DIM_DATE")
+    explicit_position = grants.index(
+        f"GRANT SELECT ON TABLE {LIVE_DBT_DATABASE}.MARTS.DIM_DATE"
+    )
     assert revoke_position < explicit_position
     assert "REVOKE SELECT ON FUTURE TABLES" in grants
     assert "REVOKE SELECT ON FUTURE VIEWS" in grants
@@ -121,11 +124,13 @@ def test_supply_chain_analyst_receives_only_explicit_phase4_models() -> None:
     grants = (SQL_DIRECTORY / "phase4_model_grants.sql").read_text(encoding="utf-8").upper()
     role = "PHARMARETAIL_SUPPLY_CHAIN_ANALYST"
     assert (
-        f"REVOKE SELECT ON ALL TABLES IN SCHEMA {DATABASE}.MARTS\nFROM ROLE {role}"
+        f"REVOKE SELECT ON ALL TABLES IN SCHEMA {LIVE_DBT_DATABASE}.MARTS\n"
+        f"FROM ROLE {role}"
         in grants
     )
     assert not re.search(
-        rf"GRANT SELECT ON ALL TABLES IN SCHEMA {DATABASE}\.MARTS\s+TO ROLE {role}",
+        rf"GRANT SELECT ON ALL TABLES IN SCHEMA {LIVE_DBT_DATABASE}\.MARTS\s+"
+        rf"TO ROLE {role}",
         grants,
     )
     for model in (
@@ -139,7 +144,11 @@ def test_supply_chain_analyst_receives_only_explicit_phase4_models() -> None:
         "FCT_PROMOTION",
         "FCT_INCIDENT",
     ):
-        assert f"GRANT SELECT ON TABLE {DATABASE}.MARTS.{model}\nTO ROLE {role}" in grants
+        assert (
+            f"GRANT SELECT ON TABLE {LIVE_DBT_DATABASE}.MARTS.{model}\n"
+            f"TO ROLE {role}"
+            in grants
+        )
 
 
 def test_dbt_workflow_never_writes_private_key_to_github_env() -> None:
