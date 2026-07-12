@@ -186,8 +186,8 @@ GRANT INSERT ON FUTURE TABLES IN SCHEMA PHARMARETAIL_AI_CONTROL_TOWER.AI_LOGS
 TO ROLE PHARMARETAIL_AI_APP;
 
 -- Persona roles receive schema usage here, but no broad ALL/FUTURE object
--- grants. Approved models grant SELECT explicitly in dbt post-hooks, so a new
--- MARTS object cannot become visible before its row policy is attached.
+-- grants. The post-dbt phase4_model_grants.sql admin step explicitly grants
+-- approved models only, after dbt has created them and attached row policies.
 GRANT USAGE ON SCHEMA PHARMARETAIL_AI_CONTROL_TOWER.MARTS
 TO ROLE PHARMARETAIL_STORE_MANAGER;
 GRANT USAGE ON SCHEMA PHARMARETAIL_AI_CONTROL_TOWER.MARTS

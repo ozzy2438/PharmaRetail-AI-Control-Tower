@@ -117,6 +117,31 @@ def test_ai_app_broad_marts_access_is_revoked_before_explicit_grants() -> None:
     assert "REVOKE SELECT ON FUTURE VIEWS" in grants
 
 
+def test_supply_chain_analyst_receives_only_explicit_phase4_models() -> None:
+    grants = (SQL_DIRECTORY / "phase4_model_grants.sql").read_text(encoding="utf-8").upper()
+    role = "PHARMARETAIL_SUPPLY_CHAIN_ANALYST"
+    assert (
+        f"REVOKE SELECT ON ALL TABLES IN SCHEMA {DATABASE}.MARTS\nFROM ROLE {role}"
+        in grants
+    )
+    assert not re.search(
+        rf"GRANT SELECT ON ALL TABLES IN SCHEMA {DATABASE}\.MARTS\s+TO ROLE {role}",
+        grants,
+    )
+    for model in (
+        "DIM_DATE",
+        "DIM_STORE",
+        "DIM_PRODUCT",
+        "DIM_SUPPLIER",
+        "FCT_INVENTORY_SNAPSHOT",
+        "FCT_SUPPLIER_DELIVERY",
+        "FCT_STOCKOUT_EVENT",
+        "FCT_PROMOTION",
+        "FCT_INCIDENT",
+    ):
+        assert f"GRANT SELECT ON TABLE {DATABASE}.MARTS.{model}\nTO ROLE {role}" in grants
+
+
 def test_dbt_workflow_never_writes_private_key_to_github_env() -> None:
     workflow = Path(".github/workflows/dbt-run.yml").read_text(encoding="utf-8")
     assert "GITHUB_ENV" not in "\n".join(
