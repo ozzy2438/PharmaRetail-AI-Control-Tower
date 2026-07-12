@@ -23,7 +23,7 @@ Every source includes `doc_id`, `title`, `version`, `effective_date`,
 `expiry_date`, `country`, `business_unit`, `policy_owner`, `access_level`,
 `section_id` and `source_type`. The parser fails closed on missing fields,
 unsupported access levels, invalid dates, duplicate versions, duplicate section
-IDs or empty sections.
+IDs, empty sections, or any count other than exactly 8 documents and 40 chunks.
 
 `section_id: DOCUMENT` identifies the document-level registry record. Each chunk
 replaces it with its explicit section heading ID, such as `SR-02` or `CC-04`.

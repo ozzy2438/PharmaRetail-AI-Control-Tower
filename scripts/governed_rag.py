@@ -51,7 +51,14 @@ class RetrievalFilters:
     country: str = "AU"
     business_units: tuple[str, ...] = ()
     doc_ids: tuple[str, ...] = ()
-    as_of_date: date = date(2026, 7, 1)
+    as_of_date: date = field(default_factory=date.today)
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "country", self.country.upper())
+        object.__setattr__(
+            self, "business_units", tuple(value.upper() for value in self.business_units)
+        )
+        object.__setattr__(self, "doc_ids", tuple(value.upper() for value in self.doc_ids))
 
 
 @dataclass(frozen=True)

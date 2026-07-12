@@ -51,6 +51,11 @@ as a Snowflake Cortex or neural semantic embedding.
 9. Return `LOW`, `MEDIUM` or `HIGH` uncertainty plus a numeric score.
 10. Persist non-sensitive retrieval evidence to the controlled audit table.
 
+Runtime requests default the as-of date to the current date. Evaluation and
+reconciliation always pass `2026-07-01` explicitly so regression results remain
+deterministic. Country, business-unit and document-ID filter values are
+normalised to uppercase before matching.
+
 ## Snowflake objects
 
 | Object | Purpose |

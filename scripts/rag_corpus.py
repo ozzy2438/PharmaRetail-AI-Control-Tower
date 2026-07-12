@@ -29,6 +29,8 @@ SECTION_PATTERN = re.compile(r"^## \[([A-Z0-9-]+)]\s+(.+)$", re.MULTILINE)
 TOKEN_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)?")
 EMBEDDING_DIMENSION = 64
 EMBEDDING_MODEL = "DETERMINISTIC_HASHED_LEXICAL_V1"
+EXPECTED_DOCUMENT_COUNT = 8
+EXPECTED_CHUNK_COUNT = 40
 
 
 @dataclass(frozen=True)
@@ -181,6 +183,14 @@ def load_corpus(
         seen_versions.add(key)
         documents.append(metadata)
         chunks.extend(_section_chunks(metadata, body))
-    if not 6 <= len(documents) <= 8:
-        raise ValueError(f"Expected 6-8 governed documents, found {len(documents)}")
+    if len(documents) != EXPECTED_DOCUMENT_COUNT:
+        raise ValueError(
+            f"Expected exactly {EXPECTED_DOCUMENT_COUNT} governed documents, "
+            f"found {len(documents)}"
+        )
+    if len(chunks) != EXPECTED_CHUNK_COUNT:
+        raise ValueError(
+            f"Expected exactly {EXPECTED_CHUNK_COUNT} governed section chunks, "
+            f"found {len(chunks)}"
+        )
     return documents, chunks
