@@ -110,9 +110,13 @@ def load(connection, corpus_root: Path) -> tuple[int, int]:  # noqa: ANN001
             ) SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                 PARSE_JSON(%s), %s
         """
-        cursor.executemany(
-            chunk_sql,
-            [
+        # Snowflake Connector's executemany rewrite supports INSERT ... VALUES,
+        # but not this INSERT ... SELECT ... PARSE_JSON bind. The governed
+        # corpus is intentionally small (40 sections), so deterministic
+        # row-wise execution is safer than relying on an unsupported rewrite.
+        for chunk in chunks:
+            cursor.execute(
+                chunk_sql,
                 (
                     chunk.chunk_id,
                     chunk.metadata.doc_id,
@@ -130,10 +134,8 @@ def load(connection, corpus_root: Path) -> tuple[int, int]:  # noqa: ANN001
                     chunk.metadata.expiry_date,
                     json.dumps(chunk.embedding),
                     now,
-                )
-                for chunk in chunks
-            ],
-        )
+                ),
+            )
         cursor.executemany(
             f"""
             INSERT INTO {SCHEMA}.EMBEDDING_METADATA (
