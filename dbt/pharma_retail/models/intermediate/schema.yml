@@ -1,0 +1,148 @@
+version: 2
+
+models:
+  - name: int_sales_daily
+    description: >
+      Deterministic store-product-date sales aggregation. UCI lines are mapped
+      to existing store and product keys using stable hash mapping.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [store_id, product_id, date]
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_product')
+              field: product_id
+      - name: date
+        tests:
+          - not_null
+      - name: units_sold
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: gross_sales
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: transaction_count
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: average_unit_price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: anonymous_customer_rate
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1
+
+  - name: int_returns_daily
+    description: >
+      Deterministic store-product-date returns aggregation using the same key
+      mapping as int_sales_daily.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [store_id, product_id, date]
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_product')
+              field: product_id
+      - name: date
+        tests:
+          - not_null
+      - name: returned_units
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: return_value
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: return_transaction_count
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+
+  - name: int_store_product_daily
+    description: >
+      Full-outer-joined sales and returns at store-product-date grain with net
+      metrics, rates and presence flags.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [store_id, product_id, date]
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_product')
+              field: product_id
+      - name: date
+        tests:
+          - not_null
+      - name: net_units
+        tests: [not_null]
+      - name: net_sales
+        tests: [not_null]
+      - name: gross_sales
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: units_sold
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: returned_units
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: return_value
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: return_rate
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: has_sales_flag
+        tests: [not_null]
+      - name: has_return_flag
+        tests: [not_null]

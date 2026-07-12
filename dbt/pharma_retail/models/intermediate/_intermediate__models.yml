@@ -1,30 +1,6 @@
 version: 2
 
 models:
-  - name: int_sales_daily
-    description: Sales aggregated at (invoice_date_day, country) grain.
-    columns:
-      - name: invoice_date_day
-        tests: [not_null]
-      - name: country
-        tests: [not_null]
-      - name: total_quantity
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: "> 0"
-      - name: total_revenue
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: "> 0"
-
-  - name: int_returns_daily
-    description: Returns aggregated at (invoice_date_day, country) grain.
-    columns:
-      - name: invoice_date_day
-        tests: [not_null]
-      - name: country
-        tests: [not_null]
-
   - name: int_product_sales_summary
     description: >
       Sales aggregated by UCI stock_code (not dim_product.product_id — see
