@@ -1,0 +1,245 @@
+-- Every row should return PASS. Expected counts are the governed local-file counts.
+USE ROLE ACCOUNTADMIN;
+USE WAREHOUSE WH_PHARMARETAIL;
+USE DATABASE PHARMARETAIL;
+USE SCHEMA RAW;
+ALTER SESSION SET QUERY_TAG = 'PHARMARETAIL_RAW_LOAD_VALIDATION';
+
+WITH VALIDATION_CHECKS AS (
+    SELECT
+        'store_row_count' AS CHECK_NAME,
+        COUNT(*) AS ACTUAL_VALUE,
+        100 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.STORE_SEED
+
+    UNION ALL
+
+    SELECT
+        'product_row_count' AS CHECK_NAME,
+        COUNT(*) AS ACTUAL_VALUE,
+        300 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.PRODUCT_SEED
+
+    UNION ALL
+
+    SELECT
+        'sales_row_count' AS CHECK_NAME,
+        COUNT(*) AS ACTUAL_VALUE,
+        1007913 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.UCI_SALES
+
+    UNION ALL
+
+    SELECT
+        'returns_row_count' AS CHECK_NAME,
+        COUNT(*) AS ACTUAL_VALUE,
+        19104 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.UCI_RETURNS
+
+    UNION ALL
+
+    SELECT
+        'invalid_price_row_count' AS CHECK_NAME,
+        COUNT(*) AS ACTUAL_VALUE,
+        6019 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.UCI_INVALID_PRICE
+
+    UNION ALL
+
+    SELECT
+        'store_id_null_count' AS CHECK_NAME,
+        COUNT_IF(STORE_ID IS NULL) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.STORE_SEED
+
+    UNION ALL
+
+    SELECT
+        'store_id_duplicate_count' AS CHECK_NAME,
+        COUNT(*) - COUNT(DISTINCT STORE_ID) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.STORE_SEED
+
+    UNION ALL
+
+    SELECT
+        'product_id_null_count' AS CHECK_NAME,
+        COUNT_IF(PRODUCT_ID IS NULL) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.PRODUCT_SEED
+
+    UNION ALL
+
+    SELECT
+        'product_id_duplicate_count' AS CHECK_NAME,
+        COUNT(*) - COUNT(DISTINCT PRODUCT_ID) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.PRODUCT_SEED
+
+    UNION ALL
+
+    SELECT
+        'sales_identity_null_count' AS CHECK_NAME,
+        COUNT_IF(
+            INVOICE IS NULL OR STOCK_CODE IS NULL OR INVOICE_DATE IS NULL
+        ) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.UCI_SALES
+
+    UNION ALL
+
+    SELECT
+        'returns_identity_null_count' AS CHECK_NAME,
+        COUNT_IF(
+            INVOICE IS NULL OR STOCK_CODE IS NULL OR INVOICE_DATE IS NULL
+        ) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.UCI_RETURNS
+
+    UNION ALL
+
+    SELECT
+        'invalid_price_identity_null_count' AS CHECK_NAME,
+        COUNT_IF(
+            INVOICE IS NULL OR STOCK_CODE IS NULL OR INVOICE_DATE IS NULL
+        ) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.UCI_INVALID_PRICE
+
+    UNION ALL
+
+    SELECT
+        'sales_exact_duplicate_count' AS CHECK_NAME,
+        COALESCE(SUM(DUPLICATE_COUNT), 0) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM (
+        SELECT COUNT(*) - 1 AS DUPLICATE_COUNT
+        FROM PHARMARETAIL.RAW.UCI_SALES
+        GROUP BY
+            INVOICE,
+            STOCK_CODE,
+            DESCRIPTION,
+            QUANTITY,
+            INVOICE_DATE,
+            PRICE,
+            CUSTOMER_ID,
+            COUNTRY,
+            IS_CUSTOMER_IDENTIFIED
+        HAVING COUNT(*) > 1
+    ) AS SALES_DUPLICATES
+
+    UNION ALL
+
+    SELECT
+        'returns_exact_duplicate_count' AS CHECK_NAME,
+        COALESCE(SUM(DUPLICATE_COUNT), 0) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM (
+        SELECT COUNT(*) - 1 AS DUPLICATE_COUNT
+        FROM PHARMARETAIL.RAW.UCI_RETURNS
+        GROUP BY
+            INVOICE,
+            STOCK_CODE,
+            DESCRIPTION,
+            QUANTITY,
+            INVOICE_DATE,
+            PRICE,
+            CUSTOMER_ID,
+            COUNTRY,
+            IS_CUSTOMER_IDENTIFIED
+        HAVING COUNT(*) > 1
+    ) AS RETURNS_DUPLICATES
+
+    UNION ALL
+
+    SELECT
+        'invalid_price_exact_duplicate_count' AS CHECK_NAME,
+        COALESCE(SUM(DUPLICATE_COUNT), 0) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM (
+        SELECT COUNT(*) - 1 AS DUPLICATE_COUNT
+        FROM PHARMARETAIL.RAW.UCI_INVALID_PRICE
+        GROUP BY
+            INVOICE,
+            STOCK_CODE,
+            DESCRIPTION,
+            QUANTITY,
+            INVOICE_DATE,
+            PRICE,
+            CUSTOMER_ID,
+            COUNTRY,
+            IS_CUSTOMER_IDENTIFIED,
+            QUARANTINE_REASON
+        HAVING COUNT(*) > 1
+    ) AS INVALID_PRICE_DUPLICATES
+
+    UNION ALL
+
+    SELECT
+        'postcode_available_true_count' AS CHECK_NAME,
+        COUNT_IF(POSTCODE_AVAILABLE_FLAG) AS ACTUAL_VALUE,
+        70 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.STORE_SEED
+
+    UNION ALL
+
+    SELECT
+        'postcode_available_false_count' AS CHECK_NAME,
+        COUNT_IF(NOT POSTCODE_AVAILABLE_FLAG) AS ACTUAL_VALUE,
+        30 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.STORE_SEED
+
+    UNION ALL
+
+    SELECT
+        'postcode_flag_mismatch_count' AS CHECK_NAME,
+        COUNT_IF(
+            POSTCODE_AVAILABLE_FLAG != (POSTCODE IS NOT NULL)
+        ) AS ACTUAL_VALUE,
+        0 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.RAW.STORE_SEED
+
+    UNION ALL
+
+    SELECT
+        'timestamp_type_count' AS CHECK_NAME,
+        COUNT_IF(
+            TABLE_NAME IN ('UCI_SALES', 'UCI_RETURNS', 'UCI_INVALID_PRICE')
+            AND COLUMN_NAME = 'INVOICE_DATE'
+            AND DATA_TYPE = 'TIMESTAMP_NTZ'
+        ) AS ACTUAL_VALUE,
+        3 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.INFORMATION_SCHEMA.COLUMNS
+
+    UNION ALL
+
+    SELECT
+        'numeric_type_count' AS CHECK_NAME,
+        COUNT_IF(
+            (
+                TABLE_NAME IN ('UCI_SALES', 'UCI_RETURNS', 'UCI_INVALID_PRICE')
+                AND COLUMN_NAME IN ('QUANTITY', 'PRICE')
+                AND DATA_TYPE IN ('NUMBER', 'FLOAT')
+            )
+            OR (
+                TABLE_NAME = 'STORE_SEED'
+                AND COLUMN_NAME IN ('LATITUDE', 'LONGITUDE')
+                AND DATA_TYPE = 'FLOAT'
+            )
+            OR (
+                TABLE_NAME = 'PRODUCT_SEED'
+                AND COLUMN_NAME IN ('COLD_CHAIN_FLAG', 'REGULATED_PRODUCT_FLAG')
+                AND DATA_TYPE = 'NUMBER'
+            )
+        ) AS ACTUAL_VALUE,
+        10 AS EXPECTED_VALUE
+    FROM PHARMARETAIL.INFORMATION_SCHEMA.COLUMNS
+)
+
+SELECT
+    CHECK_NAME,
+    ACTUAL_VALUE,
+    EXPECTED_VALUE,
+    IFF(ACTUAL_VALUE = EXPECTED_VALUE, 'PASS', 'FAIL') AS VALIDATION_RESULT
+FROM VALIDATION_CHECKS
+ORDER BY CHECK_NAME;
