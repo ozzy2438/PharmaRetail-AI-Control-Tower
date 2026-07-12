@@ -4,9 +4,9 @@ Production-style pharmacy-retail data and AI platform built around Snowflake,
 dbt-core, governed operational data, and auditable delivery controls.
 
 The current implementation covers the Snowflake foundation, reconciled RAW
-ingestion, the dbt transformation pipeline, and the Phase 4 operational data
-and governance layer used to investigate stockouts. RAG, agents, UI, API,
-dashboard, SOP embedding, and model evaluation are deliberately not Phase 4.
+ingestion, the dbt transformation pipeline, the Phase 4 operational layer and a
+Phase 5 governed SOP RAG baseline. Agent, UI, API, dashboard and autonomous
+actions are deliberately not implemented.
 
 ## Implemented data flow
 
@@ -18,6 +18,13 @@ RAW -> STAGING -> INTERMEDIATE -> MARTS
 GOVERNANCE -> row access + masking + role scope
 AI_LOGS    -> controlled append-only operational audit
 ```
+
+Phase 5 adds eight versioned synthetic SOP/policy documents, forty deterministic
+section chunks, governed Snowflake registry/audit objects, metadata and
+effective-date filtering, citation-required extractive answers, refusal
+guardrails and a CI evaluation suite. See the [RAG architecture](docs/rag_architecture.md),
+[SOP corpus](docs/sop_corpus.md), [evaluation](docs/rag_evaluation.md) and
+[RAG security](docs/rag_security.md).
 
 The future Stockout Investigation Agent will consume only approved governed
 MARTS models. It must not query RAW or ungoverned intermediate data.
