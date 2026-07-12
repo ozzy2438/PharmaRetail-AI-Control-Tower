@@ -88,8 +88,16 @@ def test_apply_grants_never_grants_create_schema() -> None:
             "COPY CURRENT GRANTS"
             in cursor.calls
         )
+    assert (
+        "GRANT OWNERSHIP ON SCHEMA PHARMARETAIL.MARTS "
+        "TO ROLE PHARMARETAIL_ADMIN COPY CURRENT GRANTS"
+        in cursor.calls
+    )
     assert not any("GRANT CREATE SCHEMA" in call for call in cursor.calls)
-    assert not any("OWNERSHIP ON SCHEMA" in call for call in cursor.calls)
+    assert not any(
+        "OWNERSHIP ON SCHEMA" in call and "TO ROLE PHARMARETAIL_DBT" in call
+        for call in cursor.calls
+    )
     assert not any("OWNERSHIP ON DATABASE" in call for call in cursor.calls)
 
 
@@ -114,8 +122,13 @@ def test_verify_grants_accepts_qualified_and_unqualified_names() -> None:
                         for view_name in STAGING_VIEW_MODELS
                     ),
                 ],
-            )
+            ),
+            "SHOW GRANTS ON SCHEMA PHARMARETAIL.MARTS": (
+                ["PRIVILEGE", "GRANTEE_NAME"],
+                [("OWNERSHIP", "PHARMARETAIL_ADMIN")],
+            ),
         }
     )
 
     verify_grants(cursor)
+    assert cursor.calls[-1] == "SHOW GRANTS ON SCHEMA PHARMARETAIL.MARTS"

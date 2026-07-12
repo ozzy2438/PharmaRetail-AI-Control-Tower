@@ -81,6 +81,12 @@ def apply_grants(cursor) -> None:
         cursor.execute(
             f"GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.{schema} TO ROLE PHARMARETAIL_DBT"
         )
+    # MARTS uses managed access: its intended owner must apply consumer grants
+    # after dbt creates models. Keep dbt as object owner, never schema owner.
+    cursor.execute(
+        "GRANT OWNERSHIP ON SCHEMA PHARMARETAIL.MARTS "
+        "TO ROLE PHARMARETAIL_ADMIN COPY CURRENT GRANTS"
+    )
     # These five views are dbt models but were bootstrapped by another role.
     # Transfer only their object ownership so full dbt deploy can replace them;
     # preserve existing consumer grants and never transfer schema ownership.
@@ -113,7 +119,18 @@ def verify_grants(cursor) -> None:
     missing = sorted(required - actual)
     if missing:
         raise RuntimeError(f"Required PHARMARETAIL_DBT grants are missing: {missing}")
+
+    cursor.execute("SHOW GRANTS ON SCHEMA PHARMARETAIL.MARTS")
+    marts_grants = rows_as_dicts(cursor)
+    marts_owner_is_admin = any(
+        str(row.get("PRIVILEGE", "")).upper() == "OWNERSHIP"
+        and str(row.get("GRANTEE_NAME", "")).upper() == "PHARMARETAIL_ADMIN"
+        for row in marts_grants
+    )
+    if not marts_owner_is_admin:
+        raise RuntimeError("PHARMARETAIL_ADMIN does not own PHARMARETAIL.MARTS")
     print("dbt_schemas=PHARMARETAIL.STAGING,INTERMEDIATE,MARTS created_or_verified")
+    print("marts_schema_owner=PHARMARETAIL_ADMIN verified")
     print(
         "grants=USAGE(database),USAGE/CREATE VIEW/CREATE TABLE"
         "(staging,intermediate,marts),OWNERSHIP(five staging dbt views) verified"
