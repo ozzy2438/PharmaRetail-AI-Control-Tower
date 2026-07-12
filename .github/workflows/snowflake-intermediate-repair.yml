@@ -1,0 +1,33 @@
+name: Snowflake Intermediate Schema Repair
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  repair:
+    name: Verify PHARMARETAIL and grant INTERMEDIATE
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install "snowflake-connector-python>=3.12,<5" "cryptography>=42,<47" "pyyaml>=6,<7"
+      - name: Verify database and apply least-privilege grants
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+          SNOWFLAKE_ROLE: ACCOUNTADMIN
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          # This repair is intentionally pinned to the verified development
+          # database; the script refuses any other target.
+          SNOWFLAKE_DATABASE: PHARMARETAIL
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PASSWORD"
+          python -m scripts.repair_intermediate_schema
