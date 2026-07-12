@@ -25,7 +25,9 @@ jobs:
           SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
           SNOWFLAKE_ROLE: ACCOUNTADMIN
           SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
-          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+          # This repair is intentionally pinned to the verified development
+          # database; the script refuses any other target.
+          SNOWFLAKE_DATABASE: PHARMARETAIL
         run: |
           echo "::add-mask::$SNOWFLAKE_PASSWORD"
           python -m scripts.repair_intermediate_schema

@@ -8,17 +8,12 @@ from scripts.validate_snowflake_config import SnowflakeConfig
 EXPECTED_DATABASE = "PHARMARETAIL"
 TARGET_SCHEMA = "INTERMEDIATE"
 DBT_ROLE = "PHARMARETAIL_DBT"
+INTERMEDIATE_SCHEMA = f"{EXPECTED_DATABASE}.{TARGET_SCHEMA}"
 
 
 def rows_as_dicts(cursor) -> list[dict[str, object]]:
     columns = [description[0].upper() for description in cursor.description]
     return [dict(zip(columns, row, strict=True)) for row in cursor.fetchall()]
-
-
-def scalar(cursor, statement: str) -> int:
-    cursor.execute(statement)
-    value = cursor.fetchone()[0]
-    return int(value)
 
 
 def verify_foundation(cursor) -> None:
@@ -49,6 +44,9 @@ def verify_foundation(cursor) -> None:
 
 
 def apply_grants(cursor) -> None:
+    # These identifiers are intentionally fixed to the verified target. The
+    # script refuses any other database before connecting, so no untrusted
+    # input is interpolated into DDL/DCL.
     cursor.execute("CREATE SCHEMA IF NOT EXISTS PHARMARETAIL.INTERMEDIATE")
     cursor.execute("GRANT USAGE ON DATABASE PHARMARETAIL TO ROLE PHARMARETAIL_DBT")
     cursor.execute(
@@ -66,23 +64,23 @@ def verify_grants(cursor) -> None:
     cursor.execute("SHOW GRANTS TO ROLE PHARMARETAIL_DBT")
     grants = rows_as_dicts(cursor)
     required = {
-        ("USAGE", "DATABASE", "PHARMARETAIL"),
-        ("USAGE", "SCHEMA", "PHARMARETAIL.INTERMEDIATE"),
-        ("CREATE VIEW", "SCHEMA", "PHARMARETAIL.INTERMEDIATE"),
-        ("CREATE TABLE", "SCHEMA", "PHARMARETAIL.INTERMEDIATE"),
+        ("USAGE", "DATABASE", EXPECTED_DATABASE),
+        ("USAGE", "SCHEMA", TARGET_SCHEMA),
+        ("CREATE VIEW", "SCHEMA", TARGET_SCHEMA),
+        ("CREATE TABLE", "SCHEMA", TARGET_SCHEMA),
     }
     actual = {
         (
             str(row.get("PRIVILEGE", "")).upper(),
             str(row.get("GRANTED_ON", "")).upper(),
-            str(row.get("NAME", "")).upper(),
+            str(row.get("NAME", "")).strip('"').split(".")[-1].strip('"').upper(),
         )
         for row in grants
     }
     missing = sorted(required - actual)
     if missing:
         raise RuntimeError(f"Required PHARMARETAIL_DBT grants are missing: {missing}")
-    print("intermediate_schema=PHARMARETAIL.INTERMEDIATE created_or_verified")
+    print(f"intermediate_schema={INTERMEDIATE_SCHEMA} created_or_verified")
     print("grants=USAGE(database),USAGE(schema),CREATE VIEW,CREATE TABLE verified")
 
 
