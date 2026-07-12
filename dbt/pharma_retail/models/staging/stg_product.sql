@@ -1,23 +1,19 @@
--- Typed, renamed passthrough of RAW.DIM_PRODUCT_SEED. Flags are cast to
--- boolean for cleaner downstream usage; they remain illustrative scenario
--- flags, not validated regulatory/clinical classifications (see
--- contracts/dim_product.yml).
 with source as (
-    select * from {{ source('raw', 'dim_product_seed') }}
+    select * from {{ source('raw', 'product_seed') }}
 ),
 
-renamed as (
+typed as (
     select
-        product_id,
-        product_name,
-        brand,
-        category,
-        pack_size,
-        cold_chain_flag::boolean as is_cold_chain,
-        regulated_product_flag::boolean as is_regulated,
-        _load_id,
-        _loaded_at
+        cast(product_id as varchar) as product_id,
+        cast(product_name as varchar) as product_name,
+        cast(brand as varchar) as brand,
+        cast(category as varchar) as category,
+        cast(pack_size as varchar) as pack_size,
+        cast(cold_chain_flag as boolean) as is_cold_chain,
+        cast(regulated_product_flag as boolean) as is_regulated,
+        cast(_source_file as varchar) as _source_file,
+        cast(_loaded_at as timestamp_ntz) as _loaded_at
     from source
 )
 
-select * from renamed
+select * from typed

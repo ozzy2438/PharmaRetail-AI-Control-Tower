@@ -1,0 +1,212 @@
+version: 2
+
+models:
+  - name: stg_store
+    description: Typed one-to-one view of RAW.STORE_SEED.
+    columns:
+      - name: store_id
+        tests: [not_null, unique]
+      - name: store_name
+        tests: [not_null]
+      - name: state
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"]
+      - name: postcode
+        description: Nullable source postcode; no value is fabricated in staging.
+      - name: latitude
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -90
+              max_value: 90
+      - name: longitude
+        tests:
+          - not_null
+          - dbt_utils.accepted_range:
+              min_value: -180
+              max_value: 180
+      - name: postcode_available_flag
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+          - dbt_utils.expression_is_true:
+              expression: "= (postcode is not null)"
+
+  - name: stg_product
+    description: Typed one-to-one view of RAW.PRODUCT_SEED.
+    columns:
+      - name: product_id
+        tests: [not_null, unique]
+      - name: product_name
+        tests: [not_null]
+      - name: category
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                [
+                  "vitamins",
+                  "skincare",
+                  "oral care",
+                  "baby care",
+                  "pain relief",
+                  "cold & flu",
+                  "personal care",
+                ]
+      - name: is_cold_chain
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+      - name: is_regulated
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+  - name: stg_uci_sales
+    description: Typed one-to-one view of RAW.UCI_SALES.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            [
+              invoice_number,
+              stock_code,
+              product_description,
+              quantity,
+              invoice_date,
+              unit_price,
+              customer_id,
+              country,
+              is_customer_identified,
+            ]
+    columns:
+      - name: invoice_number
+        tests: [not_null]
+      - name: stock_code
+        tests: [not_null]
+      - name: quantity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: invoice_date
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between '2000-01-01'::timestamp_ntz and current_timestamp()"
+      - name: unit_price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: country
+        tests: [not_null]
+      - name: is_customer_identified
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+  - name: stg_uci_returns
+    description: Typed one-to-one view of RAW.UCI_RETURNS.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            [
+              invoice_number,
+              stock_code,
+              product_description,
+              quantity,
+              invoice_date,
+              unit_price,
+              customer_id,
+              country,
+              is_customer_identified,
+            ]
+    columns:
+      - name: invoice_number
+        tests: [not_null]
+      - name: stock_code
+        tests: [not_null]
+      - name: quantity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "!= 0"
+      - name: invoice_date
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between '2000-01-01'::timestamp_ntz and current_timestamp()"
+      - name: unit_price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
+      - name: country
+        tests: [not_null]
+      - name: is_customer_identified
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+
+  - name: stg_uci_invalid_price
+    description: Typed one-to-one view of RAW.UCI_INVALID_PRICE.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            [
+              invoice_number,
+              stock_code,
+              product_description,
+              quantity,
+              invoice_date,
+              unit_price,
+              customer_id,
+              country,
+              is_customer_identified,
+              quarantine_reason,
+            ]
+    columns:
+      - name: invoice_number
+        tests: [not_null]
+      - name: stock_code
+        tests: [not_null]
+      - name: quantity
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "!= 0"
+      - name: invoice_date
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "between '2000-01-01'::timestamp_ntz and current_timestamp()"
+      - name: unit_price
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: "<= 0"
+      - name: country
+        tests: [not_null]
+      - name: is_customer_identified
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+              quote: false
+      - name: quarantine_reason
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["non_positive_price"]
