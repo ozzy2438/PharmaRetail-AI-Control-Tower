@@ -19,7 +19,7 @@ columns:
   - name: postcode
     type: string
     nullable: true
-    pattern: '^\\d{4}$'
+    pattern: '^\d{4}$'
   - name: latitude
     type: number
     nullable: false
@@ -35,4 +35,5 @@ columns:
     nullable: false
     accepted_values: [NSW & ACT, VIC & TAS, QLD, SA & NT, WA]
 notes:
-  - postcode is nullable in practice: 30 of 100 selected OSM records had no postcode and were left blank rather than fabricated (see docs/data_readiness.md). This was corrected from an earlier nullable:false declaration that did not match the actual seed.
+  - postcode is nullable in practice: only 70 of the 421 downloaded OSM records contain addr:postcode, and all 70 are already included in this seed.
+  - The remaining 30 postcodes are left blank rather than fabricated or populated by duplicating an OSM store (see docs/data_readiness.md).
