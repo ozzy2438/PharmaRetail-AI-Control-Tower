@@ -46,7 +46,7 @@ jobs:
         with:
           python-version: "3.11"
           cache: pip
-      - run: pip install "snowflake-connector-python>=3.12,<5" "cryptography>=42,<47"
+      - run: pip install "snowflake-connector-python>=3.12,<5" "cryptography>=42,<47" "pyyaml>=6,<7"
       - name: Validate protected environment configuration (BAU service identity)
         if: github.event_name == 'push' || inputs.deployment_mode == 'bau'
         env:
