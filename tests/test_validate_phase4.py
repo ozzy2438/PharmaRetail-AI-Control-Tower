@@ -5,6 +5,8 @@ import pytest
 from scripts.validate_phase4_determinism import connection_kwargs
 from scripts.validate_phase4_governance import (
     ACTIVE_DBT_KEY_FP,
+    CONTROL_DATABASE,
+    DATA_DATABASE,
     is_broad_marts_future_grant,
 )
 
@@ -41,6 +43,11 @@ def test_determinism_connection_reports_missing_names_without_values() -> None:
 def test_active_key_fingerprint_is_a_non_secret_sha256_value() -> None:
     assert ACTIVE_DBT_KEY_FP.startswith("SHA256:")
     assert len(ACTIVE_DBT_KEY_FP) == 51
+
+
+def test_phase4_data_plane_uses_verified_database() -> None:
+    assert DATA_DATABASE == "PHARMARETAIL"
+    assert CONTROL_DATABASE == "PHARMARETAIL_AI_CONTROL_TOWER"
 
 
 @pytest.mark.parametrize("object_type", ["TABLE", "VIEW"])
