@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('raw', 'uci_sales') }}
+    select * from {{ source('raw', 'uci_invalid_price') }}
 ),
 
 typed as (
@@ -11,10 +11,10 @@ typed as (
         cast(invoice_date as timestamp_ntz) as invoice_date,
         cast(invoice_date as date) as invoice_date_day,
         cast(price as float) as unit_price,
-        cast(quantity * price as number(18, 4)) as line_revenue,
         cast(customer_id as varchar) as customer_id,
         cast(country as varchar) as country,
         cast(is_customer_identified as boolean) as is_customer_identified,
+        cast(quarantine_reason as varchar) as quarantine_reason,
         cast(_source_file as varchar) as _source_file,
         cast(_loaded_at as timestamp_ntz) as _loaded_at
     from source

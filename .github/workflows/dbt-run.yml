@@ -15,6 +15,16 @@ on:
         description: Short label used in artifact/comment naming (pr, deploy, scheduled)
         required: true
         type: string
+      build_select:
+        description: Optional dbt node selector for a scoped build
+        required: false
+        default: ""
+        type: string
+      indirect_selection:
+        description: dbt indirect test-selection mode when build_select is set
+        required: false
+        default: eager
+        type: string
 
 permissions:
   contents: read
@@ -63,10 +73,16 @@ jobs:
           export SNOWFLAKE_PRIVATE_KEY
           dbt deps
           set +e
-          dbt build
+          if [ -n "${{ inputs.build_select }}" ]; then
+            dbt build \
+              --select "${{ inputs.build_select }}" \
+              --indirect-selection "${{ inputs.indirect_selection }}"
+          else
+            dbt build
+          fi
           build_exit_code=$?
           set -e
-          if [ "$build_exit_code" -eq 0 ]; then
+          if [ "$build_exit_code" -eq 0 ] && [ "${{ inputs.run_label }}" != "pr" ]; then
             PYTHONPATH=../.. python -m scripts.validate_phase4_determinism
           fi
           dbt docs generate || true

@@ -1,27 +1,23 @@
--- Typed, renamed passthrough of RAW.UCI_RETURNS. One row per deduplicated,
--- valid-price UCI Online Retail invoice line classified as a return.
 with source as (
     select * from {{ source('raw', 'uci_returns') }}
 ),
 
-renamed as (
+typed as (
     select
-        invoice as invoice_number,
-        stock_code,
-        description as product_description,
-        quantity,
-        invoice_date,
+        cast(invoice as varchar) as invoice_number,
+        cast(stock_code as varchar) as stock_code,
+        cast(description as varchar) as product_description,
+        cast(quantity as number(38, 0)) as quantity,
+        cast(invoice_date as timestamp_ntz) as invoice_date,
         cast(invoice_date as date) as invoice_date_day,
-        price as unit_price,
-        -- See stg_uci_sales.sql: NUMBER, not FLOAT, so SUM(line_return_value)
-        -- reconciles exactly between staging and the grouped mart totals.
+        cast(price as float) as unit_price,
         cast(quantity * price as number(18, 4)) as line_return_value,
-        customer_id,
-        country,
-        is_customer_identified,
-        _load_id,
-        _loaded_at
+        cast(customer_id as varchar) as customer_id,
+        cast(country as varchar) as country,
+        cast(is_customer_identified as boolean) as is_customer_identified,
+        cast(_source_file as varchar) as _source_file,
+        cast(_loaded_at as timestamp_ntz) as _loaded_at
     from source
 )
 
-select * from renamed
+select * from typed

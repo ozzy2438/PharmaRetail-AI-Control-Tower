@@ -1,20 +1,20 @@
--- Typed, renamed passthrough of RAW.DIM_STORE_SEED.
 with source as (
-    select * from {{ source('raw', 'dim_store_seed') }}
+    select * from {{ source('raw', 'store_seed') }}
 ),
 
-renamed as (
+typed as (
     select
-        store_id,
-        store_name,
-        state,
-        postcode,
+        cast(store_id as varchar) as store_id,
+        cast(store_name as varchar) as store_name,
+        cast(state as varchar) as state,
+        cast(postcode as varchar) as postcode,
         cast(latitude as float) as latitude,
         cast(longitude as float) as longitude,
-        region,
-        _load_id,
-        _loaded_at
+        cast(region as varchar) as region,
+        cast(postcode_available_flag as boolean) as postcode_available_flag,
+        cast(_source_file as varchar) as _source_file,
+        cast(_loaded_at as timestamp_ntz) as _loaded_at
     from source
 )
 
-select * from renamed
+select * from typed

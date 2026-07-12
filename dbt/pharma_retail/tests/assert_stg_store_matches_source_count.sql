@@ -1,9 +1,9 @@
 with staging_count as (
-    select count(*) as row_count from {{ ref('stg_uci_returns') }}
+    select count(*) as row_count from {{ ref('stg_store') }}
 ),
 
 source_count as (
-    select count(*) as row_count from {{ source('raw', 'uci_returns') }}
+    select count(*) as row_count from {{ source('raw', 'store_seed') }}
 )
 
 select

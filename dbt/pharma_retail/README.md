@@ -6,8 +6,8 @@ Transforms Snowflake `RAW` (Phase 2 data ingestion) into `STAGING` → `INTERMED
 
 This is a deliberate modelling boundary, not an oversight. The project has two unrelated data sources loaded into `RAW` in Phase 2:
 
-- **UCI Online Retail II** (`RAW.UCI_SALES`, `RAW.UCI_RETURNS`, `RAW.UCI_SALES_QUARANTINE`): real transactional data from a single UK-based online retailer. Its product identifier is `stock_code` (e.g. `85123A`); it has no store dimension at all — it is one retailer, not a chain.
-- **Synthetic seeds** (`RAW.DIM_STORE_SEED`, `RAW.DIM_PRODUCT_SEED`): a fully synthetic 300-row pharmacy-retail product catalog (`product_id`: `PRD0001`–`PRD0300`) and a 100-row Australian Chemist Warehouse store list derived from OSM, built for this project's pharmacy-retail narrative (see `docs/data_readiness.md`).
+- **UCI Online Retail II** (`RAW.UCI_SALES`, `RAW.UCI_RETURNS`, `RAW.UCI_INVALID_PRICE`): real transactional data from a single UK-based online retailer. Its product identifier is `stock_code` (e.g. `85123A`); it has no store dimension at all — it is one retailer, not a chain.
+- **Synthetic seeds** (`RAW.STORE_SEED`, `RAW.PRODUCT_SEED`): a fully synthetic 300-row pharmacy-retail product catalog (`product_id`: `PRD0001`–`PRD0300`) and a 100-row Australian Chemist Warehouse store list derived from OSM, built for this project's pharmacy-retail narrative (see `docs/data_readiness.md`).
 
 `stock_code` and `product_id` are different, unrelated identifier spaces — there is no real key linking a UCI sales line to a row in `dim_product`, and no key linking it to a row in `dim_store` at all. Fabricating a join between them (e.g. a hash-based or arbitrary assignment) would misrepresent the data in a project whose whole premise is governed, auditable analytics — worse than not joining at all.
 
