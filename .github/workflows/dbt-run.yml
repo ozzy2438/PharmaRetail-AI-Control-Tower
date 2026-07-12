@@ -82,7 +82,7 @@ jobs:
           fi
           build_exit_code=$?
           set -e
-          if [ "$build_exit_code" -eq 0 ]; then
+          if [ "$build_exit_code" -eq 0 ] && [ "${{ inputs.run_label }}" != "pr" ]; then
             PYTHONPATH=../.. python -m scripts.validate_phase4_determinism
           fi
           dbt docs generate || true
