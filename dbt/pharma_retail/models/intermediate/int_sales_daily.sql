@@ -1,6 +1,6 @@
 {{ config(tags=['intermediate_foundation']) }}
 
-mapped_sales as (
+with mapped_sales as (
     {{ map_uci_lines('stg_uci_sales', 'sales') }}
 ),
 

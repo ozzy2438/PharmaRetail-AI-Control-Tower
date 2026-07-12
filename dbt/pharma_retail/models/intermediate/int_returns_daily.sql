@@ -1,6 +1,6 @@
 {{ config(tags=['intermediate_foundation']) }}
 
-mapped_returns as (
+with mapped_returns as (
     {{ map_uci_lines('stg_uci_returns', 'returns') }}
 ),
 
