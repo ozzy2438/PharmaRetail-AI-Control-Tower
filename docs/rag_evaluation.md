@@ -25,6 +25,12 @@ The committed regression set contains 36 cases:
 | Access-control accuracy | Correct access outcome / access cases | 100% | 100% |
 | Overall regression pass | Fully passing cases / all cases | 100% | 100% (36/36) |
 
+Live development evidence: GitHub Actions run
+[`29173927691`](https://github.com/ozzy2438/PharmaRetail-AI-Control-Tower/actions/runs/29173927691)
+loaded and reconciled 8 registry records, 40 chunks and 40 embedding metadata
+records, then passed citation, leakage, expiry, medical-refusal and controlled
+retrieval-audit validation.
+
 Run locally or in CI:
 
 ```bash
