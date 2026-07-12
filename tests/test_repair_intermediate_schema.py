@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from scripts.repair_intermediate_schema import (
+    MARTS_CONSUMER_ROLES,
     MODEL_SCHEMAS,
     STAGING_VIEW_MODELS,
     apply_grants,
@@ -93,6 +94,12 @@ def test_apply_grants_never_grants_create_schema() -> None:
         "TO ROLE PHARMARETAIL_ADMIN COPY CURRENT GRANTS"
         in cursor.calls
     )
+    for role in MARTS_CONSUMER_ROLES:
+        assert f"GRANT USAGE ON DATABASE PHARMARETAIL TO ROLE {role}" in cursor.calls
+        assert (
+            f"GRANT USAGE ON SCHEMA PHARMARETAIL.MARTS TO ROLE {role}"
+            in cursor.calls
+        )
     assert not any("GRANT CREATE SCHEMA" in call for call in cursor.calls)
     assert not any(
         "OWNERSHIP ON SCHEMA" in call and "TO ROLE PHARMARETAIL_DBT" in call
@@ -127,8 +134,20 @@ def test_verify_grants_accepts_qualified_and_unqualified_names() -> None:
                 ["PRIVILEGE", "GRANTEE_NAME"],
                 [("OWNERSHIP", "PHARMARETAIL_ADMIN")],
             ),
+            **{
+                f"SHOW GRANTS TO ROLE {role}": (
+                    ["PRIVILEGE", "GRANTED_ON", "NAME"],
+                    [
+                        ("USAGE", "DATABASE", "PHARMARETAIL"),
+                        ("USAGE", "SCHEMA", "PHARMARETAIL.MARTS"),
+                    ],
+                )
+                for role in MARTS_CONSUMER_ROLES
+            },
         }
     )
 
     verify_grants(cursor)
-    assert cursor.calls[-1] == "SHOW GRANTS ON SCHEMA PHARMARETAIL.MARTS"
+    assert cursor.calls[-1] == (
+        "SHOW GRANTS TO ROLE PHARMARETAIL_SUPPLY_CHAIN_ANALYST"
+    )

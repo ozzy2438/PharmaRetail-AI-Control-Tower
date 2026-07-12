@@ -15,6 +15,12 @@ STAGING_VIEW_MODELS = (
     "STG_UCI_RETURNS",
     "STG_UCI_SALES",
 )
+MARTS_CONSUMER_ROLES = (
+    "PHARMARETAIL_AI_APP",
+    "PHARMARETAIL_STORE_MANAGER",
+    "PHARMARETAIL_AREA_MANAGER",
+    "PHARMARETAIL_SUPPLY_CHAIN_ANALYST",
+)
 
 
 def rows_as_dicts(cursor) -> list[dict[str, object]]:
@@ -87,6 +93,9 @@ def apply_grants(cursor) -> None:
         "GRANT OWNERSHIP ON SCHEMA PHARMARETAIL.MARTS "
         "TO ROLE PHARMARETAIL_ADMIN COPY CURRENT GRANTS"
     )
+    for role in MARTS_CONSUMER_ROLES:
+        cursor.execute(f"GRANT USAGE ON DATABASE PHARMARETAIL TO ROLE {role}")
+        cursor.execute(f"GRANT USAGE ON SCHEMA PHARMARETAIL.MARTS TO ROLE {role}")
     # These five views are dbt models but were bootstrapped by another role.
     # Transfer only their object ownership so full dbt deploy can replace them;
     # preserve existing consumer grants and never transfer schema ownership.
@@ -129,8 +138,28 @@ def verify_grants(cursor) -> None:
     )
     if not marts_owner_is_admin:
         raise RuntimeError("PHARMARETAIL_ADMIN does not own PHARMARETAIL.MARTS")
+
+    for role in MARTS_CONSUMER_ROLES:
+        cursor.execute(f"SHOW GRANTS TO ROLE {role}")
+        role_grants = rows_as_dicts(cursor)
+        actual_role_grants = {
+            (
+                str(row.get("PRIVILEGE", "")).upper(),
+                str(row.get("GRANTED_ON", "")).upper(),
+                str(row.get("NAME", "")).strip('"').split(".")[-1].strip('"').upper(),
+            )
+            for row in role_grants
+        }
+        required_role_grants = {
+            ("USAGE", "DATABASE", EXPECTED_DATABASE),
+            ("USAGE", "SCHEMA", "MARTS"),
+        }
+        missing_role_grants = sorted(required_role_grants - actual_role_grants)
+        if missing_role_grants:
+            raise RuntimeError(f"Required {role} grants are missing: {missing_role_grants}")
     print("dbt_schemas=PHARMARETAIL.STAGING,INTERMEDIATE,MARTS created_or_verified")
     print("marts_schema_owner=PHARMARETAIL_ADMIN verified")
+    print("marts_consumer_usage=AI_APP,STORE_MANAGER,AREA_MANAGER,SUPPLY_CHAIN verified")
     print(
         "grants=USAGE(database),USAGE/CREATE VIEW/CREATE TABLE"
         "(staging,intermediate,marts),OWNERSHIP(five staging dbt views) verified"
