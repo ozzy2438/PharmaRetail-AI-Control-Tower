@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_operational_scope
+    description: Deterministic store-product scope and seven-scenario ground truth for Phase 4.
+    columns:
+      - name: store_id
+        tests: [not_null]
+      - name: product_id
+        tests: [not_null]
+      - name: supplier_id
+        tests: [not_null]
+      - name: ground_truth_root_cause
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - SUPPLIER_DELAY
+                - PROMOTION_UPLIFT
+                - REPLENISHMENT_FAILURE
+                - UNEXPECTED_DEMAND_SPIKE
+                - INVENTORY_DISCREPANCY
+                - COLD_CHAIN_INCIDENT
+                - PRODUCT_RECALL
+
+  - name: int_supplier_orders
+    description: Deterministic supplier-order schedule used by deliveries and inventory receipts.
+    columns:
+      - name: delivery_id
+        tests: [not_null, unique]
+
+  - name: int_inventory_daily_inputs
+    description: Daily deterministic demand, receipt, promotion, recall and incident inputs.
+    columns:
+      - name: snapshot_date
+        tests: [not_null]

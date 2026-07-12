@@ -41,6 +41,7 @@ jobs:
     env:
       DBT_PROFILES_DIR: ${{ github.workspace }}/dbt/pharma_retail
       DBT_QUERY_TAG: ${{ inputs.query_tag }}
+      DBT_PHASE4_GOVERNANCE_ENABLED: ${{ inputs.run_label != 'pr' && 'true' || 'false' }}
       SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
       SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
       SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
@@ -81,8 +82,27 @@ jobs:
           fi
           build_exit_code=$?
           set -e
+          if [ "$build_exit_code" -eq 0 ]; then
+            PYTHONPATH=../.. python -m scripts.validate_phase4_determinism
+          fi
           dbt docs generate || true
           exit "$build_exit_code"
+      - name: Validate live Phase 4 governance
+        if: inputs.run_label != 'pr'
+        working-directory: .
+        env:
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_SERVICE_USER }}
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE }}
+          SNOWFLAKE_ROLE: PHARMARETAIL_ADMIN
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          python -m scripts.deploy_snowflake \
+            --script infra/snowflake/phase4_model_grants.sql
+          python -m scripts.validate_phase4_governance
       - name: Summarize dbt results
         if: always()
         working-directory: .

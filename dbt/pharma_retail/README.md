@@ -17,7 +17,9 @@ This is a deliberate modelling boundary, not an oversight. The project has two u
 - `fct_sales_daily` and `fct_returns` are built from the real UCI data at `(date_day, country)` grain — `country` is the finest location-like dimension UCI actually has. They join to `dim_date` (a real, valid relationship for any date-grained fact) and nothing else.
 - `int_product_sales_summary` aggregates by UCI's own `stock_code`, explicitly not `dim_product.product_id`. `int_store_sales_summary` aggregates by `country`, explicitly not `dim_store.store_id`. Both say so in their header comments.
 
-This isn't a limitation to route around quietly — a future phase that generates synthetic sales/inventory data explicitly keyed to `store_id`/`product_id`/`date` (as the project roadmap already anticipates) is the correct way to get store- and product-scoped fact tables, not a fake join here.
+Phase 4 now supplies that separate deterministic operational dataset explicitly
+keyed by `store_id`/`product_id`/`date`; it remains separate from UCI facts and
+does not fabricate a mapping between unrelated identifier spaces.
 
 ## Layout
 

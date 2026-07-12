@@ -19,6 +19,9 @@ PROJECT_ROLES = {
     "PHARMARETAIL_DBT",
     "PHARMARETAIL_AI_APP",
     "PHARMARETAIL_READONLY",
+    "PHARMARETAIL_STORE_MANAGER",
+    "PHARMARETAIL_AREA_MANAGER",
+    "PHARMARETAIL_SUPPLY_CHAIN_ANALYST",
 }
 
 
@@ -77,7 +80,7 @@ def validate_structure(cursor: snowflake.connector.cursor.SnowflakeCursor) -> No
     role_names = {row["name"] for row in rows_as_dicts(cursor)}
     if role_names != PROJECT_ROLES:
         raise AssertionError("Project role inventory differs from the contract")
-    print("structure_roles=PASS count=5")
+    print("structure_roles=PASS count=8")
 
     cursor.execute(f"SHOW RESOURCE MONITORS LIKE '{RESOURCE_MONITOR}'")
     monitors = rows_as_dicts(cursor)
@@ -104,7 +107,10 @@ def validate_structure(cursor: snowflake.connector.cursor.SnowflakeCursor) -> No
     expected_future_grant_counts = {
         "PHARMARETAIL_ENGINEER": 24,
         "PHARMARETAIL_DBT": 20,
-        "PHARMARETAIL_AI_APP": 5,
+        "PHARMARETAIL_AI_APP": 3,
+        "PHARMARETAIL_STORE_MANAGER": 0,
+        "PHARMARETAIL_AREA_MANAGER": 0,
+        "PHARMARETAIL_SUPPLY_CHAIN_ANALYST": 0,
         "PHARMARETAIL_READONLY": 2,
     }
     total_grants = 0
@@ -151,10 +157,14 @@ def run_role_smoke_tests(cursor: snowflake.connector.cursor.SnowflakeCursor) -> 
     print("smoke_readonly_marts_select=PASS raw_denied=PASS")
 
     use_project_role(cursor, "PHARMARETAIL_AI_APP")
-    cursor.execute(f"SELECT COUNT(*) FROM {DATABASE}.MARTS.__FOUNDATION_SMOKE_MART")
-    cursor.execute(f"SELECT COUNT(*) FROM {DATABASE}.GOVERNANCE.__FOUNDATION_SMOKE_REF")
+    cursor.execute(f"SELECT COUNT(*) FROM {DATABASE}.MARTS.DIM_STORE")
+    cursor.execute(f"SELECT COUNT(*) FROM {DATABASE}.GOVERNANCE.USER_STORE_SCOPE")
     cursor.execute(
-        f"INSERT INTO {DATABASE}.AI_LOGS.__FOUNDATION_SMOKE_LOG VALUES ('smoke-test')"
+        f"INSERT INTO {DATABASE}.AI_LOGS.OPERATIONAL_ACCESS_AUDIT "
+        "(AUDIT_ID, EVENT_TIMESTAMP, ACTOR, ACTIVE_ROLE, QUERY_TAG, ACTION_NAME, "
+        "OBJECT_NAME, ROW_COUNT, OUTCOME) SELECT UUID_STRING(), CURRENT_TIMESTAMP(), "
+        "CURRENT_USER(), CURRENT_ROLE(), 'PHARMARETAIL_FOUNDATION_SMOKE_TEST', "
+        "'FOUNDATION_SMOKE_TEST', 'MARTS.DIM_STORE', 0, 'PASS'"
     )
     expect_denied(cursor, f"SELECT * FROM {DATABASE}.RAW.__FOUNDATION_SMOKE_RAW")
     print("smoke_ai_app_curated_read_log_write=PASS raw_denied=PASS")

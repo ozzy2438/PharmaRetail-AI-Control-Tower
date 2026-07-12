@@ -71,3 +71,151 @@ models:
               field: date_day
       - name: country
         tests: [not_null]
+
+  - name: dim_supplier
+    description: Deterministic synthetic supplier dimension for Phase 4 operations.
+    config:
+      tags: [phase4]
+    columns:
+      - name: supplier_id
+        tests: [not_null, unique]
+      - name: contact_email
+        tests: [not_null]
+
+  - name: fct_inventory_snapshot
+    description: Daily store-product inventory ledger with exact equation reconciliation.
+    config:
+      tags: [phase4]
+    columns:
+      - name: inventory_snapshot_id
+        tests: [not_null, unique]
+      - name: snapshot_date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_day
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: supplier_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_supplier')
+              field: supplier_id
+      - name: closing_stock
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: ground_truth_root_cause
+        tests: [not_null]
+
+  - name: fct_supplier_delivery
+    description: Supplier orders and actual deliveries with binary OTIF outcome.
+    config:
+      tags: [phase4]
+    columns:
+      - name: delivery_id
+        tests: [not_null, unique]
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: supplier_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_supplier')
+              field: supplier_id
+      - name: otif
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0, 1]
+
+  - name: fct_stockout_event
+    description: Consecutive zero-closing-stock event islands where demand remained positive.
+    config:
+      tags: [phase4]
+    columns:
+      - name: stockout_event_id
+        tests: [not_null, unique]
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: ground_truth_root_cause
+        tests: [not_null]
+
+  - name: fct_promotion
+    description: Store-product promotion windows with expected and actual uplift.
+    config:
+      tags: [phase4]
+    columns:
+      - name: promotion_id
+        tests: [not_null, unique]
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+
+  - name: fct_incident
+    description: Operational incidents spanning all seven deterministic root-cause scenarios.
+    config:
+      tags: [phase4]
+    columns:
+      - name: incident_id
+        tests: [not_null, unique]
+      - name: incident_type
+        tests: [not_null]
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: severity
+        tests:
+          - accepted_values:
+              values: [MEDIUM, HIGH, CRITICAL]

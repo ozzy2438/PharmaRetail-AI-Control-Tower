@@ -35,7 +35,7 @@ jobs:
           else
             echo "sql=false" >> "$GITHUB_OUTPUT"
           fi
-          if grep -Eq '^(scripts/|tests/|pyproject\.toml|requirements-dev\.txt)' /tmp/changed-files.txt; then
+          if grep -Eq '^(scripts/|tests/|sop/|evaluation/|pyproject\.toml|requirements-dev\.txt)' /tmp/changed-files.txt; then
             echo "python=true" >> "$GITHUB_OUTPUT"
           else
             echo "python=false" >> "$GITHUB_OUTPUT"
@@ -67,6 +67,13 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - run: ruff check scripts tests
       - run: python -m pytest
+      - name: Run governed RAG regression
+        run: python -m scripts.run_rag_evaluation --output rag_evaluation_report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rag-evaluation-report
+          path: rag_evaluation_report.json
+          if-no-files-found: error
       - name: Validate connection configuration shape
         env:
           SNOWFLAKE_ACCOUNT: ORG-ACCOUNT

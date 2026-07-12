@@ -80,3 +80,104 @@ def test_raw_tables_include_audit_columns() -> None:
     for table in DATASET_TABLES.values():
         actual = ddl_columns[_qualify(table)]
         assert AUDIT_COLUMNS.issubset(actual), f"{table} missing audit columns"
+
+
+def test_phase4_persona_roles_and_policies_are_declared() -> None:
+    roles = (SQL_DIRECTORY / "01_roles.sql").read_text(encoding="utf-8").upper()
+    governance = (SQL_DIRECTORY / "10_phase4_governance.sql").read_text(
+        encoding="utf-8"
+    ).upper()
+    for role in (
+        "PHARMARETAIL_STORE_MANAGER",
+        "PHARMARETAIL_AREA_MANAGER",
+        "PHARMARETAIL_SUPPLY_CHAIN_ANALYST",
+    ):
+        assert f"CREATE ROLE IF NOT EXISTS {role}" in roles
+    assert "CREATE ROW ACCESS POLICY IF NOT EXISTS" in governance
+    assert "CREATE MASKING POLICY IF NOT EXISTS" in governance
+    assert "USE SECONDARY ROLES" not in governance
+
+
+def test_phase4_personas_never_receive_future_marts_select() -> None:
+    grants = (SQL_DIRECTORY / "04_grants.sql").read_text(encoding="utf-8").upper()
+    for role in ("PHARMARETAIL_STORE_MANAGER", "PHARMARETAIL_AREA_MANAGER"):
+        pattern = re.compile(
+            r"GRANT SELECT ON FUTURE (?:TABLES|VIEWS) IN SCHEMA "
+            rf"{DATABASE}\.MARTS\s+TO ROLE {role}"
+        )
+        assert not pattern.search(grants)
+
+
+def test_ai_app_broad_marts_access_is_revoked_before_explicit_grants() -> None:
+    grants = (SQL_DIRECTORY / "phase4_model_grants.sql").read_text(encoding="utf-8").upper()
+    revoke_position = grants.index("REVOKE SELECT ON ALL TABLES")
+    explicit_position = grants.index(f"GRANT SELECT ON TABLE {DATABASE}.MARTS.DIM_DATE")
+    assert revoke_position < explicit_position
+    assert "REVOKE SELECT ON FUTURE TABLES" in grants
+    assert "REVOKE SELECT ON FUTURE VIEWS" in grants
+
+
+def test_supply_chain_analyst_receives_only_explicit_phase4_models() -> None:
+    grants = (SQL_DIRECTORY / "phase4_model_grants.sql").read_text(encoding="utf-8").upper()
+    role = "PHARMARETAIL_SUPPLY_CHAIN_ANALYST"
+    assert (
+        f"REVOKE SELECT ON ALL TABLES IN SCHEMA {DATABASE}.MARTS\nFROM ROLE {role}"
+        in grants
+    )
+    assert not re.search(
+        rf"GRANT SELECT ON ALL TABLES IN SCHEMA {DATABASE}\.MARTS\s+TO ROLE {role}",
+        grants,
+    )
+    for model in (
+        "DIM_DATE",
+        "DIM_STORE",
+        "DIM_PRODUCT",
+        "DIM_SUPPLIER",
+        "FCT_INVENTORY_SNAPSHOT",
+        "FCT_SUPPLIER_DELIVERY",
+        "FCT_STOCKOUT_EVENT",
+        "FCT_PROMOTION",
+        "FCT_INCIDENT",
+    ):
+        assert f"GRANT SELECT ON TABLE {DATABASE}.MARTS.{model}\nTO ROLE {role}" in grants
+
+
+def test_dbt_workflow_never_writes_private_key_to_github_env() -> None:
+    workflow = Path(".github/workflows/dbt-run.yml").read_text(encoding="utf-8")
+    assert "GITHUB_ENV" not in "\n".join(
+        line for line in workflow.splitlines() if not line.lstrip().startswith("#")
+    )
+
+
+def test_dbt_governance_access_is_schema_resolution_only() -> None:
+    grants = (SQL_DIRECTORY / "04_grants.sql").read_text(encoding="utf-8").upper()
+    assert (
+        f"GRANT USAGE ON SCHEMA {DATABASE}.GOVERNANCE\nTO ROLE PHARMARETAIL_DBT"
+        in grants
+    )
+    statements = [statement.strip() for statement in grants.split(";")]
+    assert not any(
+        statement.startswith(("GRANT SELECT", "GRANT INSERT", "GRANT UPDATE", "GRANT DELETE"))
+        and f"{DATABASE}.GOVERNANCE" in statement
+        and "TO ROLE PHARMARETAIL_DBT" in statement
+        for statement in statements
+    )
+
+
+def test_phase5_governed_rag_tables_and_least_privilege_grants_are_declared() -> None:
+    rag_sql = (SQL_DIRECTORY / "11_phase5_rag.sql").read_text(encoding="utf-8").upper()
+    for table in (
+        "DOCUMENT_REGISTRY",
+        "DOCUMENT_CHUNKS",
+        "EMBEDDING_METADATA",
+        "RETRIEVAL_AUDIT",
+        "RAG_ROLE_ACCESS_SCOPE",
+    ):
+        assert f"CREATE TABLE IF NOT EXISTS {DATABASE}.GOVERNANCE.{table}" in rag_sql
+    assert (
+        f"GRANT SELECT, INSERT ON TABLE {DATABASE}.GOVERNANCE.RETRIEVAL_AUDIT\n"
+        "TO ROLE PHARMARETAIL_AI_APP"
+    ) in rag_sql
+    assert f"GRANT UPDATE ON TABLE {DATABASE}.GOVERNANCE.RETRIEVAL_AUDIT" not in rag_sql
+    assert f"GRANT DELETE ON TABLE {DATABASE}.GOVERNANCE.RETRIEVAL_AUDIT" not in rag_sql
+    assert "CHECK (EFFECTIVE_DATE <= EXPIRY_DATE)" in rag_sql

@@ -13,6 +13,12 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+vars:
+  # PR builds validate models without mutating account-level policies. Deploy
+  # and scheduled jobs set this true after the bootstrap governance objects
+  # have been installed by the human ACCOUNTADMIN path.
+  phase4_governance_enabled: "{{ env_var('DBT_PHASE4_GOVERNANCE_ENABLED', 'false') }}"
+
 models:
   pharma_retail:
     staging:
