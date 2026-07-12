@@ -8,8 +8,6 @@ from scripts.validate_snowflake_config import SnowflakeConfig
 EXPECTED_DATABASE = "PHARMARETAIL"
 TARGET_SCHEMA = "INTERMEDIATE"
 DBT_ROLE = "PHARMARETAIL_DBT"
-RAW_SCHEMA = f"{EXPECTED_DATABASE}.RAW"
-STAGING_SCHEMA = f"{EXPECTED_DATABASE}.STAGING"
 INTERMEDIATE_SCHEMA = f"{EXPECTED_DATABASE}.{TARGET_SCHEMA}"
 
 
@@ -27,11 +25,11 @@ def verify_foundation(cursor) -> None:
             f"Required database {EXPECTED_DATABASE} was not returned by SHOW DATABASES"
         )
 
-    cursor.execute("SHOW TABLES IN SCHEMA " + RAW_SCHEMA)
+    cursor.execute("SHOW TABLES IN SCHEMA PHARMARETAIL.RAW")
     raw_objects = rows_as_dicts(cursor)
-    cursor.execute("SHOW TABLES IN SCHEMA " + STAGING_SCHEMA)
+    cursor.execute("SHOW TABLES IN SCHEMA PHARMARETAIL.STAGING")
     staging_tables = rows_as_dicts(cursor)
-    cursor.execute("SHOW VIEWS IN SCHEMA " + STAGING_SCHEMA)
+    cursor.execute("SHOW VIEWS IN SCHEMA PHARMARETAIL.STAGING")
     staging_views = rows_as_dicts(cursor)
     if not raw_objects:
         raise RuntimeError("PHARMARETAIL.RAW has no visible tables")
@@ -46,19 +44,24 @@ def verify_foundation(cursor) -> None:
 
 
 def apply_grants(cursor) -> None:
-    cursor.execute("CREATE SCHEMA IF NOT EXISTS " + INTERMEDIATE_SCHEMA)
-    cursor.execute("GRANT USAGE ON DATABASE " + EXPECTED_DATABASE + " TO ROLE " + DBT_ROLE)
-    cursor.execute("GRANT USAGE ON SCHEMA " + INTERMEDIATE_SCHEMA + " TO ROLE " + DBT_ROLE)
+    # These identifiers are intentionally fixed to the verified target. The
+    # script refuses any other database before connecting, so no untrusted
+    # input is interpolated into DDL/DCL.
+    cursor.execute("CREATE SCHEMA IF NOT EXISTS PHARMARETAIL.INTERMEDIATE")
+    cursor.execute("GRANT USAGE ON DATABASE PHARMARETAIL TO ROLE PHARMARETAIL_DBT")
     cursor.execute(
-        "GRANT CREATE VIEW ON SCHEMA " + INTERMEDIATE_SCHEMA + " TO ROLE " + DBT_ROLE
+        "GRANT USAGE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
     )
     cursor.execute(
-        "GRANT CREATE TABLE ON SCHEMA " + INTERMEDIATE_SCHEMA + " TO ROLE " + DBT_ROLE
+        "GRANT CREATE VIEW ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
+    )
+    cursor.execute(
+        "GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
     )
 
 
 def verify_grants(cursor) -> None:
-    cursor.execute("SHOW GRANTS TO ROLE " + DBT_ROLE)
+    cursor.execute("SHOW GRANTS TO ROLE PHARMARETAIL_DBT")
     grants = rows_as_dicts(cursor)
     required = {
         ("USAGE", "DATABASE", EXPECTED_DATABASE),
