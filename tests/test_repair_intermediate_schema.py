@@ -34,7 +34,7 @@ def test_verify_foundation_checks_database_and_raw_staging_objects() -> None:
         }
     )
 
-    verify_foundation(cursor)
+    staging_views = verify_foundation(cursor)
 
     assert cursor.calls == [
         "SHOW DATABASES",
@@ -42,6 +42,7 @@ def test_verify_foundation_checks_database_and_raw_staging_objects() -> None:
         "SHOW TABLES IN SCHEMA PHARMARETAIL.STAGING",
         "SHOW VIEWS IN SCHEMA PHARMARETAIL.STAGING",
     ]
+    assert staging_views == {"STG_SALES"}
 
 
 def test_apply_grants_never_grants_create_schema() -> None:
@@ -55,6 +56,8 @@ def test_apply_grants_never_grants_create_schema() -> None:
         "GRANT USAGE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT",
         "GRANT CREATE VIEW ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT",
         "GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT",
+        "GRANT USAGE ON SCHEMA PHARMARETAIL.STAGING TO ROLE PHARMARETAIL_DBT",
+        "GRANT SELECT ON ALL VIEWS IN SCHEMA PHARMARETAIL.STAGING TO ROLE PHARMARETAIL_DBT",
     ]
     assert not any("GRANT CREATE SCHEMA" in call for call in cursor.calls)
 
@@ -69,9 +72,11 @@ def test_verify_grants_accepts_qualified_and_unqualified_names() -> None:
                     ("USAGE", "SCHEMA", "PHARMARETAIL.INTERMEDIATE"),
                     ("CREATE VIEW", "SCHEMA", "INTERMEDIATE"),
                     ("CREATE TABLE", "SCHEMA", '"PHARMARETAIL"."INTERMEDIATE"'),
+                    ("USAGE", "SCHEMA", "STAGING"),
+                    ("SELECT", "VIEW", "STG_STORE"),
                 ],
             )
         }
     )
 
-    verify_grants(cursor)
+    verify_grants(cursor, {"STG_STORE"})

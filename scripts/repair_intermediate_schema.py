@@ -16,7 +16,7 @@ def rows_as_dicts(cursor) -> list[dict[str, object]]:
     return [dict(zip(columns, row, strict=True)) for row in cursor.fetchall()]
 
 
-def verify_foundation(cursor) -> None:
+def verify_foundation(cursor) -> set[str]:
     cursor.execute("SHOW DATABASES")
     databases = rows_as_dicts(cursor)
     database_names = {str(row.get("NAME", "")).upper() for row in databases}
@@ -41,6 +41,7 @@ def verify_foundation(cursor) -> None:
         f"databases={len(database_names)} raw_tables={len(raw_objects)} "
         f"staging_tables={len(staging_tables)} staging_views={len(staging_views)}"
     )
+    return {str(row.get("NAME", "")).upper() for row in staging_views}
 
 
 def apply_grants(cursor) -> None:
@@ -58,9 +59,15 @@ def apply_grants(cursor) -> None:
     cursor.execute(
         "GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
     )
+    # Existing STAGING views are read dependencies of the intermediate models.
+    # Grant read-only access only; dbt receives no STAGING create/write grant.
+    cursor.execute("GRANT USAGE ON SCHEMA PHARMARETAIL.STAGING TO ROLE PHARMARETAIL_DBT")
+    cursor.execute(
+        "GRANT SELECT ON ALL VIEWS IN SCHEMA PHARMARETAIL.STAGING TO ROLE PHARMARETAIL_DBT"
+    )
 
 
-def verify_grants(cursor) -> None:
+def verify_grants(cursor, staging_view_names: set[str]) -> None:
     cursor.execute("SHOW GRANTS TO ROLE PHARMARETAIL_DBT")
     grants = rows_as_dicts(cursor)
     required = {
@@ -68,6 +75,7 @@ def verify_grants(cursor) -> None:
         ("USAGE", "SCHEMA", TARGET_SCHEMA),
         ("CREATE VIEW", "SCHEMA", TARGET_SCHEMA),
         ("CREATE TABLE", "SCHEMA", TARGET_SCHEMA),
+        ("USAGE", "SCHEMA", "STAGING"),
     }
     actual = {
         (
@@ -78,10 +86,18 @@ def verify_grants(cursor) -> None:
         for row in grants
     }
     missing = sorted(required - actual)
+    missing += sorted(
+        ("SELECT", "VIEW", view_name)
+        for view_name in staging_view_names
+        if ("SELECT", "VIEW", view_name) not in actual
+    )
     if missing:
         raise RuntimeError(f"Required PHARMARETAIL_DBT grants are missing: {missing}")
     print(f"intermediate_schema={INTERMEDIATE_SCHEMA} created_or_verified")
-    print("grants=USAGE(database),USAGE(schema),CREATE VIEW,CREATE TABLE verified")
+    print(
+        "grants=USAGE(database),USAGE/CREATE VIEW/CREATE TABLE(intermediate),"
+        "USAGE/SELECT(existing staging views) verified"
+    )
 
 
 def main() -> int:
@@ -116,9 +132,9 @@ def main() -> int:
     try:
         with connection.cursor() as cursor:
             cursor.execute("USE ROLE ACCOUNTADMIN")
-            verify_foundation(cursor)
+            staging_view_names = verify_foundation(cursor)
             apply_grants(cursor)
-            verify_grants(cursor)
+            verify_grants(cursor, staging_view_names)
     finally:
         connection.close()
     return 0
