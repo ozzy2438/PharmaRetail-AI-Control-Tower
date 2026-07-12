@@ -162,3 +162,22 @@ def test_dbt_governance_access_is_schema_resolution_only() -> None:
         and "TO ROLE PHARMARETAIL_DBT" in statement
         for statement in statements
     )
+
+
+def test_phase5_governed_rag_tables_and_least_privilege_grants_are_declared() -> None:
+    rag_sql = (SQL_DIRECTORY / "11_phase5_rag.sql").read_text(encoding="utf-8").upper()
+    for table in (
+        "DOCUMENT_REGISTRY",
+        "DOCUMENT_CHUNKS",
+        "EMBEDDING_METADATA",
+        "RETRIEVAL_AUDIT",
+        "RAG_ROLE_ACCESS_SCOPE",
+    ):
+        assert f"CREATE TABLE IF NOT EXISTS {DATABASE}.GOVERNANCE.{table}" in rag_sql
+    assert (
+        f"GRANT SELECT, INSERT ON TABLE {DATABASE}.GOVERNANCE.RETRIEVAL_AUDIT\n"
+        "TO ROLE PHARMARETAIL_AI_APP"
+    ) in rag_sql
+    assert f"GRANT UPDATE ON TABLE {DATABASE}.GOVERNANCE.RETRIEVAL_AUDIT" not in rag_sql
+    assert f"GRANT DELETE ON TABLE {DATABASE}.GOVERNANCE.RETRIEVAL_AUDIT" not in rag_sql
+    assert "CHECK (EFFECTIVE_DATE <= EXPIRY_DATE)" in rag_sql

@@ -17,7 +17,7 @@ The matrix reflects direct role privileges. Validation sessions explicitly run `
 | `PHARMARETAIL_ADMIN` | Owns and manages `WH_PHARMARETAIL` | Owns the database and all six managed-access schemas | All project objects | All project objects | All project objects | No privileges outside the dedicated project boundary are introduced |
 | `PHARMARETAIL_ENGINEER` | USAGE, OPERATE, MONITOR | USAGE on database, RAW, STAGING, INTERMEDIATE, MARTS | Tables/views/sequences in modelling schemas; stages/file formats in RAW | Current and future tables/views in RAW through MARTS | DML on current and future tables in RAW through MARTS | GOVERNANCE and AI_LOGS |
 | `PHARMARETAIL_DBT` | USAGE, MONITOR | USAGE on database, RAW through MARTS, plus GOVERNANCE schema resolution only | Tables/views/sequences only in STAGING, INTERMEDIATE, MARTS | RAW plus all modelling schemas; no GOVERNANCE objects | DML only in STAGING, INTERMEDIATE, MARTS | Create in RAW; GOVERNANCE table/view access; AI_LOGS |
-| `PHARMARETAIL_AI_APP` | USAGE | USAGE on database, MARTS, GOVERNANCE, AI_LOGS | None | Explicit approved Phase 4 models and governance scope references; no broad MARTS future grant | INSERT only to current/future administrator-created AI_LOGS tables | RAW, STAGING, INTERMEDIATE; unapproved MARTS objects; log-table create/update/delete/truncate |
+| `PHARMARETAIL_AI_APP` | USAGE | USAGE on database, MARTS, GOVERNANCE, AI_LOGS | None | Explicit approved Phase 4 models, governed SOP registry/chunks and access scopes; no broad MARTS future grant | INSERT to administrator-created AI_LOGS tables and Phase 5 retrieval audit only | RAW, STAGING, INTERMEDIATE; unapproved MARTS objects; object create/update/delete/truncate |
 | `PHARMARETAIL_READONLY` | USAGE | USAGE on database and MARTS | None | Current/future MARTS tables/views | None | RAW, STAGING, INTERMEDIATE, GOVERNANCE and AI_LOGS |
 | `PHARMARETAIL_STORE_MANAGER` | USAGE | USAGE on database and MARTS | None | Explicit approved models; rows restricted to `USER_STORE_SCOPE` | None | Other stores and all non-MARTS schemas |
 | `PHARMARETAIL_AREA_MANAGER` | USAGE | USAGE on database and MARTS | None | Explicit approved models; rows restricted to `USER_REGION_SCOPE` | None | Other regions and all non-MARTS schemas |
@@ -47,3 +47,14 @@ Managed-access schemas ensure object creators cannot bypass the central grant mo
 tables. Tests always disable secondary roles. `SENSITIVE_TEXT_MASK` hides
 supplier contact data and ground-truth root cause from consumer and AI roles;
 only ADMIN, ENGINEER and DBT can view the unmasked evaluation truth.
+
+## Phase 5 document access
+
+Phase 5 adds explicit document levels. ADMIN, AI_APP and SUPPLY_CHAIN_ANALYST
+may retrieve PUBLIC, INTERNAL and RESTRICTED documents; AREA_MANAGER and
+STORE_MANAGER may retrieve PUBLIC and INTERNAL documents; READONLY may retrieve
+PUBLIC documents only. Retrieval combines this mapping with country, business
+unit and effective-date filters before ranking. Unknown roles receive no access.
+
+AI_APP can append to `GOVERNANCE.RETRIEVAL_AUDIT` but cannot update or delete
+records. Raw query text is not stored; the audit uses a SHA-256 query hash.

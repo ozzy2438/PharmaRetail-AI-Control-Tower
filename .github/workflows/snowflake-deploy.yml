@@ -7,6 +7,13 @@ on:
       - "infra/snowflake/**"
       - "scripts/deploy_snowflake.py"
       - "scripts/validate_snowflake_config.py"
+      - "scripts/load_sop_corpus.py"
+      - "scripts/validate_phase5_rag.py"
+      - "scripts/rag_corpus.py"
+      - "scripts/governed_rag.py"
+      - "scripts/run_rag_evaluation.py"
+      - "sop/**"
+      - "evaluation/**"
   workflow_dispatch:
     inputs:
       target_environment:
@@ -91,7 +98,31 @@ jobs:
           python -m scripts.deploy_snowflake \
             --script infra/snowflake/04_grants.sql \
             --script infra/snowflake/06_validation.sql \
-            --script infra/snowflake/08_raw_tables.sql
+            --script infra/snowflake/08_raw_tables.sql \
+            --script infra/snowflake/11_phase5_rag.sql
+      - name: Load and validate governed SOP corpus (BAU service identity)
+        if: github.event_name == 'push' || inputs.deployment_mode == 'bau'
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_SERVICE_USER }}
+          SNOWFLAKE_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          python -m scripts.load_sop_corpus
+          python -m scripts.validate_phase5_rag --output phase5_rag_evaluation.json
+      - uses: actions/upload-artifact@v4
+        if: github.event_name == 'push' || inputs.deployment_mode == 'bau'
+        with:
+          name: phase5-rag-evaluation
+          path: phase5_rag_evaluation.json
+          if-no-files-found: error
       - name: Deploy ordered SQL scripts (bootstrap human identity)
         if: github.event_name == 'workflow_dispatch' && inputs.deployment_mode == 'bootstrap'
         env:
