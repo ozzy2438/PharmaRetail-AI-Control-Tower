@@ -1,5 +1,13 @@
 # Changelog
 
+## Phase 5 — Governed SOP RAG
+
+- Added eight versioned synthetic SOP/policy documents and 40 deterministic sections.
+- Added governed document registry, chunks, embedding metadata, role scope and retrieval audit.
+- Added metadata/effective-date/access filtering, citations, uncertainty and refusal guardrails.
+- Added a 36-case CI RAG regression suite and security/evaluation documentation.
+- No agent, UI, API, dashboard or autonomous action was added.
+
 ## 0.6.0 - 2026-07-11
 
 ### Phase 4 operational data and governance

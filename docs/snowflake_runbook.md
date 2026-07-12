@@ -20,10 +20,33 @@ The Snowflake Deploy workflow never runs on `pull_request`. A merge that changes
 
 Deployment modes:
 
-- `bau`: connects as the `SVC_PHARMARETAIL_CICD` service identity (key-pair auth, `PHARMARETAIL_ADMIN` role) and executes `04_grants.sql`, `06_validation.sql` and `08_raw_tables.sql`.
+- `bau`: connects as the `SVC_PHARMARETAIL_CICD` service identity (key-pair auth, `PHARMARETAIL_ADMIN` role) and executes `04_grants.sql`, `06_validation.sql`, `08_raw_tables.sql` and the Phase 5 governed RAG DDL.
 - `bootstrap`: connects as the human `OMRUM` identity (password auth) and manually executes all numeric foundation scripts, including `07_service_identity.sql` and `09_dbt_service_identity.sql`. It requires an approved change window and `ACCOUNTADMIN`; it is not a daily operating mode.
 
 GitHub Environment variables provide account, role, warehouse and database identifiers, plus a per-mode user (`SNOWFLAKE_SERVICE_USER` for `bau`, `SNOWFLAKE_USER` for `bootstrap`). `SNOWFLAKE_SERVICE_PRIVATE_KEY`/`SNOWFLAKE_SERVICE_PRIVATE_KEY_PASSPHRASE` and `SNOWFLAKE_PASSWORD` exist only as Environment secrets. Logs mask the private key, passphrase and password before validation or deployment begins. See [Identities](snowflake_setup.md#identities) for which credential backs each mode.
+
+### Phase 5 governed SOP RAG deployment
+
+The BAU workflow idempotently loads eight committed SOP versions and forty
+section chunks after creating the five Phase 5 GOVERNANCE objects. It then runs
+the 36-case evaluation, reconciles document/chunk hashes and verifies an AI_APP
+append-only retrieval audit event. Expected evidence includes:
+
+```text
+phase5_documents_loaded=8
+phase5_chunks_loaded=40
+phase5_citation_coverage=PASS rate=1.0
+phase5_unauthorized_leakage=PASS rows=0
+phase5_expired_policy_usage=PASS rows=0
+phase5_medical_refusal=PASS
+phase5_retrieval_audit=PASS
+phase5_rag_validation=PASS
+```
+
+Rollback is never automatic. Revert the Phase 5 commit, retain retrieval audit
+evidence, revoke Phase 5 grants, and drop only the five Phase 5 GOVERNANCE
+objects after impact and retention review. Phase 1–4 schemas and models are not
+rollback targets.
 
 ## Validation
 
