@@ -12,9 +12,12 @@ RAW or STAGING objects:
 | `int_store_product_daily` | `store_id + product_id + date` | Full-outer-joined sales/returns net measures and flags |
 
 The models are materialized as tables in `PHARMARETAIL_AI_CONTROL_TOWER.INTERMEDIATE`.
-The existing compatibility aliases in the first two models preserve the legacy
-date/country marts while downstream migration is staged; they are not part of
-the new governed contract.
+The first two models retain legacy metric aliases so existing downstream SQL
+continues to compile. Those aliases do **not** preserve the old
+`date + country` grain: the governed store/product/date grain is authoritative,
+and `country` is a deterministic `min(country)` compatibility value only. A
+follow-up mart re-aggregation is required before date/country reporting is
+treated as semantically equivalent.
 
 ## Deterministic key mapping
 
@@ -27,7 +30,8 @@ The absolute hash is reduced modulo a count of dimension rows, and the result
 selects a zero-based `row_number()` ordered by the stable dimension key. The
 same invoice/stock-code pair therefore resolves to the same store/product on
 every run, with no new data downloaded and no source rows rewritten. Both
-models use the identical mapping version so their grains join consistently.
+models call the shared `map_uci_lines` macro and use the identical mapping
+version so their grains join consistently.
 
 ## Reconciliation and business rules
 
