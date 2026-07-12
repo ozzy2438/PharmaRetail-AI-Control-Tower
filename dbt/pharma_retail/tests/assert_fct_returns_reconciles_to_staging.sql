@@ -3,7 +3,11 @@
 -- to 0 is needed: an empty table's SUM is NULL, which would otherwise make
 -- the comparison NULL and silently pass instead of failing).
 with staging_total as (
-    select coalesce(sum(line_return_value), 0) as total from {{ ref('stg_uci_returns') }}
+    -- Return quantities and values are signed negative in the UCI source,
+    -- while the intermediate and mart business measures are positive return
+    -- magnitudes. Reconcile the same measure on both sides.
+    select coalesce(sum(abs(line_return_value)), 0) as total
+    from {{ ref('stg_uci_returns') }}
 ),
 
 mart_total as (
