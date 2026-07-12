@@ -34,4 +34,6 @@ columns:
     accepted_values: [0, 1]
 notes:
   - All rows are synthetic development seed data.
-  - cold_chain_flag and regulated_product_flag are illustrative scenario flags, not regulatory or clinical classifications.
+  - cold_chain_flag = 1 means the demo scenario treats the product as requiring cold-chain handling; 0 means no such demo handling rule is assigned.
+  - regulated_product_flag = 1 means the demo scenario treats the product as regulated; 0 means no such demo rule is assigned.
+  - Both flags are illustrative scenario inputs, not validated regulatory, legal, or clinical classifications, and must not drive compliance decisions.

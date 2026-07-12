@@ -18,7 +18,6 @@ columns:
   - name: quantity
     type: integer
     nullable: false
-    maximum_exclusive: 0
   - name: invoice_date
     type: timestamp
     nullable: false
