@@ -27,7 +27,7 @@ numeric business rules. Exact UCI-row uniqueness is tested with each table's
 complete business-column combination. Five singular tests reconcile every
 staging row count to its RAW source.
 
-No relationships tests are added between UCI transactions and the synthetic
+No relationship tests are added between UCI transactions and the synthetic
 store or product seeds because those datasets have no shared business key.
 Adding such a test would assert a fabricated relationship.
 
