@@ -1,4 +1,4 @@
-"""Create and grant the PHARMARETAIL INTERMEDIATE schema once, with checks."""
+"""Create and grant the fixed PHARMARETAIL dbt schemas once, with checks."""
 
 from __future__ import annotations
 
@@ -6,9 +6,8 @@ from scripts.deploy_snowflake import load_private_key_der
 from scripts.validate_snowflake_config import SnowflakeConfig
 
 EXPECTED_DATABASE = "PHARMARETAIL"
-TARGET_SCHEMA = "INTERMEDIATE"
 DBT_ROLE = "PHARMARETAIL_DBT"
-INTERMEDIATE_SCHEMA = f"{EXPECTED_DATABASE}.{TARGET_SCHEMA}"
+MODEL_SCHEMAS = ("STAGING", "INTERMEDIATE", "MARTS")
 
 
 def rows_as_dicts(cursor) -> list[dict[str, object]]:
@@ -36,47 +35,48 @@ def verify_foundation(cursor) -> set[str]:
     if not staging_tables and not staging_views:
         raise RuntimeError("PHARMARETAIL.STAGING has no visible tables or views")
 
+    cursor.execute("SHOW SCHEMAS IN DATABASE PHARMARETAIL")
+    schemas = rows_as_dicts(cursor)
+    schema_names = {str(row.get("NAME", "")).upper() for row in schemas}
+
     print(
         "foundation_database=PHARMARETAIL verified "
         f"databases={len(database_names)} raw_tables={len(raw_objects)} "
-        f"staging_tables={len(staging_tables)} staging_views={len(staging_views)}"
+        f"staging_tables={len(staging_tables)} staging_views={len(staging_views)} "
+        f"visible_schemas={','.join(sorted(schema_names))}"
     )
-    return {str(row.get("NAME", "")).upper() for row in staging_views}
+    return schema_names
 
 
 def apply_grants(cursor) -> None:
     # These identifiers are intentionally fixed to the verified target. The
     # script refuses any other database before connecting, so no untrusted
     # input is interpolated into DDL/DCL.
-    cursor.execute("CREATE SCHEMA IF NOT EXISTS PHARMARETAIL.INTERMEDIATE")
     cursor.execute("GRANT USAGE ON DATABASE PHARMARETAIL TO ROLE PHARMARETAIL_DBT")
-    cursor.execute(
-        "GRANT USAGE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
-    )
-    cursor.execute(
-        "GRANT CREATE VIEW ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
-    )
-    cursor.execute(
-        "GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.INTERMEDIATE TO ROLE PHARMARETAIL_DBT"
-    )
-    # Existing STAGING views are read dependencies of the intermediate models.
-    # Grant read-only access only; dbt receives no STAGING create/write grant.
-    cursor.execute("GRANT USAGE ON SCHEMA PHARMARETAIL.STAGING TO ROLE PHARMARETAIL_DBT")
-    cursor.execute(
-        "GRANT SELECT ON ALL VIEWS IN SCHEMA PHARMARETAIL.STAGING TO ROLE PHARMARETAIL_DBT"
-    )
+    for schema in MODEL_SCHEMAS:
+        cursor.execute(
+            f"CREATE SCHEMA IF NOT EXISTS PHARMARETAIL.{schema} WITH MANAGED ACCESS"
+        )
+        cursor.execute(
+            f"GRANT USAGE ON SCHEMA PHARMARETAIL.{schema} TO ROLE PHARMARETAIL_DBT"
+        )
+        cursor.execute(
+            f"GRANT CREATE VIEW ON SCHEMA PHARMARETAIL.{schema} TO ROLE PHARMARETAIL_DBT"
+        )
+        cursor.execute(
+            f"GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.{schema} TO ROLE PHARMARETAIL_DBT"
+        )
 
 
-def verify_grants(cursor, staging_view_names: set[str]) -> None:
+def verify_grants(cursor) -> None:
     cursor.execute("SHOW GRANTS TO ROLE PHARMARETAIL_DBT")
     grants = rows_as_dicts(cursor)
-    required = {
-        ("USAGE", "DATABASE", EXPECTED_DATABASE),
-        ("USAGE", "SCHEMA", TARGET_SCHEMA),
-        ("CREATE VIEW", "SCHEMA", TARGET_SCHEMA),
-        ("CREATE TABLE", "SCHEMA", TARGET_SCHEMA),
-        ("USAGE", "SCHEMA", "STAGING"),
-    }
+    required = {("USAGE", "DATABASE", EXPECTED_DATABASE)}
+    required.update(
+        (privilege, "SCHEMA", schema)
+        for schema in MODEL_SCHEMAS
+        for privilege in ("USAGE", "CREATE VIEW", "CREATE TABLE")
+    )
     actual = {
         (
             str(row.get("PRIVILEGE", "")).upper(),
@@ -86,17 +86,12 @@ def verify_grants(cursor, staging_view_names: set[str]) -> None:
         for row in grants
     }
     missing = sorted(required - actual)
-    missing += sorted(
-        ("SELECT", "VIEW", view_name)
-        for view_name in staging_view_names
-        if ("SELECT", "VIEW", view_name) not in actual
-    )
     if missing:
         raise RuntimeError(f"Required PHARMARETAIL_DBT grants are missing: {missing}")
-    print(f"intermediate_schema={INTERMEDIATE_SCHEMA} created_or_verified")
+    print("dbt_schemas=PHARMARETAIL.STAGING,INTERMEDIATE,MARTS created_or_verified")
     print(
-        "grants=USAGE(database),USAGE/CREATE VIEW/CREATE TABLE(intermediate),"
-        "USAGE/SELECT(existing staging views) verified"
+        "grants=USAGE(database),USAGE/CREATE VIEW/CREATE TABLE"
+        "(staging,intermediate,marts) verified"
     )
 
 
@@ -119,7 +114,7 @@ def main() -> int:
         "role": config.role,
         "warehouse": config.warehouse,
         "database": config.database,
-        "session_parameters": {"QUERY_TAG": "PHARMARETAIL_INTERMEDIATE_SCHEMA_REPAIR"},
+        "session_parameters": {"QUERY_TAG": "PHARMARETAIL_DBT_SCHEMA_REPAIR"},
     }
     if config.auth_method == "key_pair":
         connect_kwargs["private_key"] = load_private_key_der(
@@ -132,9 +127,9 @@ def main() -> int:
     try:
         with connection.cursor() as cursor:
             cursor.execute("USE ROLE ACCOUNTADMIN")
-            staging_view_names = verify_foundation(cursor)
+            verify_foundation(cursor)
             apply_grants(cursor)
-            verify_grants(cursor, staging_view_names)
+            verify_grants(cursor)
     finally:
         connection.close()
     return 0
