@@ -32,7 +32,7 @@ tests/           -- singular reconciliation tests
 macros/          -- generate_schema_name override (see below)
 ```
 
-Every model directory maps to the identically-named Snowflake schema (`STAGING`, `INTERMEDIATE`, `MARTS` — already created in `infra/snowflake/03_database_schemas.sql`) via the `generate_schema_name` macro override in `macros/get_custom_schema.sql`, which ignores dbt's default `<profile_schema>_<custom_schema>` concatenation.
+Every model directory maps to the identically-named Snowflake schema (`STAGING`, `INTERMEDIATE`, `MARTS` — already created in `infra/snowflake/03_database_schemas.sql`) via the `generate_schema_name` macro override in `macros/get_custom_schema.sql`, which ignores dbt's default `<profile_schema>_<custom_schema>` concatenation. Data tests are explicitly assigned to the existing `STAGING` schema so dbt never attempts to create its default `DBT_TEST__AUDIT` schema.
 
 ## Running dbt
 

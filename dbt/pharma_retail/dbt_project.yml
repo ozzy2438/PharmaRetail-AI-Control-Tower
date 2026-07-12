@@ -30,3 +30,10 @@ models:
     marts:
       +schema: MARTS
       +materialized: table
+
+# dbt assigns data tests to <target_schema>_dbt_test__audit by default, even
+# when failing rows are not persisted. PHARMARETAIL_DBT deliberately cannot
+# create schemas, so keep test execution inside the existing STAGING schema.
+tests:
+  pharma_retail:
+    +schema: STAGING
