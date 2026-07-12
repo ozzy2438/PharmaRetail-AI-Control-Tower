@@ -8,6 +8,13 @@ from scripts.validate_snowflake_config import SnowflakeConfig
 EXPECTED_DATABASE = "PHARMARETAIL"
 DBT_ROLE = "PHARMARETAIL_DBT"
 MODEL_SCHEMAS = ("STAGING", "INTERMEDIATE", "MARTS")
+STAGING_VIEW_MODELS = (
+    "STG_PRODUCT",
+    "STG_STORE",
+    "STG_UCI_INVALID_PRICE",
+    "STG_UCI_RETURNS",
+    "STG_UCI_SALES",
+)
 
 
 def rows_as_dicts(cursor) -> list[dict[str, object]]:
@@ -15,7 +22,7 @@ def rows_as_dicts(cursor) -> list[dict[str, object]]:
     return [dict(zip(columns, row, strict=True)) for row in cursor.fetchall()]
 
 
-def verify_foundation(cursor) -> set[str]:
+def verify_foundation(cursor) -> tuple[set[str], set[str]]:
     cursor.execute("SHOW DATABASES")
     databases = rows_as_dicts(cursor)
     database_names = {str(row.get("NAME", "")).upper() for row in databases}
@@ -34,6 +41,14 @@ def verify_foundation(cursor) -> set[str]:
         raise RuntimeError("PHARMARETAIL.RAW has no visible tables")
     if not staging_tables and not staging_views:
         raise RuntimeError("PHARMARETAIL.STAGING has no visible tables or views")
+    staging_view_names = {
+        str(row.get("NAME", "")).upper() for row in staging_views
+    }
+    missing_staging_views = sorted(set(STAGING_VIEW_MODELS) - staging_view_names)
+    if missing_staging_views:
+        raise RuntimeError(
+            f"Required PHARMARETAIL.STAGING views are missing: {missing_staging_views}"
+        )
 
     cursor.execute("SHOW SCHEMAS IN DATABASE PHARMARETAIL")
     schemas = rows_as_dicts(cursor)
@@ -45,7 +60,7 @@ def verify_foundation(cursor) -> set[str]:
         f"staging_tables={len(staging_tables)} staging_views={len(staging_views)} "
         f"visible_schemas={','.join(sorted(schema_names))}"
     )
-    return schema_names
+    return schema_names, staging_view_names
 
 
 def apply_grants(cursor) -> None:
@@ -66,6 +81,15 @@ def apply_grants(cursor) -> None:
         cursor.execute(
             f"GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.{schema} TO ROLE PHARMARETAIL_DBT"
         )
+    # These five views are dbt models but were bootstrapped by another role.
+    # Transfer only their object ownership so full dbt deploy can replace them;
+    # preserve existing consumer grants and never transfer schema ownership.
+    for view_name in STAGING_VIEW_MODELS:
+        cursor.execute(
+            "GRANT OWNERSHIP ON VIEW "
+            f"PHARMARETAIL.STAGING.{view_name} TO ROLE PHARMARETAIL_DBT "
+            "COPY CURRENT GRANTS"
+        )
 
 
 def verify_grants(cursor) -> None:
@@ -77,6 +101,7 @@ def verify_grants(cursor) -> None:
         for schema in MODEL_SCHEMAS
         for privilege in ("USAGE", "CREATE VIEW", "CREATE TABLE")
     )
+    required.update(("OWNERSHIP", "VIEW", view_name) for view_name in STAGING_VIEW_MODELS)
     actual = {
         (
             str(row.get("PRIVILEGE", "")).upper(),
@@ -91,7 +116,7 @@ def verify_grants(cursor) -> None:
     print("dbt_schemas=PHARMARETAIL.STAGING,INTERMEDIATE,MARTS created_or_verified")
     print(
         "grants=USAGE(database),USAGE/CREATE VIEW/CREATE TABLE"
-        "(staging,intermediate,marts) verified"
+        "(staging,intermediate,marts),OWNERSHIP(five staging dbt views) verified"
     )
 
 

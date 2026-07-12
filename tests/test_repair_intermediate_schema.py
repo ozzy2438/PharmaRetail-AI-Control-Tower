@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from scripts.repair_intermediate_schema import (
     MODEL_SCHEMAS,
+    STAGING_VIEW_MODELS,
     apply_grants,
     verify_foundation,
     verify_grants,
@@ -31,7 +32,10 @@ def test_verify_foundation_checks_database_raw_staging_and_schemas() -> None:
             "SHOW DATABASES": (["NAME"], [("PHARMARETAIL",)]),
             "SHOW TABLES IN SCHEMA PHARMARETAIL.RAW": (["NAME"], [("UCI_SALES",)]),
             "SHOW TABLES IN SCHEMA PHARMARETAIL.STAGING": (["NAME"], []),
-            "SHOW VIEWS IN SCHEMA PHARMARETAIL.STAGING": (["NAME"], [("STG_SALES",)]),
+            "SHOW VIEWS IN SCHEMA PHARMARETAIL.STAGING": (
+                ["NAME"],
+                [(view_name,) for view_name in STAGING_VIEW_MODELS],
+            ),
             "SHOW SCHEMAS IN DATABASE PHARMARETAIL": (
                 ["NAME"],
                 [("RAW",), ("STAGING",), ("INTERMEDIATE",)],
@@ -39,7 +43,7 @@ def test_verify_foundation_checks_database_raw_staging_and_schemas() -> None:
         }
     )
 
-    schema_names = verify_foundation(cursor)
+    schema_names, staging_view_names = verify_foundation(cursor)
 
     assert cursor.calls == [
         "SHOW DATABASES",
@@ -49,6 +53,7 @@ def test_verify_foundation_checks_database_raw_staging_and_schemas() -> None:
         "SHOW SCHEMAS IN DATABASE PHARMARETAIL",
     ]
     assert schema_names == {"RAW", "STAGING", "INTERMEDIATE"}
+    assert staging_view_names == set(STAGING_VIEW_MODELS)
 
 
 def test_apply_grants_never_grants_create_schema() -> None:
@@ -76,7 +81,16 @@ def test_apply_grants_never_grants_create_schema() -> None:
             f"GRANT CREATE TABLE ON SCHEMA PHARMARETAIL.{schema} TO ROLE PHARMARETAIL_DBT"
             in cursor.calls
         )
+    for view_name in STAGING_VIEW_MODELS:
+        assert (
+            "GRANT OWNERSHIP ON VIEW "
+            f"PHARMARETAIL.STAGING.{view_name} TO ROLE PHARMARETAIL_DBT "
+            "COPY CURRENT GRANTS"
+            in cursor.calls
+        )
     assert not any("GRANT CREATE SCHEMA" in call for call in cursor.calls)
+    assert not any("OWNERSHIP ON SCHEMA" in call for call in cursor.calls)
+    assert not any("OWNERSHIP ON DATABASE" in call for call in cursor.calls)
 
 
 def test_verify_grants_accepts_qualified_and_unqualified_names() -> None:
@@ -95,6 +109,10 @@ def test_verify_grants_accepts_qualified_and_unqualified_names() -> None:
                     ("USAGE", "SCHEMA", "MARTS"),
                     ("CREATE VIEW", "SCHEMA", "MARTS"),
                     ("CREATE TABLE", "SCHEMA", "MARTS"),
+                    *(
+                        ("OWNERSHIP", "VIEW", view_name)
+                        for view_name in STAGING_VIEW_MODELS
+                    ),
                 ],
             )
         }
