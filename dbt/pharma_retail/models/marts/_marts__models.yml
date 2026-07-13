@@ -213,6 +213,16 @@ models:
           - not_null
           - dbt_utils.expression_is_true:
               expression: ">= 0"
+      - name: on_order_qty
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: days_of_cover
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
       - name: ground_truth_root_cause
         tests: [not_null]
 
@@ -266,8 +276,23 @@ models:
           - relationships:
               to: ref('dim_product')
               field: product_id
+      - name: estimated_lost_sales
+        tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
+      - name: severity
+        tests:
+          - not_null
+          - accepted_values:
+              values: [MEDIUM, HIGH, CRITICAL]
       - name: ground_truth_root_cause
         tests: [not_null]
+      - name: likely_root_cause
+        tests:
+          - not_null
+          - accepted_values:
+              values: [SUPPLIER_DELAY, PROMO_UPLIFT, DEMAND_SPIKE, REPLENISHMENT_GAP]
 
   - name: fct_promotion
     description: Store-product promotion windows with expected and actual uplift.
