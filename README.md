@@ -5,8 +5,9 @@ dbt-core, governed operational data, and auditable delivery controls.
 
 The current implementation covers the Snowflake foundation, reconciled RAW
 ingestion, the dbt transformation pipeline, the Phase 4 operational layer and a
-Phase 5 governed SOP RAG baseline. Agent, UI, API, dashboard and autonomous
-actions are deliberately not implemented.
+Phase 5 governed SOP RAG baseline, and a governed Phase 6 Stockout Investigation
+Agent with a Streamlit UI. API, dashboard and autonomous actions are deliberately
+not implemented.
 
 ## Implemented data flow
 
@@ -43,6 +44,18 @@ python -m scripts.run_stockout_investigation \
 
 The agent consumes only approved governed MARTS models. It must not query RAW
 or ungoverned intermediate data.
+
+### Stockout Investigation UI
+
+The Streamlit UI is a presentation layer for the governed agent. It provides a
+question-first investigation workflow, enforces the selected role and store/region
+scope, presents cited results, and only shows action drafts pending human approval.
+It does not run free SQL, expose credentials, or create tickets.
+
+```bash
+pip install -r requirements-ui.txt
+python -m streamlit run ui/streamlit_app.py
+```
 
 ## Phase 4 operational models
 
