@@ -99,7 +99,8 @@ jobs:
             --script infra/snowflake/04_grants.sql \
             --script infra/snowflake/06_validation.sql \
             --script infra/snowflake/08_raw_tables.sql \
-            --script infra/snowflake/11_phase5_rag.sql
+            --script infra/snowflake/11_phase5_rag.sql \
+            --script infra/snowflake/12_phase6_agent.sql
       - name: Load and validate governed SOP corpus (BAU service identity)
         if: github.event_name == 'push' || inputs.deployment_mode == 'bau'
         env:
