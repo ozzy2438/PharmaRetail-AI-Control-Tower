@@ -72,6 +72,101 @@ models:
       - name: country
         tests: [not_null]
 
+  - name: mart_sales_daily
+    description: >
+      Governed sales mart at store_id, product_id and date grain, preserving
+      gross and net sales separately.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [store_id, product_id, date]
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_day
+      - name: units_sold
+        tests: [not_null]
+      - name: gross_sales
+        tests: [not_null]
+      - name: net_sales
+        tests: [not_null]
+      - name: return_rate
+        tests: [not_null]
+      - name: average_unit_price
+        tests: [not_null]
+
+  - name: mart_store_daily
+    description: >
+      Daily store summary where total_sales is gross sales and total_returns is
+      the positive return value.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [store_id, date]
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_day
+      - name: total_sales
+        tests: [not_null]
+      - name: total_returns
+        tests: [not_null]
+      - name: transaction_count
+        tests: [not_null]
+      - name: active_products
+        tests: [not_null]
+
+  - name: mart_product_daily
+    description: >
+      Daily product summary with quantity-weighted return rate and active-store
+      count.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: [product_id, date]
+    columns:
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: date
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_day
+      - name: total_units
+        tests: [not_null]
+      - name: total_sales
+        tests: [not_null]
+      - name: return_rate
+        tests: [not_null]
+      - name: active_store_count
+        tests: [not_null]
+
   - name: dim_supplier
     description: Deterministic synthetic supplier dimension for Phase 4 operations.
     config:
