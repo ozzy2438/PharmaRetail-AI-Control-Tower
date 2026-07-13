@@ -21,6 +21,7 @@ from scripts.stockout_agent.contracts import (
     AgentContext,
     AuditRecord,
     Citation,
+    DraftRecord,
     Finding,
     InvestigationRequest,
     InvestigationResult,
@@ -29,7 +30,9 @@ from scripts.stockout_agent.contracts import (
 from scripts.stockout_agent.gateway import (
     AuditSink,
     DataGateway,
+    DraftSink,
     InMemoryAuditSink,
+    InMemoryDraftSink,
     InMemoryGateway,
 )
 from scripts.stockout_agent.tools import AllowlistToolset, ToolResult
@@ -65,11 +68,13 @@ class StockoutInvestigationAgent:
         gateway: DataGateway | None = None,
         retriever: GovernedRetriever | None = None,
         audit_sink: AuditSink | None = None,
+        draft_sink: DraftSink | None = None,
         clock: Callable[[], str] = _default_clock,
     ) -> None:
         self._gateway = gateway or InMemoryGateway()
         self._retriever = retriever or GovernedRetriever.from_corpus()
         self._audit_sink = audit_sink or InMemoryAuditSink()
+        self._draft_sink = draft_sink or InMemoryDraftSink()
         self._clock = clock
         self._toolset = AllowlistToolset(self._gateway, self._retriever, self._audit_sink)
         # Guard: the plan may never contain a non-allowlisted tool.
@@ -84,6 +89,10 @@ class StockoutInvestigationAgent:
     @property
     def audit_sink(self) -> AuditSink:
         return self._audit_sink
+
+    @property
+    def draft_sink(self) -> DraftSink:
+        return self._draft_sink
 
     def investigate(
         self, request: InvestigationRequest, context: AgentContext
@@ -156,6 +165,18 @@ class StockoutInvestigationAgent:
         supporting = self._supporting_citations(stockouts, supplier, policy)
         drafts_result = self._toolset.draft_action_plan(context, request, supporting, drivers)
         audit("draft_action_plan", "DRAFT", "AI_LOGS.AGENT_ACTION_DRAFT", drafts_result)
+        # Persist each draft (append-only). A draft is never an external action;
+        # every row is approval-pending and only a human can act on it.
+        for draft_index, action in enumerate(drafts_result.drafts, start=1):
+            self._draft_sink.append(
+                DraftRecord.from_action(
+                    action,
+                    query_hash=request.query_hash,
+                    sequence=draft_index,
+                    actor=context.user,
+                    created_at=self._clock(),
+                )
+            )
 
         citations = self._collect_citations(findings, drafts_result.drafts)
         uncertainty = self._uncertainty(inventory, supplier, promotion, policy)

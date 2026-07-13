@@ -13,7 +13,7 @@ from scripts.stockout_agent import (
     InvestigationRequest,
     StockoutInvestigationAgent,
 )
-from scripts.stockout_agent.gateway import InMemoryAuditSink
+from scripts.stockout_agent.gateway import InMemoryAuditSink, InMemoryDraftSink
 from scripts.stockout_agent.orchestrator import INVESTIGATION_PLAN
 from scripts.stockout_agent.tools import ToolError
 
@@ -154,3 +154,28 @@ def test_no_stockout_signal_returns_honest_empty_answer() -> None:
     assert "No stockout signal" in result.summary
     assert result.recommended_actions == ()
     assert all(finding.code == "POLICY_GUIDANCE" for finding in result.findings)
+
+
+def test_drafts_are_persisted_append_only_and_approval_pending() -> None:
+    drafts = InMemoryDraftSink()
+    agent = StockoutInvestigationAgent(
+        audit_sink=InMemoryAuditSink(), draft_sink=drafts, clock=lambda: FIXED_CLOCK
+    )
+    result = agent.investigate(_request(), _analyst())
+    # Every produced draft is persisted as a row.
+    assert len(drafts.records) == len(result.recommended_actions) == 2
+    assert all(record.requires_human_approval for record in drafts.records)
+    assert all(record.status == "DRAFT_PENDING_APPROVAL" for record in drafts.records)
+    # Deterministic, unique draft ids; no mutation/deletion API.
+    ids = [record.draft_id for record in drafts.records]
+    assert len(set(ids)) == len(ids)
+    assert not hasattr(drafts, "update") and not hasattr(drafts, "delete")
+
+
+def test_no_signal_persists_no_drafts() -> None:
+    drafts = InMemoryDraftSink()
+    agent = StockoutInvestigationAgent(
+        audit_sink=InMemoryAuditSink(), draft_sink=drafts, clock=lambda: FIXED_CLOCK
+    )
+    agent.investigate(_request(category="vitamins"), _analyst())
+    assert drafts.records == ()

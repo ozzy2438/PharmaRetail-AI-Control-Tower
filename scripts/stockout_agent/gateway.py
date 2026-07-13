@@ -19,7 +19,7 @@ from __future__ import annotations
 from datetime import date, timedelta
 from typing import Protocol
 
-from scripts.stockout_agent.contracts import AuditRecord
+from scripts.stockout_agent.contracts import AuditRecord, DraftRecord
 from scripts.stockout_agent.fixtures import (
     GatewayDataset,
     InventoryRow,
@@ -52,6 +52,10 @@ class DataGateway(Protocol):
 
 class AuditSink(Protocol):
     def append(self, record: AuditRecord) -> None: ...
+
+
+class DraftSink(Protocol):
+    def append(self, record: DraftRecord) -> None: ...
 
 
 class InMemoryGateway:
@@ -115,6 +119,20 @@ class InMemoryAuditSink:
 
     @property
     def records(self) -> tuple[AuditRecord, ...]:
+        return tuple(self._records)
+
+
+class InMemoryDraftSink:
+    """Append-only in-memory draft log. Records cannot be mutated or removed."""
+
+    def __init__(self) -> None:
+        self._records: list[DraftRecord] = []
+
+    def append(self, record: DraftRecord) -> None:
+        self._records.append(record)
+
+    @property
+    def records(self) -> tuple[DraftRecord, ...]:
         return tuple(self._records)
 
 
@@ -262,5 +280,31 @@ class SnowflakeAuditSink:
         try:
             payload = record.to_dict()
             cursor.execute(_AUDIT_INSERT_SQL, payload)
+        finally:
+            cursor.close()
+
+
+_DRAFT_INSERT_SQL = """
+insert into PHARMARETAIL_AI_CONTROL_TOWER.AI_LOGS.AGENT_ACTION_DRAFT (
+    DRAFT_ID, QUERY_HASH, CREATED_AT, ACTOR, TITLE, BODY, TARGET_SYSTEM,
+    PRIORITY, STATUS, REQUIRES_HUMAN_APPROVAL, CITATION_COUNT
+) values (
+    %(draft_id)s, %(query_hash)s, %(created_at)s, %(actor)s, %(title)s, %(body)s,
+    %(target_system)s, %(priority)s, %(status)s, %(requires_human_approval)s,
+    %(citation_count)s
+)
+"""
+
+
+class SnowflakeDraftSink:
+    """Append-only INSERT into the governed agent action-draft table."""
+
+    def __init__(self, connection: object) -> None:
+        self._connection = connection
+
+    def append(self, record: DraftRecord) -> None:
+        cursor = self._connection.cursor()  # type: ignore[attr-defined]
+        try:
+            cursor.execute(_DRAFT_INSERT_SQL, record.to_dict())
         finally:
             cursor.close()
