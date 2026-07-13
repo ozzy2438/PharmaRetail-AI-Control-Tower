@@ -283,3 +283,70 @@ class AuditRecord:
             "citation_count": self.citation_count,
             "event_timestamp": self.event_timestamp,
         }
+
+
+@dataclass(frozen=True)
+class DraftRecord:
+    """One append-only action-draft row. ``draft_id`` is deterministic/unique.
+
+    Persisting a draft never takes an external action: the row always carries
+    ``requires_human_approval = True`` and ``status = 'DRAFT_PENDING_APPROVAL'``.
+    """
+
+    query_hash: str
+    sequence: int
+    actor: str
+    title: str
+    body: str
+    target_system: str
+    priority: str
+    citation_count: int
+    created_at: str
+    requires_human_approval: bool = True
+    status: str = "DRAFT_PENDING_APPROVAL"
+
+    @property
+    def draft_id(self) -> str:
+        payload = f"{self.query_hash}|{self.sequence}|{self.title}|{self.target_system}"
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "draft_id": self.draft_id,
+            "query_hash": self.query_hash,
+            "sequence": self.sequence,
+            "actor": self.actor,
+            "title": self.title,
+            "body": self.body,
+            "target_system": self.target_system,
+            "priority": self.priority,
+            "status": self.status,
+            "requires_human_approval": self.requires_human_approval,
+            "citation_count": self.citation_count,
+            "created_at": self.created_at,
+        }
+
+    @classmethod
+    def from_action(
+        cls,
+        action: "ActionDraft",
+        *,
+        query_hash: str,
+        sequence: int,
+        actor: str,
+        created_at: str,
+    ) -> "DraftRecord":
+        # A DraftRecord may only ever be built from an approval-required draft.
+        if not action.requires_human_approval or action.status != "DRAFT_PENDING_APPROVAL":
+            raise ValueError("Only approval-pending drafts may be persisted")
+        return cls(
+            query_hash=query_hash,
+            sequence=sequence,
+            actor=actor,
+            title=action.title,
+            body=action.body,
+            target_system=action.target_system,
+            priority=action.priority,
+            citation_count=len(action.citations),
+            created_at=created_at,
+        )

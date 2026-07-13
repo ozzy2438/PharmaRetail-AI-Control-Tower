@@ -1,5 +1,16 @@
 # Changelog
 
+## Phase 6 — Draft persistence and live-smoke targeting
+
+- Added append-only action-draft persistence: `DraftRecord`, `InMemoryDraftSink`
+  and `SnowflakeDraftSink` INSERT approval-pending drafts into
+  `AI_LOGS.AGENT_ACTION_DRAFT`; the orchestrator persists every produced draft.
+- The live smoke now auto-targets the window in which stockouts actually occur
+  (derived from the marts) so the findings/draft path is always exercised, and
+  it verifies real draft persistence alongside audit writes.
+- Added offline tests for draft persistence (append-only, approval-pending,
+  unique ids; none persisted when there is no signal).
+
 ## Phase 6 — Live smoke (AI_APP key-pair identity)
 
 - Added `infra/snowflake/13_ai_app_service_identity.sql`: a bootstrap-only,
