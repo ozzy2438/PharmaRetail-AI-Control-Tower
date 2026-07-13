@@ -24,3 +24,4 @@ dbt/pharma_retail/target/
 dbt/pharma_retail/dbt_packages/
 dbt/pharma_retail/logs/
 dbt/pharma_retail/.user.yml
+.venv-agent/

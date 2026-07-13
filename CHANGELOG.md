@@ -1,5 +1,27 @@
 # Changelog
 
+## Phase 6 — Stockout Investigation Agent
+
+- Added a deterministic, allowlisted, citation-first Stockout Investigation Agent
+  (`scripts/stockout_agent/`) with a fixed, controlled orchestration plan.
+- Added exactly seven allowlisted tools (`get_stockout_metrics`,
+  `get_inventory_position`, `get_supplier_performance`, `get_promotion_impact`,
+  `search_policy_docs`, `draft_action_plan`, `log_ai_interaction`); no free-form
+  SQL is possible and non-allowlisted tool names are refused.
+- Enforced role/store/region access scope mirroring the Phase 4 row-access
+  policy, mandatory citations on every finding, prompt-injection refusal reusing
+  the Phase 5 patterns, and an append-only audit trail.
+- The agent takes no external action: it only produces drafts that require human
+  approval before any ticket is opened.
+- Added `infra/snowflake/12_phase6_agent.sql` with append-only
+  `AI_LOGS.AGENT_INTERACTION_AUDIT` and `AGENT_ACTION_DRAFT` tables (INSERT-only
+  for `PHARMARETAIL_AI_APP`); no new read surface beyond the existing Phase 4
+  mart grants.
+- Added 27 agent/RLS/citation/prompt-injection/determinism tests, a dedicated
+  `agent-ci.yml` workflow, an offline structured-JSON smoke entrypoint, and
+  `docs/phase6_stockout_agent.md`.
+- No UI, no new marts, and no changes to existing dbt models were made.
+
 ## Phase 5 — Governed SOP RAG
 
 - Added eight versioned synthetic SOP/policy documents and 40 deterministic sections.

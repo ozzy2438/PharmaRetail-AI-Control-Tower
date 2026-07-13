@@ -26,8 +26,23 @@ guardrails and a CI evaluation suite. See the [RAG architecture](docs/rag_archit
 [SOP corpus](docs/sop_corpus.md), [evaluation](docs/rag_evaluation.md) and
 [RAG security](docs/rag_security.md).
 
-The future Stockout Investigation Agent will consume only approved governed
-MARTS models. It must not query RAW or ungoverned intermediate data.
+## Phase 6 Stockout Investigation Agent
+
+The Phase 6 Stockout Investigation Agent is a deterministic, allowlisted,
+citation-first agent that explains stockout increases using only the approved
+governed MARTS models and the Phase 5 SOP corpus. It runs no free-form SQL,
+enforces role/store/region access scope, requires human approval before any
+external action (it only drafts), and appends every step to an append-only
+audit trail. See [Phase 6 Stockout Agent](docs/phase6_stockout_agent.md).
+
+```bash
+python -m scripts.run_stockout_investigation \
+  --region Melbourne --category "pain relief" --window-days 14 \
+  --role PHARMARETAIL_SUPPLY_CHAIN_ANALYST
+```
+
+The agent consumes only approved governed MARTS models. It must not query RAW
+or ungoverned intermediate data.
 
 ## Phase 4 operational models
 
