@@ -1,0 +1,71 @@
+name: Stockout Agent CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "scripts/stockout_agent/**"
+      - "scripts/run_stockout_investigation.py"
+      - "tests/test_stockout_agent*.py"
+      - "infra/snowflake/12_phase6_agent.sql"
+      - ".github/workflows/agent-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "scripts/stockout_agent/**"
+      - "scripts/run_stockout_investigation.py"
+      - "tests/test_stockout_agent*.py"
+      - "infra/snowflake/12_phase6_agent.sql"
+      - ".github/workflows/agent-ci.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  agent-quality:
+    name: Agent, RLS, citation, injection and determinism tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Lint agent sources
+        run: >
+          ruff check
+          scripts/stockout_agent
+          scripts/run_stockout_investigation.py
+          tests/test_stockout_agent.py
+          tests/test_stockout_agent_security.py
+      - name: Agent + security + RLS + citation + determinism suite
+        run: >
+          python -m pytest
+          tests/test_stockout_agent.py
+          tests/test_stockout_agent_security.py
+          -q
+      - name: Deterministic smoke investigation (structured JSON, draft-only)
+        run: python -m scripts.run_stockout_investigation --output agent_investigation_report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent-investigation-report
+          path: agent_investigation_report.json
+          if-no-files-found: error
+
+  agent-sql:
+    name: Agent Snowflake DDL lint and syntax
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install sqlfluff
+      - run: sqlfluff lint infra/snowflake/12_phase6_agent.sql --dialect snowflake
+      - run: sqlfluff parse infra/snowflake/12_phase6_agent.sql --dialect snowflake
