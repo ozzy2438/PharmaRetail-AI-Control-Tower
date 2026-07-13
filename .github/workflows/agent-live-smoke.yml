@@ -1,0 +1,70 @@
+name: Stockout Agent Live Smoke
+
+# Runs the Phase 6 agent against the live account as the least-privilege
+# SVC_PHARMARETAIL_AI_APP service identity (key-pair auth only). Manual and
+# environment-gated: it never runs automatically and never uses a password.
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: GitHub Environment holding the AI_APP service-identity secrets
+        required: true
+        type: choice
+        options: [development, staging, production]
+      region:
+        description: Optional region override (else auto-discovered from MARTS)
+        required: false
+        type: string
+      category:
+        description: Optional category override (else auto-discovered from MARTS)
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent-live-smoke-${{ inputs.target_environment }}
+  cancel-in-progress: false
+
+jobs:
+  live-smoke:
+    name: Live SnowflakeGateway smoke (AI_APP identity)
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target_environment }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - name: Run live smoke as SVC_PHARMARETAIL_AI_APP
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ vars.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ vars.SNOWFLAKE_AI_APP_USER }}
+          SNOWFLAKE_ROLE: ${{ vars.SNOWFLAKE_AI_APP_ROLE }}
+          SNOWFLAKE_WAREHOUSE: ${{ vars.SNOWFLAKE_WAREHOUSE }}
+          SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
+          # Base64-encoded PEM so GitHub Actions log masking stays reliable for
+          # the multi-line key. The decoded PEM is never echoed.
+          SNOWFLAKE_AI_APP_PRIVATE_KEY_B64: ${{ secrets.SNOWFLAKE_AI_APP_PRIVATE_KEY }}
+          SNOWFLAKE_PRIVATE_KEY_PASSPHRASE: ${{ secrets.SNOWFLAKE_AI_APP_PRIVATE_KEY_PASSPHRASE }}
+          REGION_INPUT: ${{ inputs.region }}
+          CATEGORY_INPUT: ${{ inputs.category }}
+        run: |
+          echo "::add-mask::$SNOWFLAKE_AI_APP_PRIVATE_KEY_B64"
+          echo "::add-mask::$SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"
+          SNOWFLAKE_PRIVATE_KEY="$(printf '%s' "$SNOWFLAKE_AI_APP_PRIVATE_KEY_B64" | base64 --decode)"
+          export SNOWFLAKE_PRIVATE_KEY
+          ARGS=""
+          if [ -n "$REGION_INPUT" ]; then ARGS="$ARGS --region $REGION_INPUT"; fi
+          if [ -n "$CATEGORY_INPUT" ]; then ARGS="$ARGS --category $CATEGORY_INPUT"; fi
+          python -m scripts.run_stockout_investigation_live \
+            --output agent_live_smoke_report.json $ARGS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: agent-live-smoke-report
+          path: agent_live_smoke_report.json
+          if-no-files-found: error

@@ -1,5 +1,20 @@
 # Changelog
 
+## Phase 6 — Live smoke (AI_APP key-pair identity)
+
+- Added `infra/snowflake/13_ai_app_service_identity.sql`: a bootstrap-only,
+  key-pair `SVC_PHARMARETAIL_AI_APP` service identity granted `PHARMARETAIL_AI_APP`
+  only (MARTS SELECT + AI_LOGS INSERT, no UPDATE/DELETE, no ADMIN).
+- Added `scripts/run_stockout_investigation_live.py`: a live smoke that runs the
+  agent through `SnowflakeGateway`/`SnowflakeAuditSink` and asserts MARTS reads,
+  audit writes, draft human-approval, INSERT-only enforcement (UPDATE/DELETE
+  denied) and store-scope narrowing.
+- Added the `Stockout Agent Live Smoke` workflow (`agent-live-smoke.yml`),
+  environment-gated and key-pair only.
+- Added `docs/phase6_live_smoke.md` operator runbook and removed the plaintext
+  Snowflake password from the local `.env` template (rotation is an operator
+  ACCOUNTADMIN action).
+
 ## Phase 6 — Stockout Investigation Agent
 
 - Added a deterministic, allowlisted, citation-first Stockout Investigation Agent
