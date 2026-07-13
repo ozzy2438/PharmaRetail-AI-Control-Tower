@@ -36,7 +36,12 @@ expected as (
 ),
 
 actual as (
-    select stockout_event_id, estimated_lost_sales, severity, likely_root_cause
+    select
+        stockout_event_id,
+        stockout_days,
+        estimated_lost_sales,
+        severity,
+        likely_root_cause
     from {{ ref('fct_stockout_event') }}
 )
 
